@@ -1,5 +1,4 @@
 package com.jenking.common;
-
 import com.jenking.blog.Blog;
 import com.jenking.blog.BlogController;
 import com.jenking.controller.IndexController;
@@ -32,10 +31,6 @@ import com.jfinal.render.ViewType;
 
 public class StartupConfig extends JFinalConfig {
 	
-	//启动入口函数：右键工程，选择run as application
-	public static void main(String[] args) {
-		JFinal.start("WebRoot", 80, "/", 5);
-	}
 
 	public void configConstant(Constants me) {
 		PropKit.use("mysql_config.txt");
@@ -77,6 +72,11 @@ public class StartupConfig extends JFinalConfig {
 	public void configHandler(Handlers me) {
 		
 	}
+	
+	//启动入口函数：右键工程，选择run as application
+		public static void main(String[] args) {
+			JFinal.start("WebRoot", 80, "/", 5);
+		}
 	
 	
 }
