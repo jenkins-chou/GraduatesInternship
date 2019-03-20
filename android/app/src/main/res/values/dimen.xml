@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="header_height">50dp</dimen>
+    <dimen name="header_title_textsize">18sp</dimen>
+    <dimen name="header_back_textsize">15sp</dimen>
+
+    <dimen name="fontsize_10">10sp</dimen>
+    <dimen name="fontsize_12">12sp</dimen>
+    <dimen name="fontsize_15">15sp</dimen>
+    <dimen name="fontsize_18">18sp</dimen>
+    <dimen name="fontsize_25">25sp</dimen>
+    <dimen name="fontsize_35">35sp</dimen>
+
+    <dimen name="btn_height_45">45dp</dimen>
+
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
+</resources>

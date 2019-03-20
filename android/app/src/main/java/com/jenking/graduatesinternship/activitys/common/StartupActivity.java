@@ -1,9 +1,11 @@
-package com.jenking.graduatesinternship;
+package com.jenking.graduatesinternship.activitys.common;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.jenking.graduatesinternship.R;
+
+public class StartupActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
