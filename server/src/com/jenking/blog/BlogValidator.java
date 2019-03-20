@@ -1,4 +1,4 @@
-package com.demo.blog;
+package com.jenking.blog;
 
 import com.jfinal.core.Controller;
 import com.jfinal.validate.Validator;
