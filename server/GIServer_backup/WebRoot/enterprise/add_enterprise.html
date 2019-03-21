@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>asd添加</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="${ctx}/layui/css/layui.css" media="all" />
+<link rel="stylesheet" href="${ctx}/css/font_eolqem241z66flxr.css"
+	media="all" />
+</head>
+<body class="childrenBody">
+
+	<form class="layui-form" lay-filter="formtable">
+		<div class="layui-form-item">
+			<label class="layui-form-label">企业名称</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_name" class="layui-input"
+					lay-verify="required" placeholder="请输入企业名称（必填，用作登录使用）">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">企业邮箱</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_email" class="layui-input"
+					lay-verify="required" placeholder="必填">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">企业联系电话</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_phone" class="layui-input"
+					lay-verify="required" placeholder="必填">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">登录口令</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_token" class="layui-input"
+					 placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">注册时间</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_build_time" class="layui-input"
+					 placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">企业简介</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_abstract" class="layui-input"
+					placeholder="请输入">
+			</div>
+		</div>
+		
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">详细介绍</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_detail" class="layui-input"
+					placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">企业类型</label>
+			<div class="layui-input-block">
+				<select name="enterprise_type" lay-verify="required">
+					<option value="民营">民营</option>
+					<option value="国企">国企</option>
+				</select>
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">业务类型</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_business" class="layui-input"
+					placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">企业法人</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_leader" class="layui-input"
+					placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">企业所在地址</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_address" class="layui-input"
+					placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">企业员工数</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_staff" class="layui-input"
+					placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">企业现状</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_status" class="layui-input"
+					placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">企业宣传海报</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_image" class="layui-input"
+					placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">企业官网</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_website" class="layui-input"
+					placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">统一信用代码</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_credit_code" class="layui-input"
+					placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">工作时间</label>
+			<div class="layui-input-block">
+				<input type="text" name="enterprise_work_time" class="layui-input"
+					placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">备注</label>
+			<div class="layui-input-block">
+				<input type="text" name="remark" class="layui-input"
+					placeholder="请输入">
+			</div>
+		</div>
+		<input type="hidden" name="del" value="normal"> 
+		
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit="" lay-filter="add_know_comprehensive">立即提交</button>
+				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+			</div>
+		</div>
+		<input type="hidden" name="id"></input>
+	</form>
+	<script type="text/javascript" src="${ctx}/layui/layui.js"></script>
+	<script type="text/javascript" id="addjs"
+		src="${ctx}/enterprise/add_enterprise.js?ctx=${ctx}&&id=${id!''}"></script>
+</body>
+</html>
