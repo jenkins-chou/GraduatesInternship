@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50723
 File Encoding         : 65001
 
-Date: 2019-03-20 16:31:35
+Date: 2019-03-21 17:01:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,9 +31,15 @@ CREATE TABLE `class` (
   `college_id` varchar(255) DEFAULT NULL,
   `college_name` varchar(255) DEFAULT NULL,
   `create_time` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of class
+-- ----------------------------
+INSERT INTO `class` VALUES ('1', '管理1141班', '65', '无', '无', '罗宁', '1', '1', '1', '1', null, null, 'delete');
 
 -- ----------------------------
 -- Table structure for college
@@ -49,7 +55,12 @@ CREATE TABLE `college` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of college
+-- ----------------------------
+INSERT INTO `college` VALUES ('1', '管理学院', '1', '华南理工大学', '无', null, '无', 'delete');
 
 -- ----------------------------
 -- Table structure for education_experience
@@ -58,7 +69,6 @@ DROP TABLE IF EXISTS `education_experience`;
 CREATE TABLE `education_experience` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(255) DEFAULT NULL,
-  `resume_id` varchar(255) DEFAULT NULL,
   `education_school` varchar(255) DEFAULT NULL,
   `education_record` varchar(255) DEFAULT NULL,
   `education_major` varchar(255) DEFAULT NULL,
@@ -69,7 +79,12 @@ CREATE TABLE `education_experience` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of education_experience
+-- ----------------------------
+INSERT INTO `education_experience` VALUES ('1', '1', '华南理工大学', '在校经历', '专业', '开始时间', '结束时间', '总结', null, '总结', 'delete');
 
 -- ----------------------------
 -- Table structure for enterprise
@@ -98,7 +113,12 @@ CREATE TABLE `enterprise` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of enterprise
+-- ----------------------------
+INSERT INTO `enterprise` VALUES ('1', '企业名称', '企业邮箱', '企业联系电话', '登录口令', '2018', '企业简介', '详细介绍', '民营', '业务类型', '企业法人', '企业所在地址', '企业员工数', '企业现状', '企业宣传海报', '企业官网', '统一信用代码', '工作时间', null, '备注', 'delete');
 
 -- ----------------------------
 -- Table structure for internship_experience
@@ -107,17 +127,25 @@ DROP TABLE IF EXISTS `internship_experience`;
 CREATE TABLE `internship_experience` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(255) DEFAULT NULL,
-  `resume_id` varchar(255) DEFAULT NULL,
   `internship_start_time` varchar(255) DEFAULT NULL,
   `internship_end_time` varchar(255) DEFAULT NULL,
   `internship_enterprise` varchar(255) DEFAULT NULL,
   `internship_department` varchar(255) DEFAULT NULL,
   `internship_job` varchar(255) DEFAULT NULL,
-  `internship job_content` varchar(255) DEFAULT NULL,
+  `internship_job_content` varchar(255) DEFAULT NULL,
   `internship_result` varchar(255) DEFAULT NULL,
   `internship_harvest` varchar(255) DEFAULT NULL,
+  `create_time` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of internship_experience
+-- ----------------------------
+INSERT INTO `internship_experience` VALUES ('1', '1', '2018', '2019', '中铁', '文化部', '实习记者', '000', '无', '收获', null, 'dsadsa', 'delete');
+INSERT INTO `internship_experience` VALUES ('2', '1大萨达撒', '2018', '2019', '中铁', '文化部', '实习记者', null, '无', '收获', null, null, 'delete');
 
 -- ----------------------------
 -- Table structure for message
@@ -136,47 +164,60 @@ CREATE TABLE `message` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of message
+-- ----------------------------
+INSERT INTO `message` VALUES ('1', '1', '企业', '2', '123456789', '2', '毕业生', '恭喜您，你的面试通过啦', null, '无', 'delete');
 
 -- ----------------------------
 -- Table structure for personal_cert
 -- ----------------------------
 DROP TABLE IF EXISTS `personal_cert`;
 CREATE TABLE `personal_cert` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(255) DEFAULT NULL,
-  `resume_id` varchar(255) DEFAULT NULL,
   `cert_name` varchar(255) DEFAULT NULL,
   `cert_time` varchar(255) DEFAULT NULL,
   `create_time` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of personal_cert
+-- ----------------------------
+INSERT INTO `personal_cert` VALUES ('1', '122', '名称', '2018年', null, '备注', 'delete');
 
 -- ----------------------------
 -- Table structure for personal_skill
 -- ----------------------------
 DROP TABLE IF EXISTS `personal_skill`;
 CREATE TABLE `personal_skill` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(255) DEFAULT NULL,
-  `resume_id` varchar(255) DEFAULT NULL,
   `skill_name` varchar(255) DEFAULT NULL,
   `create_time` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of personal_skill
+-- ----------------------------
+INSERT INTO `personal_skill` VALUES ('1', '1', '技能', null, '无', 'delete');
+INSERT INTO `personal_skill` VALUES ('2', '1', '技能2', null, '无', 'delete');
 
 -- ----------------------------
 -- Table structure for prize_experience
 -- ----------------------------
 DROP TABLE IF EXISTS `prize_experience`;
 CREATE TABLE `prize_experience` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(255) DEFAULT NULL,
-  `resume_id` varchar(255) DEFAULT NULL,
   `prize_name` varchar(255) DEFAULT NULL,
   `prize_time` varchar(255) DEFAULT NULL,
   `prize_detail` varchar(255) DEFAULT NULL,
@@ -185,7 +226,12 @@ CREATE TABLE `prize_experience` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of prize_experience
+-- ----------------------------
+INSERT INTO `prize_experience` VALUES ('1', '2', '名称', '2018', '说明', '总结', null, '无', 'delete');
 
 -- ----------------------------
 -- Table structure for recruit
@@ -211,28 +257,38 @@ CREATE TABLE `recruit` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of recruit
+-- ----------------------------
+INSERT INTO `recruit` VALUES ('1', '2', '管理部门', '部门经理', '工作内容', '5天 / 周', '8:00', '16:00', '广州', '岗位简介', '岗位详细', '福利说明', '工作要求', '能力要求', '团队详情', null, '备注', 'delete');
 
 -- ----------------------------
 -- Table structure for recruitment_collection
 -- ----------------------------
 DROP TABLE IF EXISTS `recruitment_collection`;
 CREATE TABLE `recruitment_collection` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(255) DEFAULT NULL,
   `recruit_id` varchar(255) DEFAULT NULL,
   `create_time` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of recruitment_collection
+-- ----------------------------
+INSERT INTO `recruitment_collection` VALUES ('1', '1', '3', null, '无', 'delete');
 
 -- ----------------------------
 -- Table structure for recruitment_delivery
 -- ----------------------------
 DROP TABLE IF EXISTS `recruitment_delivery`;
 CREATE TABLE `recruitment_delivery` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(255) DEFAULT NULL,
   `resume_id` varchar(255) DEFAULT NULL,
   `recruit_id` varchar(255) DEFAULT NULL,
@@ -240,7 +296,12 @@ CREATE TABLE `recruitment_delivery` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of recruitment_delivery
+-- ----------------------------
+INSERT INTO `recruitment_delivery` VALUES ('1', '1', '2', '2', null, '无', 'delete');
 
 -- ----------------------------
 -- Table structure for resume
@@ -248,6 +309,7 @@ CREATE TABLE `recruitment_delivery` (
 DROP TABLE IF EXISTS `resume`;
 CREATE TABLE `resume` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) DEFAULT NULL,
   `resume_name` varchar(255) DEFAULT NULL,
   `resume_expected_salary` varchar(255) DEFAULT NULL COMMENT '期望月薪',
   `resume_work_life` varchar(255) DEFAULT NULL COMMENT '工作年限',
@@ -265,7 +327,12 @@ CREATE TABLE `resume` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of resume
+-- ----------------------------
+INSERT INTO `resume` VALUES ('1', '112', '简历1', '8000', '1', '本科', null, null, null, null, null, null, null, null, null, null, null, 'delete');
 
 -- ----------------------------
 -- Table structure for school
@@ -284,7 +351,12 @@ CREATE TABLE `school` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of school
+-- ----------------------------
+INSERT INTO `school` VALUES ('1', '华南理工大学', '简介', '详细', '23000', '广州', '1900年', '校徽', null, '无', 'delete');
 
 -- ----------------------------
 -- Table structure for user_base
@@ -318,4 +390,10 @@ CREATE TABLE `user_base` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   `del` varchar(255) DEFAULT NULL COMMENT '删除标志位',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_base
+-- ----------------------------
+INSERT INTO `user_base` VALUES ('1', 'dsadsa', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 'delete');
+INSERT INTO `user_base` VALUES ('2', '123', '123', '周宁', 'http://baidu.com', '不个性何来个性签名', '女', '13', '123', '汉', '广东', '13413607283@163.com', '无', '12345678910', '常住地址', '1996', 'teacher', null, null, null, null, null, null, null, '无', 'delete');
