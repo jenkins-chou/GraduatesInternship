@@ -55,8 +55,8 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 								sort : true,
 								fixed : 'left'
 							}, {
-								field : 'enterprise_id',
-								title : '所属企业id'
+								field : 'enterprise_name',
+								title : '所属企业'
 							},{
 								field : 'depertment',
 								title : '部门'
@@ -81,9 +81,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 								field : 'working_end_time',
 								title : '下班时间'
 							}
-							
-							
-							
+						
 							,{
 								field : 'working_address',
 								title : '工作地点'

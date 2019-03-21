@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 用呗云借通APP日志
-Source Server Version : 50723
+Source Server         : manager
+Source Server Version : 50725
 Source Host           : localhost:3306
 Source Database       : graduate
 
 Target Server Type    : MYSQL
-Target Server Version : 50723
+Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-03-21 17:01:35
+Date: 2019-03-21 23:59:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -240,6 +240,7 @@ DROP TABLE IF EXISTS `recruit`;
 CREATE TABLE `recruit` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `enterprise_id` int(11) DEFAULT NULL,
+  `enterprise_name` varchar(255) DEFAULT NULL,
   `depertment` varchar(255) DEFAULT NULL,
   `job_name` varchar(255) DEFAULT NULL,
   `job_content` varchar(255) DEFAULT NULL,
@@ -248,11 +249,13 @@ CREATE TABLE `recruit` (
   `working_end_time` varchar(255) DEFAULT NULL,
   `working_address` varchar(255) DEFAULT NULL,
   `job_abstract` varchar(255) DEFAULT NULL,
-  `job_detail` varchar(15500) DEFAULT NULL,
+  `job_detail` varchar(255) DEFAULT NULL,
   `welfare` varchar(2550) DEFAULT NULL COMMENT '福利',
   `job_requirements` varchar(255) DEFAULT NULL,
   `skill_requirement` varchar(255) DEFAULT NULL,
   `team_detail` varchar(255) DEFAULT NULL,
+  `publisher` varchar(255) DEFAULT NULL COMMENT '发布者',
+  `salary` varchar(255) DEFAULT NULL COMMENT '薪水',
   `create_time` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
@@ -262,7 +265,7 @@ CREATE TABLE `recruit` (
 -- ----------------------------
 -- Records of recruit
 -- ----------------------------
-INSERT INTO `recruit` VALUES ('1', '2', '管理部门', '部门经理', '工作内容', '5天 / 周', '8:00', '16:00', '广州', '岗位简介', '岗位详细', '福利说明', '工作要求', '能力要求', '团队详情', null, '备注', 'delete');
+INSERT INTO `recruit` VALUES ('1', '2', '中铁', '管理部门', '部门经理', '工作内容', '5天 / 周', '8:00', '16:00', '广州', '岗位简介', '岗位详细', '福利说明', '工作要求', '能力要求', '团队详情', '周先生', '20k-25k', null, '备注', 'normal');
 
 -- ----------------------------
 -- Table structure for recruitment_collection

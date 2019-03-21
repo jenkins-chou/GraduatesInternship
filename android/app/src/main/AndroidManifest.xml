@@ -17,16 +17,20 @@
         </activity>
 
         <!-- 学生主页 -->
-        <activity android:name=".activitys.student.StudentMainActivity"></activity>
-        <activity android:name=".activitys.common.LoginActivity"></activity>
-        <activity android:name=".activitys.common.RegisterActivity"></activity>
-        <activity android:name=".activitys.common.SettingActivity"></activity>
-        <activity android:name=".activitys.teacher.TeacherMainActivity">
+        <activity android:name=".activitys.student.StudentMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".activitys.common.LoginActivity"></activity>
+        <activity android:name=".activitys.common.RegisterActivity"></activity>
+        <activity android:name=".activitys.common.SettingActivity">
+
+        </activity>
+        <activity android:name=".activitys.teacher.TeacherMainActivity">
+
         </activity>
     </application>
 

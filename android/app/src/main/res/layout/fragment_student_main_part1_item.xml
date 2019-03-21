@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="岗位名称"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/base_font_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="10k-20k"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/main_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <LinearLayout
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="公司名称"
+            android:textColor="@color/base_font_color2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <RelativeLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="公司名称"
+                android:padding="3dp"
+                android:textSize="13sp"
+                android:background="@color/base_layout_color"
+                android:textColor="#cccccc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="公司名称"
+                android:padding="3dp"
+                android:textSize="13sp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/base_layout_color"
+                android:textColor="#cccccc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="公司名称"
+                android:padding="3dp"
+                android:textSize="13sp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/base_layout_color"
+                android:textColor="#cccccc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="发布者"
+                android:padding="3dp"
+                android:textSize="12sp"
+                android:textColor="@color/base_font_color2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="发布"
+                android:padding="1dp"
+                android:textSize="10sp"
+                android:alpha="0.3"
+                android:textColor="@color/white"
+                android:background="@color/main_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+    <View
+        android:background="@color/base_layout_color"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+</LinearLayout>
