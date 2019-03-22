@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/base_layout_color"
     android:orientation="vertical"
@@ -9,7 +9,7 @@
         android:id="@+id/header"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:background="@color/main_color"
+        android:background="@color/main_color_light"
         android:layout_height="@dimen/header_height">
         <LinearLayout
             android:layout_centerVertical="true"
@@ -21,9 +21,9 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_margin="10dp"
-                android:src="@mipmap/icon_collection"
-                android:layout_width="20dp"
-                android:layout_height="20dp" />
+                android:src="@mipmap/icon_recruit_white"
+                android:layout_width="22dp"
+                android:layout_height="22dp" />
             <TextView
                 android:text="实习招聘"
                 android:textColor="@color/white"
@@ -50,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="1px"/>
         <ImageView
+            android:id="@+id/search_button"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
             android:layout_alignParentRight="true"
@@ -57,9 +58,130 @@
             android:layout_width="20dp"
             android:layout_height="20dp" />
     </RelativeLayout>
-    <android.support.v7.widget.RecyclerView
-        android:layout_below="@+id/header"
-        android:id="@+id/recyclerView"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</RelativeLayout>
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="13dp"
+            android:background="@color/white"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="地区"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:alpha="0.4"
+                android:layout_marginLeft="5dp"
+                android:src="@mipmap/icon_arrow_down"
+                android:layout_width="15dp"
+                android:layout_height="15dp" />
+        </LinearLayout>
+        <View
+            android:background="#cccccc"
+            android:layout_width="1px"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:id="@+id/select_working_day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="13dp">
+
+            <TextView
+                android:id="@+id/working_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="实习时长" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="5dp"
+                android:alpha="0.4"
+                android:src="@mipmap/icon_arrow_down" />
+        </LinearLayout>
+        <View
+            android:background="#cccccc"
+            android:layout_width="1px"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:id="@+id/select_salary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="13dp">
+
+            <TextView
+                android:id="@+id/salary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="薪资范围" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="5dp"
+                android:alpha="0.4"
+                android:src="@mipmap/icon_arrow_down" />
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/smartRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+        <TextView
+            android:id="@+id/get_data_tips"
+            android:gravity="center"
+            android:padding="7dp"
+            android:alpha="0.7"
+            android:visibility="gone"
+            android:background="@color/main_color_light"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/empty_show"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:alpha="0.7"
+                android:src="@mipmap/icon_data_empty"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+            <TextView
+                android:text="数据空空如也"
+                android:textSize="12sp"
+                android:textColor="@color/base_font_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

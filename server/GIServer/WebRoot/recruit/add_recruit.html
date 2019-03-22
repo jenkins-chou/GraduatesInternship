@@ -59,8 +59,11 @@
 		<div class="layui-form-item">
 			<label class="layui-form-label">每周工作天数</label>
 			<div class="layui-input-block">
-				<input type="text" name="working_day" class="layui-input"
-					placeholder="请输入">
+				<select name="working_day" lay-verify="required">
+					<option value="1-2天/周">1-2天/周</option>
+					<option value="3-4天/周">3-4天/周</option>
+					<option value="5-7天/周">5-7天/周</option>
+				</select>
 			</div>
 		</div>
 		
@@ -76,6 +79,14 @@
 			<label class="layui-form-label">下班时间</label>
 			<div class="layui-input-block">
 				<input type="text" name="working_end_time" class="layui-input"
+					placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">地区 / 城市</label>
+			<div class="layui-input-block">
+				<input type="text" name="working_region" class="layui-input" lay-verify="required"
 					placeholder="请输入">
 			</div>
 		</div>
@@ -146,9 +157,15 @@
 		
 		<div class="layui-form-item">
 			<label class="layui-form-label">薪水范围</label>
+			
 			<div class="layui-input-block">
-				<input type="text" name="salary" class="layui-input" lay-verify="required"
-					placeholder="请输入">
+				<select name="salary" lay-verify="required">
+					<option value="0-2000元/月">0-2000元/月</option>
+					<option value="2000-4000元/月">2000-4000元/月</option>
+					<option value="4000-6000元/月">4000-6000元/月</option>
+					<option value="6000-10000元/月">6000-10000元/月</option>
+					<option value="10000元以上/月">10000元以上/月</option>
+				</select>
 			</div>
 		</div>
 	

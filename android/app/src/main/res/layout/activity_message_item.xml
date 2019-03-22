@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <View
+        android:id="@+id/header_view"
+        android:background="@drawable/fragment_student_main_part2_item_tag1"
+        android:layout_width="10dp"
+        android:alpha="0.4"
+        android:layout_height="match_parent"/>
+    <LinearLayout
+        android:padding="15dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发送者"
+                android:textColor="@color/base_font_color"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:text="2018年-2019年"
+                android:textSize="13sp"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/base_font_color2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:text="消息内容"
+            android:textSize="13sp"
+            android:textColor="@color/base_font_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

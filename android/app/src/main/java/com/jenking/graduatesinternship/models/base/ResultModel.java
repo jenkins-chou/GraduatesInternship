@@ -8,16 +8,16 @@ import java.util.List;
 
 public class ResultModel<T> {
 
-    private String status;
+    private String code;
     private String message;
     private List<T> data;
 
-    public String getStatus() {
-        return status;
+    public String getCode() {
+        return code;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getMessage() {
@@ -39,7 +39,7 @@ public class ResultModel<T> {
     @Override
     public String toString() {
         return "ResultModel{" +
-                "status='" + status + '\'' +
+                "code='" + code + '\'' +
                 ", message='" + message + '\'' +
                 ", data=" + data +
                 '}';

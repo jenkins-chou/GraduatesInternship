@@ -29,6 +29,7 @@ public class EducationExperienceController extends Controller {
 	public void addEducationExperience(){
 		try {
 			EducationExperienceModel model = getModel(EducationExperienceModel.class, "", true);
+			model.set("create_time", System.currentTimeMillis()/1000+"");
 			System.out.println("model:"+model);
 			model.save();
 			JSONObject js = new JSONObject();

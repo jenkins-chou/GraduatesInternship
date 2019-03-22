@@ -29,6 +29,7 @@ public class RecruitmentDeliveryController extends Controller {
 	public void addRecruitmentDelivery(){
 		try {
 			RecruitmentDeliveryModel model = getModel(RecruitmentDeliveryModel.class, "", true);
+			model.set("create_time", System.currentTimeMillis()/1000+"");
 			System.out.println("model:"+model);
 			model.save();
 			JSONObject js = new JSONObject();

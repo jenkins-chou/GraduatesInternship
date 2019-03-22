@@ -9,7 +9,7 @@
         android:id="@+id/header"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:background="@color/main_color"
+        android:background="@color/main_color_light"
         android:layout_height="@dimen/header_height">
         <LinearLayout
             android:layout_centerVertical="true"
@@ -54,5 +54,4 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
-
 </RelativeLayout>

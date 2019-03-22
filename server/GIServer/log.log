@@ -4,3 +4,61 @@
 
 2019-03-21 23:30:54
 [WARN]-[Thread: qtp1286084959-20]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /messenger-front/get?c=nN640gDS6JvhLGVcrlwz0bCRKXVHrYH%2FaQAyyzd3n2H%2FIesjEFuYsgb0txkPXXP5agUOauvkW6sND1Nej1swbR0FMO7YQEF35O9Pq%2B0XYOz0Hc71hhan%2FxNrzXVOMC9x8pFnqjTn5AKpSZewDgpNnlIx8ZwOLlpFlSS4uDnEQRI4rnoENRlwaRHSueL9GHeUvse%2FShK%2BsemGDGH5lxXjpkd%2BxPjicg5v5ZoeVKb45cdq6Xi4OwKgBKxRgqvDshBHxoJFW0QU3X3MKWxJxSMXnxsma%2BwDg0QkZmoQ%2FGBqavqy0d9BeztTiuiTyMAd8JNZ05EQRt3jc8WcMH5JCzUg%2Bc8z2chawESc9lOqWXEQ%2BODySui4%2B%2FI1swtavyKM1KHDnnnRbIox5ES%2FXx4lK7ACZn9T8nQkWCJX25bOWkzeOvaHodZz8tJeedYd7cHuzH9HCE8awffMAcPklfru%2FY2iABLs%2FJXpaoZ5eRYNNRS3rE6xBtxy02apJ8XaYiC04cN%2B9nHVyQuQKPWUIkSr9D1NY%2FHIt35kRSMTfuaipE%2BZuIhvgl59fa44y8BIBtXaOS9YjPfWv7rbt4DCbRS6f7%2BK%2FhEhyIM0BNesKxre3svDqCob%2BDB8gab6X1BNPWDw1EttTC63koGzTvc%3D&v=1
+
+2019-03-22 10:49:11
+[WARN]-[Thread: qtp1338823963-21]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /messenger-front/get?c=nN640gDS6JvhLGVcrlwz0bCRKXVHrYH%2FaQAyyzd3n2Ge%2F4iCgMrXVhVcF%2FomqdvBOGNs5nuqg6kh6a7qG1xcKDlATtblbIxQDMjECpQvhMX6IqCx1a3hc6bnIkn6eN%2FRaaQnJDFFitSLttoedKa1e%2BZLO8dJ2nQChvWNsn7phpz9yfyVT9OMphQhhA6%2FS%2Bpvi4bLe407lWqmOIHA7Aulj%2BfGiYxOj%2FSisytX2nudv3lRD5M0rmOGOISeAuq4yJyiwH14IfUoKZKJAgS3TXZvM4c58qtHYg4bHhlZz1oXrqMP9iXU9fbbVfQL2KyLQZWISRt%2BywlotQ4H3X3U%2FP1Qgcql4aUY%2BvPpb58Alu8TfADuhjmyL0E9NkN8t%2BXAF6q7U%2FumJMv9YhNRf4dxfyz8Ov3a%2ByvE3kbRvjMn9c3IUgvl18L8OW5FTCETCZL99vLm6Rrc5l9rDidL0YFmVWcCf%2B8v%2B4qEbsgbFMCuGv14lsPg7NpOPUFjWrDPD8CNhT9ajEhwOaAk2dG2xINOrtVrqcKRpDHFGXAsZw4nuWNZEiZDKZJH%2FD788y5yQiWXkYsKh6h4WW687Pxgex4midlpkx%2BHRZ0OCjwc4ZHVP%2Fu2eWM%3D&v=1
+
+2019-03-22 13:40:16
+[WARN]-[Thread: qtp1338823963-19]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /messenger-front/get?c=nN640gDS6JvhLGVcrlwz0bCRKXVHrYH%2FaQAyyzd3n2Ge%2F4iCgMrXVhVcF%2FomqdvBOGNs5nuqg6kh6a7qG1xcKDlATtblbIxQDMjECpQvhMX6IqCx1a3hc6bnIkn6eN%2FRaaQnJDFFitSLttoedKa1e%2BZLO8dJ2nQChvWNsn7phpz9yfyVT9OMphQhhA6%2FS%2Bpvi4bLe407lWqmOIHA7Aulj%2BfGiYxOj%2FSisytX2nudv3lRD5M0rmOGOISeAuq4yJyiwH14IfUoKZKJAgS3TXZvM4c58qtHYg4bHhlZz1oXrqMP9iXU9fbbVfQL2KyLQZWISRt%2BywlotQ4H3X3U%2FP1Qgcql4aUY%2BvPpb58Alu8TfADuhjmyL0E9NkN8t%2BXAF6q7U%2FumJMv9YhNRf4dxfyz8Ov3a%2ByvE3kbRvjMn9c3IUgvl18L8OW5FTCETCZL99vLm6Rrc5l9rDidL0YFmVWcCf%2B8v%2B4qEbsgbFMCuGv14lsPg7NpOPUFjWrDPD8CNhT9ajEhwOaAk2dG2xINOrtVrqcKRpDHFGXAsZw4nuWNZEiZDKZJH%2FD788y5yQiWXkYsKh6h4WW687Pxgex4midlpkx%2BHRZ0OCjwc4ZHVP%2Fu2eWM%3D&v=1
+
+2019-03-22 17:19:56
+[ERROR]-[Thread: qtp1338823963-17]-[com.jfinal.core.ActionHandler.handle()]: /recruit/getFilterRecruitMobile
+com.jfinal.plugin.activerecord.ActiveRecordException: com.mysql.jdbc.exceptions.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'salary = 2000-4000å…ƒ/æœˆ and del != 'delete'' at line 1
+	at com.jfinal.plugin.activerecord.Model.doPaginate(Model.java:435)
+	at com.jfinal.plugin.activerecord.Model.paginate(Model.java:411)
+	at com.demo.controller.RecruitController.getFilterRecruitMobile(RecruitController.java:73)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.jfinal.aop.Invocation.invoke(Invocation.java:73)
+	at com.jfinal.core.ActionHandler.handle(ActionHandler.java:78)
+	at com.jfinal.ext.handler.ContextPathHandler.handle(ContextPathHandler.java:48)
+	at com.jfinal.core.JFinalFilter.doFilter(JFinalFilter.java:73)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1307)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:453)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:137)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:560)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:231)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1072)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:382)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:193)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1006)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:135)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116)
+	at org.eclipse.jetty.server.Server.handle(Server.java:365)
+	at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:485)
+	at org.eclipse.jetty.server.AbstractHttpConnection.content(AbstractHttpConnection.java:937)
+	at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.content(AbstractHttpConnection.java:998)
+	at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:856)
+	at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:240)
+	at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:628)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:52)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.mysql.jdbc.exceptions.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'salary = 2000-4000å…ƒ/æœˆ and del != 'delete'' at line 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:936)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:2985)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1631)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:1723)
+	at com.mysql.jdbc.Connection.execSQL(Connection.java:3283)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1332)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1467)
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery(NewProxyPreparedStatement.java:76)
+	at com.jfinal.plugin.activerecord.DbPro.query(DbPro.java:80)
+	at com.jfinal.plugin.activerecord.Db.query(Db.java:70)
+	at com.jfinal.plugin.activerecord.Model.doPaginateByFullSql(Model.java:449)
+	at com.jfinal.plugin.activerecord.Model.doPaginate(Model.java:433)
+	... 33 more

@@ -29,6 +29,7 @@ public class PersonalCertController extends Controller {
 	public void addPersonalCert(){
 		try {
 			PersonalCertModel model = getModel(PersonalCertModel.class, "", true);
+			model.set("create_time", System.currentTimeMillis()/1000+"");
 			System.out.println("model:"+model);
 			model.save();
 			JSONObject js = new JSONObject();

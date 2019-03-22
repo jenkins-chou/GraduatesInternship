@@ -29,6 +29,7 @@ public class UserController extends Controller {
 	public void addUser(){
 		try {
 			UserModel model = getModel(UserModel.class, "", true);
+			model.set("create_time", System.currentTimeMillis()/1000+"");
 			System.out.println("model:"+model);
 			model.save();
 			JSONObject js = new JSONObject();

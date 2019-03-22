@@ -123,12 +123,11 @@ public class DemoConfig extends JFinalConfig {
 	}
 	
 	public static void main(String[] args) {
-		JFinal.start("WebRoot", 80, "/", 5);
+		JFinal.start("WebRoot", 8007, "/", 5);
 	}
 
 	@Override
 	public void configEngine(Engine arg0) {
 		// TODO Auto-generated method stub
-		
 	}
 }

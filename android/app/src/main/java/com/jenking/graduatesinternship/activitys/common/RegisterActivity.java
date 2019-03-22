@@ -93,7 +93,7 @@ public class RegisterActivity extends BaseActivity {
                 if (isSuccess){
                     if (object!=null){
                         ResultModel resultModel = (ResultModel)object;
-                        if (resultModel!=null&&StringUtil.isEquals(resultModel.getStatus(),"200")){
+                        if (resultModel!=null&&StringUtil.isEquals(resultModel.getCode(),"200")){
                             if (resultModel.getData()!=null&&resultModel.getData().size()>0){
                                 List<UserModel> userModels = resultModel.getData();
                                 UserModel userModel = userModels.get(0);

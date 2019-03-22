@@ -9,7 +9,7 @@
         android:id="@+id/user_header"
         android:background="@mipmap/fragment_main_part1_header_bg"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="180dp">
         <LinearLayout
             android:gravity="center"
             android:layout_marginLeft="20dp"
@@ -20,8 +20,8 @@
             <ImageView
                 android:id="@+id/avatar"
                 android:src="@mipmap/avatar_default"
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
             <TextView
                 android:layout_marginTop="10dp"
                 android:id="@+id/username"
@@ -33,125 +33,213 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/message"
+            android:padding="5dp"
             android:layout_margin="15dp"
             android:layout_alignParentRight="true"
             android:src="@mipmap/icon_message"
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/user_info"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/common_button_selected">
-
+        android:layout_height="wrap_content">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="15dp"
-                android:src="@mipmap/avatar_default" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/user_info"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="个人信息"
-                android:textColor="@color/base_font_color"
-                android:textSize="@dimen/fontsize_15" />
-        </LinearLayout>
+                android:layout_marginTop="10dp"
+                android:background="@drawable/common_button_selected">
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="15dp"
-            android:layout_marginRight="15dp"
-            android:src="@mipmap/arrow_right_black" />
-    </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-    <RelativeLayout
-        android:id="@+id/user_resume"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/common_button_selected">
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_margin="15dp"
+                        android:src="@mipmap/avatar_default" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="个人资料"
+                        android:textColor="@color/base_font_color"
+                        android:textSize="@dimen/fontsize_15" />
+                </LinearLayout>
 
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="15dp"
-                android:src="@mipmap/icon_cert" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="15dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@mipmap/arrow_right_black" />
+            </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/user_resume"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="我的简历"
-                android:textColor="@color/base_font_color"
-                android:textSize="@dimen/fontsize_15" />
-        </LinearLayout>
+                android:layout_marginTop="1dp"
+                android:background="@drawable/common_button_selected">
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="15dp"
-            android:layout_marginRight="15dp"
-            android:src="@mipmap/arrow_right_black" />
-    </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-    <RelativeLayout
-        android:id="@+id/setting"
-        android:layout_width="match_parent"
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_margin="15dp"
+                        android:src="@mipmap/icon_cert" />
 
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/common_button_selected">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="我的简历"
+                        android:textColor="@color/base_font_color"
+                        android:textSize="@dimen/fontsize_15" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="15dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@mipmap/arrow_right_black" />
+            </RelativeLayout>
 
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="15dp"
-                android:src="@mipmap/setting_blue" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/mine_recruitment_delivery"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="设置"
-                android:textColor="@color/base_font_color"
-                android:textSize="@dimen/fontsize_15" />
-        </LinearLayout>
+                android:layout_marginTop="10dp"
+                android:background="@drawable/common_button_selected">
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="15dp"
-            android:layout_marginRight="15dp"
-            android:src="@mipmap/arrow_right_black" />
-    </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_margin="15dp"
+                        android:src="@mipmap/icon_recruit_delivery" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="我的申请"
+                        android:textColor="@color/base_font_color"
+                        android:textSize="@dimen/fontsize_15" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="15dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@mipmap/arrow_right_black" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/mine_recruitment_collection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/common_button_selected">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_margin="15dp"
+                        android:src="@mipmap/icon_collection" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="岗位收藏"
+                        android:textColor="@color/base_font_color"
+                        android:textSize="@dimen/fontsize_15" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="15dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@mipmap/arrow_right_black" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/setting"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/common_button_selected">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_margin="15dp"
+                        android:src="@mipmap/setting_blue" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="设置"
+                        android:textColor="@color/base_font_color"
+                        android:textSize="@dimen/fontsize_15" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="15dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@mipmap/arrow_right_black" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

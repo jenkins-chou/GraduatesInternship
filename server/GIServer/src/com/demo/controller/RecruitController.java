@@ -6,6 +6,7 @@ import com.demo.utils.PageJson;
 import com.demo.utils.ParamUtil;
 import com.demo.utils.RecordJson;
 import com.demo.utils.StatusJson;
+import com.demo.utils.StringUtil;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.JsonKit;
 import com.jfinal.plugin.activerecord.Page;
@@ -18,17 +19,68 @@ public class RecruitController extends Controller {
 	}
 	
 	public void getAllRecruit() {
+		System.out.println(getPara("id"));
 		ParamUtil param = new ParamUtil(getRequest());
 		Page<RecruitModel> page = RecruitModel.dao.paginate(param.getPageNumber(),
 				param.getPageSize(), "select * ", "from Recruit where del != 'delete'");
-		
-		System.out.println(page.getList().toString());
 		renderJson(JsonKit.toJson(new PageJson<RecruitModel>("0", "", page)));
+	}
+	
+	/**
+	 * 分页获取全部招聘信息
+	 **/
+	public void getAllRecruitMobile() {
+		int pagenum = Integer.parseInt(getPara("pageNum")!=null?getPara("pageNum"):"0");
+		ParamUtil param = new ParamUtil(getRequest());
+		Page<RecruitModel> page = RecruitModel.dao.paginate(pagenum<=0?param.getPageNumber():pagenum,
+				param.getPageSize(), "select * ", "from Recruit where del != 'delete' order by id desc");
+		renderJson(JsonKit.toJson(new PageJson<RecruitModel>("200", "", page)));
+	}
+	
+	/**
+	 * 获取筛选招聘信息
+	 */
+	public void getFilterRecruitMobile(){
+		String working_day = getPara("working_day");
+		String salary = getPara("salary");
+		System.out.println(working_day);
+		System.out.println(salary);
+		
+		String sqlPart1 = "select * ";
+		String sqlPart2 = "from Recruit where ";
+		
+		//两个同事为空
+		if(!StringUtil.isNotEmpty(working_day)&&!StringUtil.isNotEmpty(salary)){
+			sqlPart2 += " del != 'delete' order by id desc";
+		}else{
+			if(StringUtil.isNotEmpty(working_day)){
+				sqlPart2 += " working_day = '"+working_day+"'";
+				if(StringUtil.isNotEmpty(salary)){
+					sqlPart2 += " and salary = '"+salary+"'";
+				}
+			}else{
+				if(StringUtil.isNotEmpty(salary)){
+					sqlPart2 += " salary = '"+salary+"'";
+				}
+			}
+			sqlPart2 += " and del != 'delete' order by id desc";
+		}
+		
+		System.out.println(sqlPart1+sqlPart2);
+		
+		int pagenum = Integer.parseInt(getPara("pageNum")!=null?getPara("pageNum"):"0");
+		ParamUtil param = new ParamUtil(getRequest());
+		Page<RecruitModel> page = RecruitModel.dao.paginate(pagenum<=0?param.getPageNumber():pagenum,
+				param.getPageSize(), sqlPart1, sqlPart2);
+		renderJson(JsonKit.toJson(new PageJson<RecruitModel>("200", "", page)));
+		
 	}
 	
 	public void addRecruit(){
 		try {
 			RecruitModel model = getModel(RecruitModel.class, "", true);
+			
+			model.set("create_time", System.currentTimeMillis()/1000+"");
 			System.out.println("model:"+model);
 			model.save();
 			JSONObject js = new JSONObject();

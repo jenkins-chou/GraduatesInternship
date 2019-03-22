@@ -17,7 +17,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.jenking.graduatesinternship.R;
 import com.jenking.graduatesinternship.activitys.common.LoginActivity;
+import com.jenking.graduatesinternship.activitys.common.MessageActivity;
 import com.jenking.graduatesinternship.activitys.common.SettingActivity;
+import com.jenking.graduatesinternship.activitys.student.StudentDataActivity;
+import com.jenking.graduatesinternship.activitys.student.StudentRecruitCollectionActivity;
+import com.jenking.graduatesinternship.activitys.student.StudentRecruitDeliveryActivity;
+import com.jenking.graduatesinternship.activitys.student.StudentResumeListActivity;
 import com.jenking.graduatesinternship.api.BaseAPI;
 import com.jenking.graduatesinternship.models.impl.UserModel;
 import com.jenking.graduatesinternship.utils.AccountTool;
@@ -36,6 +41,11 @@ public class StudentMainFragment3 extends Fragment{
     @BindView(R.id.username)
     TextView username;
 
+    @OnClick(R.id.message)
+    void showMessage(){
+        Intent intent = new Intent(getContext(), MessageActivity.class);
+        startActivity(intent);
+    }
     @OnClick(R.id.avatar)
     void modifyAvatar(){
 //        if (AccountTool.isLogin(getContext())) {
@@ -53,12 +63,30 @@ public class StudentMainFragment3 extends Fragment{
 
     @OnClick(R.id.user_info)
     void user_info(){
-        if (AccountTool.isLogin(getContext())) {
-//            Intent intent = new Intent(getContext(),UserInfoActivity.class);
-//            startActivity(intent);
-        }else{
-            Toast.makeText(getContext(), "请登录后重试", Toast.LENGTH_SHORT).show();
-        }
+        Intent intent = new Intent(getContext(),StudentDataActivity.class);
+        startActivity(intent);
+//        if (AccountTool.isLogin(getContext())) {
+//        }else{
+//            Toast.makeText(getContext(), "请登录后重试", Toast.LENGTH_SHORT).show();
+//        }
+    }
+
+    @OnClick(R.id.user_resume)
+    void user_resume(){
+        Intent intent = new Intent(getContext(),StudentResumeListActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.mine_recruitment_delivery)
+    void mine_recruitment_delivery(){
+        Intent intent = new Intent(getContext(), StudentRecruitDeliveryActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.mine_recruitment_collection)
+    void mine_recruitment_collection(){
+        Intent intent = new Intent(getContext(), StudentRecruitCollectionActivity.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.setting)

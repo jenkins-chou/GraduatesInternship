@@ -29,6 +29,7 @@ public class EnterpriseController extends Controller {
 	public void addEnterprise(){
 		try {
 			EnterpriseModel model = getModel(EnterpriseModel.class, "", true);
+			model.set("create_time", System.currentTimeMillis()/1000+"");
 			System.out.println("model:"+model);
 			model.save();
 			JSONObject js = new JSONObject();
