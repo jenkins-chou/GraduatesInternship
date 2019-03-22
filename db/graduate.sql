@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : manager
-Source Server Version : 50725
+Source Server         : 用呗云借通APP日志
+Source Server Version : 50723
 Source Host           : localhost:3306
 Source Database       : graduate
 
 Target Server Type    : MYSQL
-Target Server Version : 50725
+Target Server Version : 50723
 File Encoding         : 65001
 
-Date: 2019-03-21 23:59:55
+Date: 2019-03-22 17:31:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,12 +34,13 @@ CREATE TABLE `class` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of class
 -- ----------------------------
 INSERT INTO `class` VALUES ('1', '管理1141班', '65', '无', '无', '罗宁', '1', '1', '1', '1', null, null, 'delete');
+INSERT INTO `class` VALUES ('2', '管理1141班', '65', '无', '无', '罗宁', '1', '1', '1', '1', '1553217949', '无', 'normal');
 
 -- ----------------------------
 -- Table structure for college
@@ -247,6 +248,7 @@ CREATE TABLE `recruit` (
   `working_day` varchar(255) DEFAULT NULL,
   `working_start_time` varchar(255) DEFAULT NULL,
   `working_end_time` varchar(255) DEFAULT NULL,
+  `working_region` varchar(255) DEFAULT NULL,
   `working_address` varchar(255) DEFAULT NULL,
   `job_abstract` varchar(255) DEFAULT NULL,
   `job_detail` varchar(255) DEFAULT NULL,
@@ -265,7 +267,7 @@ CREATE TABLE `recruit` (
 -- ----------------------------
 -- Records of recruit
 -- ----------------------------
-INSERT INTO `recruit` VALUES ('1', '2', '中铁', '管理部门', '部门经理', '工作内容', '5天 / 周', '8:00', '16:00', '广州', '岗位简介', '岗位详细', '福利说明', '工作要求', '能力要求', '团队详情', '周先生', '20k-25k', null, '备注', 'normal');
+INSERT INTO `recruit` VALUES ('1', '2', '聚缘计算机系统', '技术部', 'Android开发工程师', '工作内容', '3-4天/周', '8:00', '16:00', '广州', '广州天河区', '岗位简介负责Android系统平台上的客户端软件的产品开发与维护；', '根据产品需求完成框架和模块设计、编码、测试工作；', '五险一金', '要求工作认真负责', 'Android技术熟练；基础扎实', '团队详情', '周先生', '2000-4000元/月', '1550200465', '备注', 'normal');
 
 -- ----------------------------
 -- Table structure for recruitment_collection
