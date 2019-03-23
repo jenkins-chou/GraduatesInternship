@@ -69,6 +69,8 @@ public class DemoConfig extends JFinalConfig {
 		System.out.println("----->"+JFinal.me().getContextPath());
 		gt.setSharedVars(shard);// 设置共享变量
 		me.setMaxPostSize(1200000000);
+		
+		//me.setBaseUploadPath("/upload");
 	}
 	
 	public void configRoute(Routes me) {

@@ -47,11 +47,11 @@ public class RegisterActivity extends BaseActivity {
             return;
         }else{
             Map<String,String> params = RS.getBaseParams(this);
-            params.put("name",username_str);
+            params.put("useridentify",username_str);
             params.put("pass",password_str);
-            params.put("type","1");
-//            userPresenter.addUser(params);
-//            setLoadingEnable(true);
+            params.put("type","student");
+            userPresenter.registerMobile(params);
+            setLoadingEnable(true);
         }
     }
 
@@ -83,12 +83,12 @@ public class RegisterActivity extends BaseActivity {
         userPresenter.setOnCallBack(new UserPresenter.OnCallBack() {
 
             @Override
-            public void login(boolean isSuccess, Object object) {
+            public void loginMobile(boolean isSuccess, Object object) {
 
             }
 
             @Override
-            public void addUser(boolean isSuccess, Object object) {
+            public void registerMobile(boolean isSuccess, Object object) {
                 setLoadingEnable(false);
                 if (isSuccess){
                     if (object!=null){
@@ -101,41 +101,17 @@ public class RegisterActivity extends BaseActivity {
                                 AccountTool.saveUser(RegisterActivity.this,userModel);
                                 finish();
                             }
-
                         }else{
-                            Toast.makeText(RegisterActivity.this, "已存在该用户名", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "已存在账号", Toast.LENGTH_SHORT).show();
                         }
                     }
+                }else{
+                    Toast.makeText(RegisterActivity.this, "系统繁忙", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void updateUser(boolean isSuccess, Object object) {
-
-            }
-
-            @Override
-            public void deleteUser(boolean isSuccess, Object object) {
-
-            }
-
-            @Override
-            public void getTeachers(boolean isSuccess, Object object) {
-
-            }
-
-            @Override
-            public void getTeachersByCollege(boolean isSuccess, Object object) {
-
-            }
-
-            @Override
-            public void getAllStudent(boolean isSuccess, Object object) {
-
-            }
-
-            @Override
-            public void getStudentByClass(boolean isSuccess, Object object) {
 
             }
         });

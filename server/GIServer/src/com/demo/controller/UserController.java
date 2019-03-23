@@ -1,5 +1,8 @@
 package com.demo.controller;
 
+import java.io.File;
+import java.util.List;
+
 import com.alibaba.fastjson.JSONObject;
 import com.demo.models.UserModel;
 import com.demo.utils.PageJson;
@@ -9,8 +12,55 @@ import com.demo.utils.StatusJson;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.JsonKit;
 import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.upload.UploadFile;
 
 public class UserController extends Controller {
+	
+	public void uploadFileMobile(){
+		UploadFile f = getFile();
+		renderJson("upload/"+f.getFileName());
+		
+	}
+	public void loginMobile() {
+		String useridentify = getPara("useridentify");
+		String pass = getPara("pass");
+		List<UserModel> userModels = UserModel.dao.find("select * from user_base where useridentify = '"+useridentify+"' and pass = '"+pass+"' and del != 'delete'");
+		JSONObject js = new JSONObject();
+		System.out.println("userModels:"+userModels);
+		
+		
+		if(userModels!=null&&userModels.size()==1){
+			js.put("code", "200");
+			js.put("data", userModels);
+			renderJson(JsonKit.toJson(js));
+		}else{
+			js.put("code", "201");
+			renderJson(js.toJSONString());
+		}
+	}
+	
+	public void registerMobile() {
+		String useridentify = getPara("useridentify");
+		String pass = getPara("pass");
+		List<UserModel> userModels = UserModel.dao.find("select * from user_base where useridentify = '"+useridentify+"' and del != 'delete'");
+		JSONObject js = new JSONObject();
+		if(userModels!=null&&userModels.size()>=1){
+			js.put("code", "201");
+			js.put("data", userModels);
+			renderJson(JsonKit.toJson(js));
+		}else{
+			UserModel model = getModel(UserModel.class, "", true);
+			model.set("create_time", System.currentTimeMillis()/1000+"");
+			model.set("del", "normal");
+			System.out.println("model:"+model);
+			model.save();
+			List<UserModel> userModelsResult = UserModel.dao.find("select * from user_base where useridentify = '"+useridentify+"' and del != 'delete'");
+			
+			js.put("code", "200");
+			js.put("data", userModelsResult);
+			renderJson(JsonKit.toJson(js));
+		}
+	}
 	
 	public void getUserById(){
 		UserModel model = UserModel.dao.findById(getPara("id"));
@@ -21,7 +71,6 @@ public class UserController extends Controller {
 		ParamUtil param = new ParamUtil(getRequest());
 		Page<UserModel> page = UserModel.dao.paginate(param.getPageNumber(),
 				param.getPageSize(), "select * ", "from user_base where del != 'delete'");
-		
 		System.out.println(page.getList().toString());
 		renderJson(JsonKit.toJson(new PageJson<UserModel>("0", "", page)));
 	}
@@ -78,6 +127,7 @@ public class UserController extends Controller {
 		}
 	}
 	
+	//更新接口
 	public void updateUser(){
 		try {
 			UserModel model = getModel(UserModel.class, "", true);

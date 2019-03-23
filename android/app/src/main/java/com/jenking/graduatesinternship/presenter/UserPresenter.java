@@ -43,10 +43,10 @@ public class UserPresenter {
         new ApiUtil(context)
                 .getServer(ApiService.class)
                 //记得更改请求接口数据
-                .template(params)
+                .loginMobile(params)
                 .subscribeOn(Schedulers.io())//后台处理线程
                 .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
-                .subscribe(new Observer<ResultModel>() {
+                .subscribe(new Observer<ResultModel<UserModel>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         System.out.print(d);
@@ -56,7 +56,7 @@ public class UserPresenter {
                     public void onNext(ResultModel resultModel) {
                         //更新视图
                         if (onCallBack!=null){
-                            onCallBack.login(true,resultModel);
+                            onCallBack.loginMobile(true,resultModel);
                         }
                     }
                     @Override
@@ -64,7 +64,83 @@ public class UserPresenter {
                         System.out.print("----error");
                         e.printStackTrace();
                         if (onCallBack!=null){
-                            onCallBack.login(false,e);
+                            onCallBack.loginMobile(false,e);
+                        }
+                        //view.failed(e);
+                    }
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+    }
+
+    //登录
+    public void registerMobile(Map<String,String> params){
+        if (params==null)return;
+        Log.e("开始请求","p-->"+params.toString());
+        new ApiUtil(context)
+                .getServer(ApiService.class)
+                //记得更改请求接口数据
+                .registerMobile(params)
+                .subscribeOn(Schedulers.io())//后台处理线程
+                .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
+                .subscribe(new Observer<ResultModel<UserModel>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        System.out.print(d);
+                    }
+
+                    @Override
+                    public void onNext(ResultModel resultModel) {
+                        //更新视图
+                        if (onCallBack!=null){
+                            onCallBack.registerMobile(true,resultModel);
+                        }
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.print("----error");
+                        e.printStackTrace();
+                        if (onCallBack!=null){
+                            onCallBack.registerMobile(false,e);
+                        }
+                        //view.failed(e);
+                    }
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+    }
+
+    //更新用户信息
+    public void updateUser(Map<String,String> params){
+        if (params==null)return;
+        Log.e("开始请求","p-->"+params.toString());
+        new ApiUtil(context)
+                .getServer(ApiService.class)
+                //记得更改请求接口数据
+                .updateUser(params)
+                .subscribeOn(Schedulers.io())//后台处理线程
+                .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
+                .subscribe(new Observer<ResultModel<UserModel>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        System.out.print(d);
+                    }
+
+                    @Override
+                    public void onNext(ResultModel resultModel) {
+                        //更新视图
+                        if (onCallBack!=null){
+                            onCallBack.updateUser(true,resultModel);
+                        }
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.print("----error");
+                        e.printStackTrace();
+                        if (onCallBack!=null){
+                            onCallBack.updateUser(false,e);
                         }
                         //view.failed(e);
                     }
@@ -75,17 +151,9 @@ public class UserPresenter {
     }
 
     public interface OnCallBack{
-        void login(boolean isSuccess, Object object);
-        void addUser(boolean isSuccess, Object object);
-
+        void loginMobile(boolean isSuccess, Object object);
+        void registerMobile(boolean isSuccess, Object object);
         void updateUser(boolean isSuccess, Object object);
-        void deleteUser(boolean isSuccess, Object object);
-
-        void getTeachers(boolean isSuccess, Object object);
-        void getTeachersByCollege(boolean isSuccess, Object object);
-
-        void getAllStudent(boolean isSuccess, Object object);
-        void getStudentByClass(boolean isSuccess, Object object);
     }
 
 }

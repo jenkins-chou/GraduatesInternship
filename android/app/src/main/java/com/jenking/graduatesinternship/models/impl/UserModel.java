@@ -19,7 +19,6 @@ public class UserModel extends BaseTableModel{
     public String address;
     public String health;
     public String type;
-    public String create_time;
     public String entrance_time;
     public String class_id;
     public String class_name;
@@ -154,16 +153,6 @@ public class UserModel extends BaseTableModel{
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    @Override
-    public String getCreate_time() {
-        return create_time;
-    }
-
-    @Override
-    public void setCreate_time(String create_time) {
-        this.create_time = create_time;
     }
 
     public String getEntrance_time() {

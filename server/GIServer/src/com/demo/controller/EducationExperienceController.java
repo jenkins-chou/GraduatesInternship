@@ -1,6 +1,9 @@
 package com.demo.controller;
 
+import java.util.List;
+
 import com.alibaba.fastjson.JSONObject;
+import com.demo.models.EducationExperienceModel;
 import com.demo.models.EducationExperienceModel;
 import com.demo.utils.PageJson;
 import com.demo.utils.ParamUtil;
@@ -11,6 +14,71 @@ import com.jfinal.kit.JsonKit;
 import com.jfinal.plugin.activerecord.Page;
 
 public class EducationExperienceController extends Controller {
+	
+	/**
+	 * -------------------------移动端接口
+	 */
+	public void getMineEducationExperienceMobile(){
+		String sql = "select * from education_experience where user_id = '"+getPara("user_id")+"' and del != 'delete' order by id DESC";
+		List<EducationExperienceModel> datas = EducationExperienceModel.dao.find(sql);
+		JSONObject js = new JSONObject();
+		js.put("code", "200");
+		js.put("data",datas);
+		renderJson(JsonKit.toJson(js));
+	}
+	
+	public void addEducationExperienceMobile(){
+		try {
+			EducationExperienceModel model = getModel(EducationExperienceModel.class, "", true);
+			model.set("create_time", System.currentTimeMillis()/1000+"");
+			model.set("del","normal");
+			System.out.println("model:"+model);
+			model.save();
+			JSONObject js = new JSONObject();
+			js.put("code", "200");
+			renderJson(js.toJSONString());
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			JSONObject js = new JSONObject();
+			js.put("code", 500);
+			js.put("msg", e.toString());
+			renderJson(js.toJSONString());
+		}
+	}
+	public void modifyEducationExperienceMobile(){
+		try {
+			EducationExperienceModel model = getModel(EducationExperienceModel.class, "", true);
+			System.out.println(model.toJson());
+			model.update();
+			JSONObject js = new JSONObject();
+			js.put("code", "200");
+			renderJson(js.toJSONString());
+		} catch (Exception e) {
+			// TODO: handle exception
+			JSONObject js = new JSONObject();
+			js.put("code", 500);
+			js.put("msg", e.toString());
+			renderJson(js.toJSONString());
+		}
+	}
+	public void deleteEducationExperienceMobile(){
+		try {
+			String[] ids = getParaValues("id");
+			for (String id : ids) {
+				EducationExperienceModel model = EducationExperienceModel.dao.findById(id);
+				model.set("del", "delete");
+				model.update();
+			}
+			renderJson(JsonKit.toJson(new StatusJson("200", "suc", true)));
+		} catch (Exception e) {
+			// TODO: handle exception
+			renderJson(JsonKit.toJson(new StatusJson("500", "fail", true)));
+		}
+	}
+	
+	/**
+	 * -------------------------移动端接口
+	 */
 	
 	public void getEducationExperienceById(){
 		EducationExperienceModel model = EducationExperienceModel.dao.findById(getPara("id"));

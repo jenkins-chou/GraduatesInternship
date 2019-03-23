@@ -1,5 +1,7 @@
 package com.demo.controller;
 
+import java.util.List;
+
 import com.alibaba.fastjson.JSONObject;
 import com.demo.models.RecruitModel;
 import com.demo.utils.PageJson;
@@ -74,6 +76,25 @@ public class RecruitController extends Controller {
 				param.getPageSize(), sqlPart1, sqlPart2);
 		renderJson(JsonKit.toJson(new PageJson<RecruitModel>("200", "", page)));
 		
+	}
+
+	/**
+	 * ËÑË÷½Ó¿Ú
+	 */
+	public void searchRecruitMobile(){
+		String keyword = getPara("keyword");
+		
+		String sql = "select * from recruit where job_name like '%"+keyword+"%' or job_content like '%"+keyword+"%' and del != 'delete' order by id DESC";
+		
+		System.out.println(sql);
+		List<RecruitModel> datas = RecruitModel.dao.find(sql);
+		System.out.println(datas);
+		
+		JSONObject js = new JSONObject();
+		js.put("code", "200");
+		js.put("message", "");
+		js.put("data", datas);
+		renderJson(JsonKit.toJson(js));
 	}
 	
 	public void addRecruit(){

@@ -228,21 +228,17 @@ public class StudentMainFragment1 extends Fragment {
                     ResultModel resultModel = (ResultModel)object;
                     if (resultModel!=null&& StringUtil.isEquals(resultModel.getCode(),"200")){
                         List<RecruitModel> recruitModels = resultModel.getData();
-                        if (getDataType==0){
-                            datas = recruitModels!=null?recruitModels:datas;
-                            baseRecyclerAdapter.setData(datas);
-                            recyclerView.smoothScrollToPosition(0);
-                        }else {
-                            datas.addAll(recruitModels);
-                            baseRecyclerAdapter.setData(datas);
-                            recyclerView.smoothScrollToPosition(datas!=null?datas.size():0);
-                        }
-                        if (recruitModels!=null&&recruitModels.size()>0){
-                            showTips(recruitModels.size());
-                        }
+                        datas = recruitModels!=null?recruitModels:datas;
+                        baseRecyclerAdapter.setData(datas);
+                        recyclerView.smoothScrollToPosition(0);
                     }
                 }
                 checkData();
+            }
+
+            @Override
+            public void searchRecruitMobile(boolean isSuccess, Object object) {
+
             }
         });
         smartRefreshLayout.setEnableLoadMore(true);

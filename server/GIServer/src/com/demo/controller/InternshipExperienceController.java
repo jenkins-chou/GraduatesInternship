@@ -1,5 +1,7 @@
 package com.demo.controller;
 
+import java.util.List;
+
 import com.alibaba.fastjson.JSONObject;
 import com.demo.models.InternshipExperienceModel;
 import com.demo.utils.PageJson;
@@ -24,6 +26,70 @@ public class InternshipExperienceController extends Controller {
 		
 		System.out.println(page.getList().toString());
 		renderJson(JsonKit.toJson(new PageJson<InternshipExperienceModel>("0", "", page)));
+	}
+	
+	public void getMineInternshipMobile() {
+		String user_id = getPara("user_id");
+		List<InternshipExperienceModel> datas = InternshipExperienceModel.dao.find("select * from internship_experience where user_id = '"+user_id+"' and del != 'delete' order by id DESC");
+		JSONObject js = new JSONObject();
+		js.put("code", "200"); 
+		js.put("data", datas);
+		renderJson(JsonKit.toJson(js));
+	}
+	
+	//移动端接口
+	public void addInternshipMobile(){
+		try {
+			InternshipExperienceModel model = getModel(InternshipExperienceModel.class, "", true);
+			System.out.println("model:"+model);
+			model.save();
+			JSONObject js = new JSONObject();
+			js.put("code", "200");
+			renderJson(js.toJSONString());
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.toString());
+			JSONObject js = new JSONObject();
+			js.put("code", 500);
+			js.put("msg", e.toString());
+			renderJson(js.toJSONString());
+		}
+	}
+	
+	
+	public void modifyInternshipMobile(){
+		try {
+				InternshipExperienceModel model = getModel(InternshipExperienceModel.class, "", true);
+				System.out.println("model:"+model);
+				model.update();
+				JSONObject js = new JSONObject();
+				js.put("code", "200");
+				renderJson(js.toJSONString());
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.toString());
+				JSONObject js = new JSONObject();
+				js.put("code", 500);
+				js.put("msg", e.toString());
+				renderJson(js.toJSONString());
+			}
+		}
+	//移动端接口-删除
+	public void deleteInternshipMobile(){
+		try {
+			InternshipExperienceModel model = getModel(InternshipExperienceModel.class, "", true);
+			model.set("del", "delete");
+			model.update();
+			JSONObject js = new JSONObject();
+			js.put("code", "200");
+			renderJson(js.toJSONString());
+		} catch (Exception e) {
+			// TODO: handle exception
+			JSONObject js = new JSONObject();
+			js.put("code", 500);
+			js.put("msg", e.toString());
+			renderJson(js.toJSONString());
+		}
 	}
 	
 	public void addInternshipExperience(){

@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 用呗云借通APP日志
-Source Server Version : 50723
+Source Server         : manager
+Source Server Version : 50725
 Source Host           : localhost:3306
 Source Database       : graduate
 
 Target Server Type    : MYSQL
-Target Server Version : 50723
+Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-03-22 17:31:08
+Date: 2019-03-24 00:31:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -80,12 +80,13 @@ CREATE TABLE `education_experience` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of education_experience
 -- ----------------------------
 INSERT INTO `education_experience` VALUES ('1', '1', '华南理工大学', '在校经历', '专业', '开始时间', '结束时间', '总结', null, '总结', 'delete');
+INSERT INTO `education_experience` VALUES ('2', '2', '学校可口可乐了', '经历', '专业蚊鸡', '开始', '结束', '总结', '1553357835', null, 'delete');
 
 -- ----------------------------
 -- Table structure for enterprise
@@ -140,13 +141,19 @@ CREATE TABLE `internship_experience` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of internship_experience
 -- ----------------------------
 INSERT INTO `internship_experience` VALUES ('1', '1', '2018', '2019', '中铁', '文化部', '实习记者', '000', '无', '收获', null, 'dsadsa', 'delete');
 INSERT INTO `internship_experience` VALUES ('2', '1大萨达撒', '2018', '2019', '中铁', '文化部', '实习记者', null, '无', '收获', null, null, 'delete');
+INSERT INTO `internship_experience` VALUES ('3', '2', '看看', '你咋来了', '同事', '落地', '测试', '有几个', '兜里', '欧缇丽', '1553328018', null, 'delete');
+INSERT INTO `internship_experience` VALUES ('4', '2', '测试', '测试', '漏了', '你无赖', '测试', '嗯家里急', '突击', '努力', '1553328018', null, 'delete');
+INSERT INTO `internship_experience` VALUES ('5', '2', '。', '，', '？', '。', '测试修改溜了溜了', '。？', '。？', '！！？', '1553328018', null, 'delete');
+INSERT INTO `internship_experience` VALUES ('6', '2', '2019年1月', '至今', '广州虎牙信息有限公司', '技术部', '安卓开发实习生', '安卓开发', '正常实习', '无', '1553330425', null, 'normal');
+INSERT INTO `internship_experience` VALUES ('7', '2', '2019年7月', '至今', '中软公司', '技术部', '数据分析师', '我没看见', '正常实习', '总结', '1553330490', null, 'normal');
+INSERT INTO `internship_experience` VALUES ('8', '5', '开始', '结束', '单位', '部门', '测试', '内容', '结果', '总结', '1553335399', null, 'normal');
 
 -- ----------------------------
 -- Table structure for message
@@ -185,12 +192,15 @@ CREATE TABLE `personal_cert` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of personal_cert
 -- ----------------------------
 INSERT INTO `personal_cert` VALUES ('1', '122', '名称', '2018年', null, '备注', 'delete');
+INSERT INTO `personal_cert` VALUES ('2', '2', '证书', '活的时间', '1553355009', null, 'delete');
+INSERT INTO `personal_cert` VALUES ('3', '2', '雅思证书', '2019年', '1553355040', null, 'normal');
+INSERT INTO `personal_cert` VALUES ('4', '2', '证书', '来来来', '1553355100', null, 'delete');
 
 -- ----------------------------
 -- Table structure for personal_skill
@@ -204,13 +214,16 @@ CREATE TABLE `personal_skill` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of personal_skill
 -- ----------------------------
 INSERT INTO `personal_skill` VALUES ('1', '1', '技能', null, '无', 'delete');
 INSERT INTO `personal_skill` VALUES ('2', '1', '技能2', null, '无', 'delete');
+INSERT INTO `personal_skill` VALUES ('3', '2', '技能一', '1553343100', null, 'delete');
+INSERT INTO `personal_skill` VALUES ('4', '2', '技能三', '1553343259', null, 'delete');
+INSERT INTO `personal_skill` VALUES ('5', '2', '四六级', '1553343617', null, 'normal');
 
 -- ----------------------------
 -- Table structure for prize_experience
@@ -395,10 +408,10 @@ CREATE TABLE `user_base` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   `del` varchar(255) DEFAULT NULL COMMENT '删除标志位',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_base
 -- ----------------------------
-INSERT INTO `user_base` VALUES ('1', 'dsadsa', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 'delete');
-INSERT INTO `user_base` VALUES ('2', '123', '123', '周宁', 'http://baidu.com', '不个性何来个性签名', '女', '13', '123', '汉', '广东', '13413607283@163.com', '无', '12345678910', '常住地址', '1996', 'teacher', null, null, null, null, null, null, null, '无', 'delete');
+INSERT INTO `user_base` VALUES ('2', '123', '123456', '周宁', 'upload/1553335698856.jpg', '不个性何来个性签名', '女', '13', '123', '汉', '广东', '13413607283@163.com', '123456', '12345678910', '常住地址', '1996', 'student', null, null, null, null, null, null, null, '无', 'normal');
+INSERT INTO `user_base` VALUES ('5', '6558455', '123', '周宁', 'upload/1553335338579.jpg', null, null, null, null, null, null, null, '123', null, null, null, 'student', 'null', 'null', 'null', 'null', 'null', 'null', '1553332979', null, 'normal');

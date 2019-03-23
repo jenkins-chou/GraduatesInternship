@@ -6,9 +6,8 @@ import com.google.gson.Gson;
 import com.jenking.graduatesinternship.models.impl.UserModel;
 
 public class AccountTool {
-    public static final String usertype_student = "1";
-    public static final String usertype_teacher = "2";
-    public static final String usertype_manager ="3";
+    public static final String usertype_student = "student";
+    public static final String usertype_teacher = "teacher";
     //判断用户是否登录
     public final static boolean isLogin(Context context){
         if (context==null)return false;

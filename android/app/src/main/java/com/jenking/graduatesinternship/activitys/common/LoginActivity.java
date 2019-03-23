@@ -56,7 +56,7 @@ public class LoginActivity extends BaseActivity {
             return;
         }else{
             Map<String,String> params = RS.getBaseParams(this);
-            params.put("name",name_str);
+            params.put("useridentify",name_str);
             params.put("pass",pass_str);
             userPresenter.login(params);
             setLoadingEnable(true);
@@ -84,7 +84,7 @@ public class LoginActivity extends BaseActivity {
         userPresenter.setOnCallBack(new UserPresenter.OnCallBack() {
 
             @Override
-            public void login(boolean isSuccess, Object object) {
+            public void loginMobile(boolean isSuccess, Object object) {
                 setLoadingEnable(false);
                 if (isSuccess){
                     if (object!=null){
@@ -93,9 +93,7 @@ public class LoginActivity extends BaseActivity {
                             if (resultModel.getData()!=null&&resultModel.getData().size()>0){
                                 List<UserModel> userModels = resultModel.getData();
                                 UserModel userModel = userModels.get(0);
-                                Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                                AccountTool.saveUser(LoginActivity.this,userModel);
-                                finish();
+                                checkUserType(userModel);
                             }else{
                                 Toast.makeText(LoginActivity.this, "账号不存在或登录信息有误", Toast.LENGTH_SHORT).show();
                             }
@@ -103,11 +101,13 @@ public class LoginActivity extends BaseActivity {
                             Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
                         }
                     }
+                }else{
+                    Toast.makeText(LoginActivity.this, "登陆失败", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void addUser(boolean isSuccess, Object object) {
+            public void registerMobile(boolean isSuccess, Object object) {
 
             }
 
@@ -115,31 +115,24 @@ public class LoginActivity extends BaseActivity {
             public void updateUser(boolean isSuccess, Object object) {
 
             }
-
-            @Override
-            public void deleteUser(boolean isSuccess, Object object) {
-
-            }
-
-            @Override
-            public void getTeachers(boolean isSuccess, Object object) {
-
-            }
-
-            @Override
-            public void getTeachersByCollege(boolean isSuccess, Object object) {
-
-            }
-
-            @Override
-            public void getAllStudent(boolean isSuccess, Object object) {
-
-            }
-
-            @Override
-            public void getStudentByClass(boolean isSuccess, Object object) {
-
-            }
         });
+    }
+
+    void checkUserType(UserModel userModel){
+        if (StringUtil.isNotEmpty(userModel.getType())){
+            switch (userModel.getType()){
+                case "student":case "teacher":
+                    Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                    AccountTool.saveUser(LoginActivity.this,userModel);
+                    finish();
+                    break;
+                default:
+                    Toast.makeText(this, "未知类型，登录失败", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+
+        }else{
+            Toast.makeText(LoginActivity.this, "数据错误", Toast.LENGTH_SHORT).show();
+        }
     }
 }

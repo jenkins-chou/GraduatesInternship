@@ -19,6 +19,7 @@ import com.jenking.graduatesinternship.R;
 import com.jenking.graduatesinternship.activitys.common.LoginActivity;
 import com.jenking.graduatesinternship.activitys.common.MessageActivity;
 import com.jenking.graduatesinternship.activitys.common.SettingActivity;
+import com.jenking.graduatesinternship.activitys.common.UserInfoAvatarActivity;
 import com.jenking.graduatesinternship.activitys.student.StudentDataActivity;
 import com.jenking.graduatesinternship.activitys.student.StudentRecruitCollectionActivity;
 import com.jenking.graduatesinternship.activitys.student.StudentRecruitDeliveryActivity;
@@ -48,10 +49,10 @@ public class StudentMainFragment3 extends Fragment{
     }
     @OnClick(R.id.avatar)
     void modifyAvatar(){
-//        if (AccountTool.isLogin(getContext())) {
-//            Intent intent = new Intent(getContext(), UserInfoAvatarActivity.class);
-//            startActivity(intent);
-//        }
+        if (AccountTool.isLogin(getContext())) {
+            Intent intent = new Intent(getContext(), UserInfoAvatarActivity.class);
+            startActivity(intent);
+        }
     }
     @OnClick({R.id.user_header})
     void user_header(){
@@ -63,12 +64,12 @@ public class StudentMainFragment3 extends Fragment{
 
     @OnClick(R.id.user_info)
     void user_info(){
-        Intent intent = new Intent(getContext(),StudentDataActivity.class);
-        startActivity(intent);
-//        if (AccountTool.isLogin(getContext())) {
-//        }else{
-//            Toast.makeText(getContext(), "请登录后重试", Toast.LENGTH_SHORT).show();
-//        }
+        if (AccountTool.isLogin(getContext())) {
+            Intent intent = new Intent(getContext(),StudentDataActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(getContext(), "请登录后重试", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @OnClick(R.id.user_resume)
@@ -109,7 +110,7 @@ public class StudentMainFragment3 extends Fragment{
         if (AccountTool.isLogin(getContext())){
             userModel = AccountTool.getLoginUser(getContext());
             if (userModel!=null){
-                username.setText(userModel.getName());
+                username.setText(userModel.getUseridentify());
                 RequestOptions requestOptions = new RequestOptions();
                 requestOptions.circleCrop();
                 requestOptions.error(R.mipmap.avatar_default);
