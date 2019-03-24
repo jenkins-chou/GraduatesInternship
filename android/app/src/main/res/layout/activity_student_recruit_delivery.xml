@@ -42,7 +42,17 @@
             android:text="我的岗位申请"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
-
+        <TextView
+            android:id="@+id/operate_tips"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="帮助"
+            android:textColor="@color/white"
+            android:textSize="@dimen/header_back_textsize" />
         <View
             android:layout_alignParentBottom="true"
             android:background="@color/base_line_color"
@@ -54,4 +64,25 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/empty_show"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:alpha="0.7"
+            android:src="@mipmap/icon_data_empty"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+        <TextView
+            android:text="数据空空如也"
+            android:textSize="12sp"
+            android:textColor="@color/base_font_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </RelativeLayout>

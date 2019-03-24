@@ -61,7 +61,11 @@
         <activity android:name=".activitys.student.StudentPersonalCertOperateActivity" />
         <activity android:name=".activitys.student.StudentEducationExpListActivity" />
         <activity android:name=".activitys.student.StudentEducationExpOperateActivity" />
-        <activity android:name=".activitys.student.StudentEducationExpDetailActivity"></activity>
+        <activity android:name=".activitys.student.StudentEducationExpDetailActivity" />
+        <activity android:name=".activitys.student.StudentResumeOperateActivity" />
+        <activity android:name=".activitys.student.StudentResumeDetailActivity" />
+        <activity android:name=".activitys.student.StudentResumeSelectActivity" />
+        <activity android:name=".activitys.student.StudentResumeEnclosureActivity"></activity>
     </application>
 
 </manifest>

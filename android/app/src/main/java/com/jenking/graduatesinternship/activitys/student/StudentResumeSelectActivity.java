@@ -8,6 +8,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.library.BaseRecyclerAdapter;
@@ -18,7 +19,6 @@ import com.jenking.graduatesinternship.R;
 import com.jenking.graduatesinternship.activitys.common.BaseActivity;
 import com.jenking.graduatesinternship.api.RS;
 import com.jenking.graduatesinternship.models.base.ResultModel;
-import com.jenking.graduatesinternship.models.impl.EducationExpModel;
 import com.jenking.graduatesinternship.models.impl.ResumeModel;
 import com.jenking.graduatesinternship.presenter.ResumePresenter;
 import com.jenking.graduatesinternship.utils.AccountTool;
@@ -31,8 +31,8 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class StudentResumeListActivity extends BaseActivity {
-    
+public class StudentResumeSelectActivity extends BaseActivity {
+    public static final int selectResumeCode = 1001;//选择简历code
     private ResumePresenter resumePresenter;
     private List<ResumeModel> datas;
     private BaseRecyclerAdapter adapter;
@@ -61,27 +61,39 @@ public class StudentResumeListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_resume_list);
+        setContentView(R.layout.activity_student_resume_select);
     }
 
     @Override
     public void initData() {
         super.initData();
         datas = new ArrayList<>();
-        adapter = new BaseRecyclerAdapter<ResumeModel>(this,datas,R.layout.activity_student_resume_list_item) {
+        adapter = new BaseRecyclerAdapter<ResumeModel>(this,datas,R.layout.activity_student_resume_select_item) {
             @Override
-            protected void convert(BaseViewHolder helper, ResumeModel item) {
+            protected void convert(BaseViewHolder helper, final ResumeModel item) {
                 helper.setText(R.id.resume_name,item.getResume_name());
                 helper.setText(R.id.resume_intention_job,"期望岗位:"+item.getResume_intention_job());
                 helper.setText(R.id.resume_expected_salary,"期望月薪:"+item.getResume_expected_salary());
                 helper.setText(R.id.resume_education,"教育程度:"+item.getResume_education());
+
+                TextView select = helper.getView(R.id.select);
+                select.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent();
+                        intent.putExtra("resume_id",item.getId());
+                        intent.putExtra("resume_name",item.getResume_name());
+                        setResult(selectResumeCode,intent);
+                        finish();
+                    }
+                });
             }
         };
         adapter.openLoadAnimation(false);
         adapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent intent = new Intent(StudentResumeListActivity.this, StudentResumeDetailActivity.class);
+                Intent intent = new Intent(StudentResumeSelectActivity.this, StudentResumeDetailActivity.class);
                 intent.putExtra("model",new Gson().toJson(datas.get(position)));
                 startActivity(intent);
             }
@@ -104,7 +116,7 @@ public class StudentResumeListActivity extends BaseActivity {
                         recyclerView.smoothScrollToPosition(0);
                     }
                 }else{
-                    Toast.makeText(StudentResumeListActivity.this, "服务器繁忙", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(StudentResumeSelectActivity.this, "服务器繁忙", Toast.LENGTH_SHORT).show();
                 }
                 checkData();
             }
@@ -124,8 +136,6 @@ public class StudentResumeListActivity extends BaseActivity {
 
             }
         });
-
-
     }
 
     @Override

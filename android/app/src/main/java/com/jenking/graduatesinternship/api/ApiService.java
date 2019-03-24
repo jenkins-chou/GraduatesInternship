@@ -5,7 +5,10 @@ import com.jenking.graduatesinternship.models.impl.EducationExpModel;
 import com.jenking.graduatesinternship.models.impl.InternshipExperienceModel;
 import com.jenking.graduatesinternship.models.impl.PersonalCertModel;
 import com.jenking.graduatesinternship.models.impl.PersonalSkillModel;
+import com.jenking.graduatesinternship.models.impl.RecruitCollectionModel;
+import com.jenking.graduatesinternship.models.impl.RecruitDeliveryModel;
 import com.jenking.graduatesinternship.models.impl.RecruitModel;
+import com.jenking.graduatesinternship.models.impl.ResumeModel;
 import com.jenking.graduatesinternship.models.impl.UserModel;
 
 import java.util.Map;
@@ -124,5 +127,56 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("education_experience/deleteEducationExperienceMobile")
     Observable<ResultModel<EducationExpModel>> deleteEducationExperienceMobile(@FieldMap Map<String, String> body);
+
+    //个人简历
+    @FormUrlEncoded
+    @POST("resume/getMineResumeMobile")
+    Observable<ResultModel<ResumeModel>> getMineResumeMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("resume/addResumeMobile")
+    Observable<ResultModel<ResumeModel>> addResumeMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("resume/modifyResumeMobile")
+    Observable<ResultModel<ResumeModel>> modifyResumeMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("resume/deleteResumeMobile")
+    Observable<ResultModel<ResumeModel>> deleteResumeMobile(@FieldMap Map<String, String> body);
+
+    //岗位收藏
+    @FormUrlEncoded
+    @POST("recruitment_collection/getMineRecruitmentCollectionMobile")
+    Observable<ResultModel<RecruitModel>> getMineRecruitmentCollectionMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("recruitment_collection/addRecruitmentCollectionMobile")
+    Observable<ResultModel<RecruitCollectionModel>> addRecruitmentCollectionMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("recruitment_collection/modifyRecruitmentCollectionMobile")
+    Observable<ResultModel<RecruitCollectionModel>> modifyRecruitmentCollectionMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("recruitment_collection/deleteRecruitmentCollectionMobile")
+    Observable<ResultModel<RecruitCollectionModel>> deleteRecruitmentCollectionMobile(@FieldMap Map<String, String> body);
+
+    //岗位投递
+    @FormUrlEncoded
+    @POST("recruitment_delivery/getMineRecruitmentDeliveryMobile")
+    Observable<ResultModel<RecruitDeliveryModel>> getMineRecruitmentDeliveryMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("recruitment_delivery/addRecruitmentDeliveryMobile")
+    Observable<ResultModel<RecruitDeliveryModel>> addRecruitmentDeliveryMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("recruitment_delivery/modifyRecruitmentDeliveryMobile")
+    Observable<ResultModel<RecruitDeliveryModel>> modifyRecruitmentDeliveryMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("recruitment_delivery/deleteRecruitmentDeliveryMobile")
+    Observable<ResultModel<RecruitDeliveryModel>> deleteRecruitmentDeliveryMobile(@FieldMap Map<String, String> body);
 
 }

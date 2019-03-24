@@ -10003,3 +10003,9 @@ Caused by: com.mysql.jdbc.exceptions.MySQLSyntaxErrorException: You have an erro
 	at com.jfinal.plugin.activerecord.Model.find(Model.java:643)
 	at com.jfinal.plugin.activerecord.Model.find(Model.java:660)
 	... 33 more
+
+2019-03-24 15:41:09
+[WARN]-[Thread: qtp1286084959-25]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /recruit_collection/addRecruitCollectionMobile
+
+2019-03-24 16:35:29
+[WARN]-[Thread: qtp1286084959-23]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /recruitment_delivery/addRecruitmentDeliveryMobile

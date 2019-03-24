@@ -1,6 +1,10 @@
 package com.demo.controller;
 
+import java.util.List;
+
 import com.alibaba.fastjson.JSONObject;
+import com.demo.models.RecruitModel;
+import com.demo.models.RecruitmentDeliveryModel;
 import com.demo.models.RecruitmentDeliveryModel;
 import com.demo.utils.PageJson;
 import com.demo.utils.ParamUtil;
@@ -11,6 +15,91 @@ import com.jfinal.kit.JsonKit;
 import com.jfinal.plugin.activerecord.Page;
 
 public class RecruitmentDeliveryController extends Controller {
+	
+	/**
+	 * -------------------------移动端接口
+	 */
+	public void getMineRecruitmentDeliveryMobile(){
+		String sql = "select a.*,b.status,b.user_id,b.recruit_id from recruit a , recruitment_Delivery b where a.id = b.recruit_id and b.user_id = "+getPara("user_id")+"  and a.del != 'delele' and b.del != 'delete' order by b.id DESC";
+		List<RecruitModel> datas = RecruitModel.dao.find(sql);
+		System.out.println(datas);
+		JSONObject js = new JSONObject();
+		js.put("code", "200");
+		js.put("data",datas);
+		renderJson(JsonKit.toJson(js));
+	}
+	
+	public void addRecruitmentDeliveryMobile(){
+		try {
+			
+			String user_id = getPara("user_id");
+			String recruit_id = getPara("recruit_id");
+			String sql = "select * from recruitment_delivery where user_id = '"+user_id+"' and recruit_id = '"+recruit_id+"' and del != 'delete'";
+			List<RecruitmentDeliveryModel> models = RecruitmentDeliveryModel.dao.find(sql);
+			
+			System.out.println(models);
+			if(models!=null&&models.size()>=1){
+				JSONObject js = new JSONObject();
+				js.put("code", "201");
+				js.put("message", "已投递过了");
+				renderJson(js.toJSONString());
+			}else{
+				RecruitmentDeliveryModel model = getModel(RecruitmentDeliveryModel.class, "", true);
+				model.set("create_time", System.currentTimeMillis()/1000+"");
+				model.set("del","normal");
+				System.out.println("model:"+model);
+				model.save();
+				JSONObject js = new JSONObject();
+				js.put("code", "200");
+				renderJson(js.toJSONString());
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			JSONObject js = new JSONObject();
+			js.put("code", 500);
+			js.put("msg", e.toString());
+			renderJson(js.toJSONString());
+		}
+	}
+	public void modifyRecruitmentDeliveryMobile(){
+		try {
+			RecruitmentDeliveryModel model = getModel(RecruitmentDeliveryModel.class, "", true);
+			System.out.println(model.toJson());
+			model.update();
+			JSONObject js = new JSONObject();
+			js.put("code", "200");
+			renderJson(js.toJSONString());
+		} catch (Exception e) {
+			// TODO: handle exception
+			JSONObject js = new JSONObject();
+			js.put("code", 500);
+			js.put("msg", e.toString());
+			renderJson(js.toJSONString());
+		}
+	}
+	public void deleteRecruitmentDeliveryMobile(){
+		try {
+			String user_id = getPara("user_id");
+			String recruit_id = getPara("recruit_id");
+			String sql = "select * from recruitment_delivery where user_id = '"+user_id+"' and recruit_id = '"+recruit_id+"' and del != 'delete'";
+			List<RecruitmentDeliveryModel> models = RecruitmentDeliveryModel.dao.find(sql);
+			
+			System.out.println(models);
+			for (RecruitmentDeliveryModel model : models) {
+				model.set("del", "delete");
+				model.update();
+			}
+			renderJson(JsonKit.toJson(new StatusJson("200", "success", true)));
+		} catch (Exception e) {
+			// TODO: handle exception
+			renderJson(JsonKit.toJson(new StatusJson("500", "fail", true)));
+		}
+	}
+	
+	/**
+	 * -------------------------移动端接口
+	 */
 	
 	public void getRecruitmentDeliveryById(){
 		RecruitmentDeliveryModel model = RecruitmentDeliveryModel.dao.findById(getPara("id"));

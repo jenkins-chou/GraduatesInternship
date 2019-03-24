@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="我的简历"
+            android:text="附件简历"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
 
@@ -47,11 +47,11 @@
             android:id="@+id/create"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="创建"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
+            android:layout_centerInParent="true"
             android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:text="上传"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
 

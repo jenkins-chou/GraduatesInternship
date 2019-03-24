@@ -23,6 +23,7 @@ import com.jenking.graduatesinternship.activitys.common.UserInfoAvatarActivity;
 import com.jenking.graduatesinternship.activitys.student.StudentDataActivity;
 import com.jenking.graduatesinternship.activitys.student.StudentRecruitCollectionActivity;
 import com.jenking.graduatesinternship.activitys.student.StudentRecruitDeliveryActivity;
+import com.jenking.graduatesinternship.activitys.student.StudentResumeEnclosureActivity;
 import com.jenking.graduatesinternship.activitys.student.StudentResumeListActivity;
 import com.jenking.graduatesinternship.api.BaseAPI;
 import com.jenking.graduatesinternship.models.impl.UserModel;
@@ -75,6 +76,12 @@ public class StudentMainFragment3 extends Fragment{
     @OnClick(R.id.user_resume)
     void user_resume(){
         Intent intent = new Intent(getContext(),StudentResumeListActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.user_resume_enclosure)
+    void user_resume_enclosure(){
+        Intent intent = new Intent(getContext(),StudentResumeEnclosureActivity.class);
         startActivity(intent);
     }
 

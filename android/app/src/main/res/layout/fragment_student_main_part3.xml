@@ -124,6 +124,43 @@
                     android:layout_marginRight="15dp"
                     android:src="@mipmap/arrow_right_black" />
             </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/user_resume_enclosure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/common_button_selected">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_margin="15dp"
+                        android:src="@mipmap/icon_enclosure" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="简历附件"
+                        android:textColor="@color/base_font_color"
+                        android:textSize="@dimen/fontsize_15" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="15dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@mipmap/arrow_right_black" />
+            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/mine_recruitment_delivery"
