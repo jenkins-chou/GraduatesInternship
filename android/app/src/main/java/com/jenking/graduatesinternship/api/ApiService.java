@@ -11,6 +11,7 @@ import com.jenking.graduatesinternship.models.impl.RecruitDeliveryModel;
 import com.jenking.graduatesinternship.models.impl.RecruitModel;
 import com.jenking.graduatesinternship.models.impl.ResumeEnclosureModel;
 import com.jenking.graduatesinternship.models.impl.ResumeModel;
+import com.jenking.graduatesinternship.models.impl.StudentTutorModel;
 import com.jenking.graduatesinternship.models.impl.UserModel;
 
 import java.util.Map;
@@ -210,5 +211,22 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("enterprise/getEnterpriseById")
     Observable<ResultModel<EnterpriseModel>> getEnterpriseById(@FieldMap Map<String, String> body);
+
+    //学生导师
+    @FormUrlEncoded
+    @POST("student_tutor/getStudentTutor")
+    Observable<ResultModel<StudentTutorModel>> getStudentTutor(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("student_tutor/addStudentTutor")
+    Observable<ResultModel<StudentTutorModel>> addStudentTutor(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("student_tutor/deleteStudentTutor")
+    Observable<ResultModel<StudentTutorModel>> deleteStudentTutor(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("student_tutor/getTeachersStudents")
+    Observable<ResultModel<UserModel>> getTeachersStudents(@FieldMap Map<String, String> body);
 
 }
