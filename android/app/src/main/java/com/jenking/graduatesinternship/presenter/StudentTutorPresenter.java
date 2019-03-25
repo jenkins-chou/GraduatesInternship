@@ -147,6 +147,43 @@ public class StudentTutorPresenter {
                 });
     }
 
+    public void updateStudentTutor(Map<String,String> params){
+        if (params==null)return;
+        Log.e("开始请求","p-->"+params.toString());
+        new ApiUtil(context)
+                .getServer(ApiService.class)
+                //记得更改请求接口数据
+                .updateStudentTutor(params)
+                .subscribeOn(Schedulers.io())//后台处理线程
+                .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
+                .subscribe(new Observer<ResultModel>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        System.out.print(d);
+                    }
+
+                    @Override
+                    public void onNext(ResultModel resultModel) {
+                        //更新视图
+                        if (onCallBack!=null){
+                            onCallBack.updateStudentTutor(true,resultModel);
+                        }
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.print("----error");
+                        e.printStackTrace();
+                        if (onCallBack!=null){
+                            onCallBack.updateStudentTutor(false,e);
+                        }
+                        //view.failed(e);
+                    }
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+    }
+
     public void getTeachersStudents(Map<String,String> params){
         if (params==null)return;
         Log.e("开始请求","p-->"+params.toString());
@@ -188,6 +225,7 @@ public class StudentTutorPresenter {
         void getStudentTutor(boolean isSuccess, Object object);
         void addStudentTutor(boolean isSuccess, Object object);
         void deleteStudentTutor(boolean isSuccess, Object object);
+        void updateStudentTutor(boolean isSuccess, Object object);
         void getTeachersStudents(boolean isSuccess, Object object);
     }
 }

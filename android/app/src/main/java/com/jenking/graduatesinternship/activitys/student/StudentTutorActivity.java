@@ -25,7 +25,7 @@ import butterknife.OnClick;
 
 public class StudentTutorActivity extends BaseActivity {
 
-    private String tutor_status;
+    private StudentTutorModel model;
     private StudentTutorPresenter presenter;
     @BindView(R.id.tutor_name)
     EditText tutor_name;
@@ -48,7 +48,14 @@ public class StudentTutorActivity extends BaseActivity {
             params.put("student_id",AccountTool.getLoginUser(this).getId());
             params.put("teacher_useridentify",tutor_useridentify_str);
             params.put("teacher_name",tutor_name_str);
-            presenter.addStudentTutor(params);
+            if (model==null){
+                presenter.addStudentTutor(params);
+            }else{
+                params.put("id",model.getId());
+                presenter.addStudentTutor(params);
+            }
+
+
         }else{
             Toast.makeText(this, "请输入完整信息", Toast.LENGTH_SHORT).show();
         }
@@ -73,7 +80,7 @@ public class StudentTutorActivity extends BaseActivity {
                     if (resultModel!=null&& StringUtil.isEquals(resultModel.getCode(),"200")){
                         List<StudentTutorModel> studentTutorModels = resultModel.getData();
                         if (studentTutorModels!=null&&studentTutorModels.size()>0){
-                            tutor_status = studentTutorModels.get(0).getStatus();
+                            model = studentTutorModels.get(0);
                             tutor_name.setText(studentTutorModels.get(0).getTeacher_name());
                             tutor_useridentify.setText(studentTutorModels.get(0).getTeacher_useridentify());
                         }
@@ -98,6 +105,11 @@ public class StudentTutorActivity extends BaseActivity {
 
             @Override
             public void deleteStudentTutor(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void updateStudentTutor(boolean isSuccess, Object object) {
 
             }
 

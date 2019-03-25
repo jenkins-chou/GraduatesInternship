@@ -1,6 +1,8 @@
 package com.jenking.graduatesinternship.models.impl;
 
-public class StudentTutorModel {
+import com.jenking.graduatesinternship.models.base.BaseTableModel;
+
+public class StudentTutorModel extends BaseTableModel {
     private String user_id;
     private String teacher_useridentify;
     private String teacher_name;

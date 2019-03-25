@@ -226,6 +226,10 @@ public interface ApiService {
     Observable<ResultModel<StudentTutorModel>> deleteStudentTutor(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
+    @POST("student_tutor/updateStudentTutor")
+    Observable<ResultModel<StudentTutorModel>> updateStudentTutor(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
     @POST("student_tutor/getTeachersStudents")
     Observable<ResultModel<UserModel>> getTeachersStudents(@FieldMap Map<String, String> body);
 
