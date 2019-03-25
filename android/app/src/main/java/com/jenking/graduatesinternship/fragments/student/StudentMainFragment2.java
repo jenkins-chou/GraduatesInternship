@@ -155,7 +155,12 @@ public class StudentMainFragment2 extends Fragment{
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                getAllData();
+                if (AccountTool.isLogin(getContext())){
+                    getAllData();
+                }else{
+                    smartRefreshLayout.finishRefresh();
+                    Toast.makeText(getContext(), "请登录后重试", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

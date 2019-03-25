@@ -179,6 +179,11 @@ public class StudentRecruitCollectionActivity extends BaseActivity {
                     Toast.makeText(StudentRecruitCollectionActivity.this, "系统繁忙，请重试", Toast.LENGTH_SHORT).show();
                 }
             }
+
+            @Override
+            public void checkIsCollect(boolean isSuccess, Object object) {
+
+            }
         });
 
         getData();

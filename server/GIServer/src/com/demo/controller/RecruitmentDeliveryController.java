@@ -97,6 +97,27 @@ public class RecruitmentDeliveryController extends Controller {
 		}
 	}
 	
+	//检查是否已经投递过该职位
+	public void checkIsDelivery(){
+		try {
+			String user_id = getPara("user_id");
+			String recruit_id = getPara("recruit_id");
+			String sql = "select * from recruitment_delivery where user_id = '"+user_id+"' and recruit_id = '"+recruit_id+"' and del != 'delete'";
+			List<RecruitmentDeliveryModel> models = RecruitmentDeliveryModel.dao.find(sql);
+			
+			System.out.println(models);
+			if(models!=null&&models.size()==1){
+				renderJson(JsonKit.toJson(new StatusJson("201", "已经投递过该职位", true)));
+			}else{
+				renderJson(JsonKit.toJson(new StatusJson("200", "success", true)));
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			renderJson(JsonKit.toJson(new StatusJson("500", "fail", true)));
+		}
+	}
+	
 	/**
 	 * -------------------------移动端接口
 	 */

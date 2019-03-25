@@ -29,6 +29,16 @@ public class StudentDataActivity extends BaseActivity {
             Toast.makeText(this, "请登录后重试", Toast.LENGTH_SHORT).show();
         }
     }
+    @OnClick(R.id.student_tutor)
+    void student_tutor(){
+        if (AccountTool.isLogin(this)) {
+            Intent intent = new Intent(this,StudentTutorActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, "请登录后重试", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @OnClick(R.id.personal_skill)
     void personal_skill(){
         if (AccountTool.isLogin(this)) {

@@ -189,8 +189,12 @@ public class StudentRecruitDeliveryActivity extends BaseActivity {
                     Toast.makeText(StudentRecruitDeliveryActivity.this, "系统繁忙，请重试", Toast.LENGTH_SHORT).show();
                 }
             }
-        });
 
+            @Override
+            public void checkIsDelivery(boolean isSuccess, Object object) {
+
+            }
+        });
         getData();
     }
 

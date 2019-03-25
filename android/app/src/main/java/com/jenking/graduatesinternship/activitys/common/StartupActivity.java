@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.jenking.graduatesinternship.R;
 import com.jenking.graduatesinternship.activitys.student.StudentMainActivity;
+import com.jenking.graduatesinternship.activitys.teacher.TeacherMainActivity;
 import com.jenking.graduatesinternship.utils.AccountTool;
 
 public class StartupActivity extends BaseActivity {
@@ -21,12 +22,28 @@ public class StartupActivity extends BaseActivity {
         super.onResume();
         Intent intent = new Intent();
         if (AccountTool.isLogin(this)){
-            intent.setClass(this,StudentMainActivity.class);
-            startActivity(intent);
-            finish();
+            switch (AccountTool.getLoginUser(this).getType()){
+                case "student":
+                    intent.setClass(this,StudentMainActivity.class);
+                    startActivity(intent);
+                    finish();
+                    break;
+                case "teacher":
+                    intent.setClass(this,TeacherMainActivity.class);
+                    startActivity(intent);
+                    finish();
+                    break;
+                default:
+                    intent.setClass(this,LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                    break;
+            }
+
         }else{
             intent.setClass(this,LoginActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 }

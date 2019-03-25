@@ -26,6 +26,7 @@ import com.jenking.graduatesinternship.activitys.student.StudentRecruitDeliveryA
 import com.jenking.graduatesinternship.activitys.student.StudentResumeEnclosureActivity;
 import com.jenking.graduatesinternship.activitys.student.StudentResumeListActivity;
 import com.jenking.graduatesinternship.api.BaseAPI;
+import com.jenking.graduatesinternship.dialog.CommonTipsDialog;
 import com.jenking.graduatesinternship.models.impl.UserModel;
 import com.jenking.graduatesinternship.utils.AccountTool;
 
@@ -45,19 +46,21 @@ public class StudentMainFragment3 extends Fragment{
 
     @OnClick(R.id.message)
     void showMessage(){
-        Intent intent = new Intent(getContext(), MessageActivity.class);
-        startActivity(intent);
+        if (checkLogin()) {
+            Intent intent = new Intent(getContext(), MessageActivity.class);
+            startActivity(intent);
+        }
     }
     @OnClick(R.id.avatar)
     void modifyAvatar(){
-        if (AccountTool.isLogin(getContext())) {
+        if (checkLogin()) {
             Intent intent = new Intent(getContext(), UserInfoAvatarActivity.class);
             startActivity(intent);
         }
     }
     @OnClick({R.id.user_header})
     void user_header(){
-        if (!AccountTool.isLogin(getContext())) {
+        if (!checkLogin()) {
             Intent intent = new Intent(getContext(), LoginActivity.class);
             startActivity(intent);
         }
@@ -65,36 +68,42 @@ public class StudentMainFragment3 extends Fragment{
 
     @OnClick(R.id.user_info)
     void user_info(){
-        if (AccountTool.isLogin(getContext())) {
+        if (checkLogin()) {
             Intent intent = new Intent(getContext(),StudentDataActivity.class);
             startActivity(intent);
-        }else{
-            Toast.makeText(getContext(), "请登录后重试", Toast.LENGTH_SHORT).show();
         }
     }
 
     @OnClick(R.id.user_resume)
     void user_resume(){
-        Intent intent = new Intent(getContext(),StudentResumeListActivity.class);
-        startActivity(intent);
+        if (checkLogin()) {
+            Intent intent = new Intent(getContext(), StudentResumeListActivity.class);
+            startActivity(intent);
+        }
     }
 
     @OnClick(R.id.user_resume_enclosure)
     void user_resume_enclosure(){
-        Intent intent = new Intent(getContext(),StudentResumeEnclosureActivity.class);
-        startActivity(intent);
+        if (checkLogin()) {
+            Intent intent = new Intent(getContext(), StudentResumeEnclosureActivity.class);
+            startActivity(intent);
+        }
     }
 
     @OnClick(R.id.mine_recruitment_delivery)
     void mine_recruitment_delivery(){
-        Intent intent = new Intent(getContext(), StudentRecruitDeliveryActivity.class);
-        startActivity(intent);
+        if (checkLogin()) {
+            Intent intent = new Intent(getContext(), StudentRecruitDeliveryActivity.class);
+            startActivity(intent);
+        }
     }
 
     @OnClick(R.id.mine_recruitment_collection)
     void mine_recruitment_collection(){
-        Intent intent = new Intent(getContext(), StudentRecruitCollectionActivity.class);
-        startActivity(intent);
+        if (checkLogin()) {
+            Intent intent = new Intent(getContext(), StudentRecruitCollectionActivity.class);
+            startActivity(intent);
+        }
     }
 
     @OnClick(R.id.setting)
@@ -127,6 +136,27 @@ public class StudentMainFragment3 extends Fragment{
         }else{
             username.setText("请登录");
             Glide.with(getContext()).load(R.mipmap.avatar_default).into(avatar);
+        }
+    }
+
+    boolean checkLogin(){
+        if (AccountTool.isLogin(getContext())){
+            return true;
+        }else{
+            CommonTipsDialog.create(getContext(),"温馨提示","请登录后重试",false)
+                    .setOnClickListener(new CommonTipsDialog.OnClickListener() {
+                        @Override
+                        public void cancel() {
+
+                        }
+
+                        @Override
+                        public void confirm() {
+                            startActivity(new Intent(getContext(),LoginActivity.class));
+                            getActivity().finish();
+                        }
+                    }).show();
+            return false;
         }
     }
 }

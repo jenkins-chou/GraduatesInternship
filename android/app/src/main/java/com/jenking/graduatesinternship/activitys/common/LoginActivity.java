@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.jenking.graduatesinternship.R;
+import com.jenking.graduatesinternship.activitys.student.StudentMainActivity;
+import com.jenking.graduatesinternship.activitys.teacher.TeacherMainActivity;
 import com.jenking.graduatesinternship.api.RS;
 import com.jenking.graduatesinternship.dialog.CommonTipsDialog;
 import com.jenking.graduatesinternship.models.base.ResultModel;
@@ -121,9 +124,16 @@ public class LoginActivity extends BaseActivity {
     void checkUserType(UserModel userModel){
         if (StringUtil.isNotEmpty(userModel.getType())){
             switch (userModel.getType()){
-                case "student":case "teacher":
+                case "student":
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                     AccountTool.saveUser(LoginActivity.this,userModel);
+                    startActivity(new Intent(this, StudentMainActivity.class));
+                    finish();
+                    break;
+                    case "teacher":
+                    Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                    AccountTool.saveUser(LoginActivity.this,userModel);
+                        startActivity(new Intent(this, TeacherMainActivity.class));
                     finish();
                     break;
                 default:

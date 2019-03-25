@@ -39,19 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="附件简历"
-            android:textColor="@color/white"
-            android:textSize="@dimen/header_title_textsize" />
-
-        <TextView
-            android:id="@+id/upload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:text="上传"
+            android:text="我的导师"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
 
@@ -61,38 +49,29 @@
             android:layout_width="match_parent"
             android:layout_height="1px"/>
     </RelativeLayout>
-    <WebView
-        android:id="@+id/webView"
+    <RelativeLayout
+        android:background="@color/white"
+        android:orientation="vertical"
         android:layout_below="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </WebView>
-    <LinearLayout
-        android:visibility="gone"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:id="@+id/empty_show"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <ImageView
-            android:alpha="0.7"
-            android:src="@mipmap/icon_data_empty"
-            android:layout_width="80dp"
-            android:layout_height="80dp" />
         <TextView
-            android:text="数据空空如也"
-            android:textSize="12sp"
-            android:textColor="@color/base_font_color"
+            android:id="@+id/tutor_name"
+            android:layout_margin="15dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="导师姓名"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <com.jenking.graduatesinternship.ui.CommonLoading
-        android:id="@+id/loading"
-        android:visibility="gone"
-        android:layout_centerInParent="true"
-        android:layout_width="100dp"
-        android:layout_height="120dp" />
+        <TextView
+            android:id="@+id/select_tutor"
+            android:layout_margin="15dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="选择"
+            android:textColor="@color/main_color"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
 </RelativeLayout>

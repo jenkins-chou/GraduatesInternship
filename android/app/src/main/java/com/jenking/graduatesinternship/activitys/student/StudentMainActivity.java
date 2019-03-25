@@ -122,18 +122,6 @@ public class StudentMainActivity extends BaseActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (context==null)
                 context = this;
-//            CommonTipsDialog.create(context,"温馨提示","确定要退出吗",false)
-//                    .setOnClickListener(new CommonTipsDialog.OnClickListener() {
-//                        @Override
-//                        public void cancel() {
-//
-//                        }
-//
-//                        @Override
-//                        public void confirm() {
-//                            finish();
-//                        }
-//                    }).show();
             return true;
         }
         return super.onKeyDown(keyCode, event);

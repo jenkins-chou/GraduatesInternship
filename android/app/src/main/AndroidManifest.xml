@@ -65,7 +65,8 @@
         <activity android:name=".activitys.student.StudentResumeOperateActivity" />
         <activity android:name=".activitys.student.StudentResumeDetailActivity" />
         <activity android:name=".activitys.student.StudentResumeSelectActivity" />
-        <activity android:name=".activitys.student.StudentResumeEnclosureActivity"></activity>
+        <activity android:name=".activitys.student.StudentResumeEnclosureActivity" />
+        <activity android:name=".activitys.student.StudentTutorActivity"></activity>
     </application>
 
 </manifest>

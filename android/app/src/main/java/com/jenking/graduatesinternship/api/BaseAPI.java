@@ -5,6 +5,5 @@ package com.jenking.graduatesinternship.api;
  */
 
 public class BaseAPI {
-    public static String base_url = "http://8tfkg4.natappfree.cc/";//
-    public static String base_upload_url = "http://39.108.64.227:7777/upload/uploadImg";//
+    public static String base_url = "http://ey8pnd.natappfree.cc/";//
 }

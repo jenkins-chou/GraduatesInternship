@@ -5,6 +5,7 @@ import java.util.List;
 import com.alibaba.fastjson.JSONObject;
 import com.demo.models.RecruitModel;
 import com.demo.models.RecruitmentCollectionModel;
+import com.demo.models.RecruitmentDeliveryModel;
 import com.demo.models.RecruitmentCollectionModel;
 import com.demo.utils.PageJson;
 import com.demo.utils.ParamUtil;
@@ -96,6 +97,27 @@ public class RecruitmentCollectionController extends Controller {
 			renderJson(JsonKit.toJson(new StatusJson("500", "fail", true)));
 		}
 	}
+	
+	//检查是否已经收藏过该职位
+		public void checkIsCollect(){
+			try {
+				String user_id = getPara("user_id");
+				String recruit_id = getPara("recruit_id");
+				String sql = "select * from recruitment_collection where user_id = '"+user_id+"' and recruit_id = '"+recruit_id+"' and del != 'delete'";
+				List<RecruitmentDeliveryModel> models = RecruitmentDeliveryModel.dao.find(sql);
+				
+				System.out.println(models);
+				if(models!=null&&models.size()==1){
+					renderJson(JsonKit.toJson(new StatusJson("201", "已经投递过该职位", true)));
+				}else{
+					renderJson(JsonKit.toJson(new StatusJson("200", "success", true)));
+				}
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+				renderJson(JsonKit.toJson(new StatusJson("500", "fail", true)));
+			}
+		}
 	
 	/**
 	 * -------------------------移动端接口

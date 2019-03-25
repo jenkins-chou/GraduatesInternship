@@ -3,8 +3,8 @@ package com.demo.controller;
 import java.util.List;
 
 import com.alibaba.fastjson.JSONObject;
-import com.demo.models.ResumeModel;
-import com.demo.models.ResumeModel;
+import com.demo.models.ResumeEnclosureModel;
+import com.demo.models.ResumeEnclosureModel;
 import com.demo.utils.PageJson;
 import com.demo.utils.ParamUtil;
 import com.demo.utils.RecordJson;
@@ -14,23 +14,36 @@ import com.jfinal.kit.JsonKit;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.upload.UploadFile;
 
-public class ResumeController extends Controller {
+public class ResumeEnclosureController extends Controller {
+	
+	//简历上传
+	public void uploadFileMobile(){
+		UploadFile f = getFile();
+		renderJson("upload/"+f.getFileName());
+	}
 	
 	/**
 	 * -------------------------移动端接口
 	 */
-	public void getMineResumeMobile(){
-		String sql = "select * from resume where user_id = '"+getPara("user_id")+"' and del != 'delete' order by id DESC";
-		List<ResumeModel> datas = ResumeModel.dao.find(sql);
+	public void getMineResumeEnclosureMobile(){
+		String sql = "select * from resume_enclosure where user_id = '"+getPara("user_id")+"' and status = 'current' and del != 'delete' order by id DESC";
+		List<ResumeEnclosureModel> datas = ResumeEnclosureModel.dao.find(sql);
 		JSONObject js = new JSONObject();
 		js.put("code", "200");
 		js.put("data",datas);
 		renderJson(JsonKit.toJson(js));
 	}
 	
-	public void addResumeMobile(){
+	public void addResumeEnclosureMobile(){
 		try {
-			ResumeModel model = getModel(ResumeModel.class, "", true);
+			String sql = "select * from resume_enclosure where user_id = '"+getPara("user_id")+"' and del != 'delete'";
+			List<ResumeEnclosureModel> datas = ResumeEnclosureModel.dao.find(sql);
+			for(ResumeEnclosureModel model:datas){
+				model.set("status", "Previous");
+				model.update();
+			}
+			
+			ResumeEnclosureModel model = getModel(ResumeEnclosureModel.class, "", true);
 			model.set("create_time", System.currentTimeMillis()/1000+"");
 			model.set("del","normal");
 			System.out.println("model:"+model);
@@ -46,9 +59,9 @@ public class ResumeController extends Controller {
 			renderJson(js.toJSONString());
 		}
 	}
-	public void modifyResumeMobile(){
+	public void modifyResumeEnclosureMobile(){
 		try {
-			ResumeModel model = getModel(ResumeModel.class, "", true);
+			ResumeEnclosureModel model = getModel(ResumeEnclosureModel.class, "", true);
 			System.out.println(model.toJson());
 			model.update();
 			JSONObject js = new JSONObject();
@@ -62,11 +75,11 @@ public class ResumeController extends Controller {
 			renderJson(js.toJSONString());
 		}
 	}
-	public void deleteResumeMobile(){
+	public void deleteResumeEnclosureMobile(){
 		try {
 			String[] ids = getParaValues("id");
 			for (String id : ids) {
-				ResumeModel model = ResumeModel.dao.findById(id);
+				ResumeEnclosureModel model = ResumeEnclosureModel.dao.findById(id);
 				model.set("del", "delete");
 				model.update();
 			}
@@ -81,23 +94,23 @@ public class ResumeController extends Controller {
 	 * -------------------------移动端接口
 	 */
 	
-	public void getResumeById(){
-		ResumeModel model = ResumeModel.dao.findById(getPara("id"));
+	public void getResumeEnclosureById(){
+		ResumeEnclosureModel model = ResumeEnclosureModel.dao.findById(getPara("id"));
 		renderJson(JsonKit.toJson(new RecordJson("200", "suc", model)));
 	}
 	
-	public void getAllResume() {
+	public void getAllResumeEnclosure() {
 		ParamUtil param = new ParamUtil(getRequest());
-		Page<ResumeModel> page = ResumeModel.dao.paginate(param.getPageNumber(),
-				param.getPageSize(), "select * ", "from Resume where del != 'delete'");
+		Page<ResumeEnclosureModel> page = ResumeEnclosureModel.dao.paginate(param.getPageNumber(),
+				param.getPageSize(), "select * ", "from ResumeEnclosure where del != 'delete'");
 		
 		System.out.println(page.getList().toString());
-		renderJson(JsonKit.toJson(new PageJson<ResumeModel>("0", "", page)));
+		renderJson(JsonKit.toJson(new PageJson<ResumeEnclosureModel>("0", "", page)));
 	}
 	
-	public void addResume(){
+	public void addResumeEnclosure(){
 		try {
-			ResumeModel model = getModel(ResumeModel.class, "", true);
+			ResumeEnclosureModel model = getModel(ResumeEnclosureModel.class, "", true);
 			model.set("create_time", System.currentTimeMillis()/1000+"");
 			System.out.println("model:"+model);
 			model.save();
@@ -115,9 +128,9 @@ public class ResumeController extends Controller {
 	}
 
 	
-	public void deleteResume(){
+	public void deleteResumeEnclosure(){
 		try {
-			ResumeModel model = getModel(ResumeModel.class, "", true);
+			ResumeEnclosureModel model = getModel(ResumeEnclosureModel.class, "", true);
 			model.set("del", "delete");
 			model.update();
 			JSONObject js = new JSONObject();
@@ -132,11 +145,11 @@ public class ResumeController extends Controller {
 		}
 	}
 	
-	public void deleteSelectResume(){
+	public void deleteSelectResumeEnclosure(){
 		try {
 			String[] ids = getParaValues("id");
 			for (String id : ids) {
-				ResumeModel model = ResumeModel.dao.findById(id);
+				ResumeEnclosureModel model = ResumeEnclosureModel.dao.findById(id);
 				model.set("del", "delete");
 				model.update();
 			}
@@ -147,9 +160,9 @@ public class ResumeController extends Controller {
 		}
 	}
 	
-	public void updateResume(){
+	public void updateResumeEnclosure(){
 		try {
-			ResumeModel model = getModel(ResumeModel.class, "", true);
+			ResumeEnclosureModel model = getModel(ResumeEnclosureModel.class, "", true);
 			System.out.println(model.toJson());
 			model.update();
 			JSONObject js = new JSONObject();
@@ -166,17 +179,17 @@ public class ResumeController extends Controller {
 	
 	//显示列表
 	public void showHtmlList() {
-		render("list_resume.html");
+		render("list_ResumeEnclosure.html");
 	}
 	
 	//显示添加页
 	public void showHtmlAdd() {
-		render("add_resume.html");
+		render("add_ResumeEnclosure.html");
 	}
 	
 	//显示修改页
 	public void showHtmlModify() {
 		setAttr("id", getPara("id"));
-		render("add_resume.html");
+		render("add_ResumeEnclosure.html");
 	}
 }

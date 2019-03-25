@@ -2,6 +2,7 @@ package com.demo.common;
 
 import java.util.HashMap;
 
+
 import java.util.Map;
 
 import org.beetl.core.GroupTemplate;
@@ -20,7 +21,9 @@ import com.demo.controller.RecruitController;
 import com.demo.controller.RecruitmentCollectionController;
 import com.demo.controller.RecruitmentDeliveryController;
 import com.demo.controller.ResumeController;
+import com.demo.controller.ResumeEnclosureController;
 import com.demo.controller.SchoolController;
+import com.demo.controller.StudentTutorController;
 import com.demo.controller.UserController;
 import com.demo.index.IndexController;
 import com.demo.models.ClassModel;
@@ -35,8 +38,10 @@ import com.demo.models.PrizeExperienceModel;
 import com.demo.models.RecruitModel;
 import com.demo.models.RecruitmentCollectionModel;
 import com.demo.models.RecruitmentDeliveryModel;
+import com.demo.models.ResumeEnclosureModel;
 import com.demo.models.ResumeModel;
 import com.demo.models.SchoolModel;
+import com.demo.models.StudentTutorModel;
 import com.demo.models.UserModel;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
@@ -88,9 +93,11 @@ public class DemoConfig extends JFinalConfig {
 		me.add("/recruit",RecruitController.class);
 		me.add("/recruitment_collection", RecruitmentCollectionController.class);
 		me.add("/recruitment_delivery", RecruitmentDeliveryController.class);
-		me.add("resume", ResumeController.class);
-		me.add("school", SchoolController.class);
+		me.add("/resume", ResumeController.class);
+		me.add("/resume_enclosure", ResumeEnclosureController.class);
+		me.add("/school", SchoolController.class);
 		me.add("/user", UserController.class);
+		me.add("/student_tutor",StudentTutorController.class);
 	}
 	 
 	public void configPlugin(Plugins me) {
@@ -112,8 +119,10 @@ public class DemoConfig extends JFinalConfig {
 		arp.addMapping("recruitment_delivery", RecruitmentDeliveryModel.class);
 		arp.addMapping("recruit", RecruitModel.class);
 		arp.addMapping("resume", ResumeModel.class);
+		arp.addMapping("resume_enclosure", ResumeEnclosureModel.class);
 		arp.addMapping("school", SchoolModel.class);
 		arp.addMapping("user_base", UserModel.class);
+		arp.addMapping("student_tutor", StudentTutorModel.class);
 	}
 	
 	public void configInterceptor(Interceptors me) {

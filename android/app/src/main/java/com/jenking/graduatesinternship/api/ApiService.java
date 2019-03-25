@@ -2,12 +2,14 @@ package com.jenking.graduatesinternship.api;
 
 import com.jenking.graduatesinternship.models.base.ResultModel;
 import com.jenking.graduatesinternship.models.impl.EducationExpModel;
+import com.jenking.graduatesinternship.models.impl.EnterpriseModel;
 import com.jenking.graduatesinternship.models.impl.InternshipExperienceModel;
 import com.jenking.graduatesinternship.models.impl.PersonalCertModel;
 import com.jenking.graduatesinternship.models.impl.PersonalSkillModel;
 import com.jenking.graduatesinternship.models.impl.RecruitCollectionModel;
 import com.jenking.graduatesinternship.models.impl.RecruitDeliveryModel;
 import com.jenking.graduatesinternship.models.impl.RecruitModel;
+import com.jenking.graduatesinternship.models.impl.ResumeEnclosureModel;
 import com.jenking.graduatesinternship.models.impl.ResumeModel;
 import com.jenking.graduatesinternship.models.impl.UserModel;
 
@@ -145,6 +147,23 @@ public interface ApiService {
     @POST("resume/deleteResumeMobile")
     Observable<ResultModel<ResumeModel>> deleteResumeMobile(@FieldMap Map<String, String> body);
 
+    //个人简历附件
+    @FormUrlEncoded
+    @POST("resume_enclosure/getMineResumeEnclosureMobile")
+    Observable<ResultModel<ResumeEnclosureModel>> getMineResumeEnclosureMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("resume_enclosure/addResumeEnclosureMobile")
+    Observable<ResultModel<ResumeEnclosureModel>> addResumeEnclosureMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("resume_enclosure/modifyResumeEnclosureMobile")
+    Observable<ResultModel<ResumeEnclosureModel>> modifyResumeEnclosureMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("resume_enclosure/deleteResumeEnclosureMobile")
+    Observable<ResultModel<ResumeEnclosureModel>> deleteResumeEnclosureMobile(@FieldMap Map<String, String> body);
+
     //岗位收藏
     @FormUrlEncoded
     @POST("recruitment_collection/getMineRecruitmentCollectionMobile")
@@ -162,6 +181,10 @@ public interface ApiService {
     @POST("recruitment_collection/deleteRecruitmentCollectionMobile")
     Observable<ResultModel<RecruitCollectionModel>> deleteRecruitmentCollectionMobile(@FieldMap Map<String, String> body);
 
+    @FormUrlEncoded
+    @POST("recruitment_collection/checkIsCollect")
+    Observable<ResultModel<RecruitDeliveryModel>> checkIsCollect(@FieldMap Map<String, String> body);
+
     //岗位投递
     @FormUrlEncoded
     @POST("recruitment_delivery/getMineRecruitmentDeliveryMobile")
@@ -178,5 +201,14 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("recruitment_delivery/deleteRecruitmentDeliveryMobile")
     Observable<ResultModel<RecruitDeliveryModel>> deleteRecruitmentDeliveryMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("recruitment_delivery/checkIsDelivery")
+    Observable<ResultModel<RecruitDeliveryModel>> checkIsDelivery(@FieldMap Map<String, String> body);
+
+    //企业、单位
+    @FormUrlEncoded
+    @POST("enterprise/getEnterpriseById")
+    Observable<ResultModel<EnterpriseModel>> getEnterpriseById(@FieldMap Map<String, String> body);
 
 }

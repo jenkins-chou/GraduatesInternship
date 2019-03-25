@@ -3,10 +3,13 @@ package com.jenking.graduatesinternship.activitys.common;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jenking.graduatesinternship.R;
+import com.jenking.graduatesinternship.activitys.student.StudentMainActivity;
+import com.jenking.graduatesinternship.activitys.teacher.TeacherMainActivity;
 import com.jenking.graduatesinternship.api.RS;
 import com.jenking.graduatesinternship.dialog.CommonTipsDialog;
 import com.jenking.graduatesinternship.models.base.ResultModel;
@@ -25,6 +28,12 @@ import butterknife.OnClick;
 public class RegisterActivity extends BaseActivity {
 
     private UserPresenter userPresenter;
+
+    @BindView(R.id.type_student)
+    RadioButton type_student;
+    @BindView(R.id.type_teacher)
+    RadioButton type_teacher;
+
     @BindView(R.id.username)
     TextView username;
     @BindView(R.id.pass)
@@ -49,7 +58,11 @@ public class RegisterActivity extends BaseActivity {
             Map<String,String> params = RS.getBaseParams(this);
             params.put("useridentify",username_str);
             params.put("pass",password_str);
-            params.put("type","student");
+            if (type_student.isChecked()){
+                params.put("type","student");
+            }else{
+                params.put("type","teacher");
+            }
             userPresenter.registerMobile(params);
             setLoadingEnable(true);
         }
@@ -97,9 +110,7 @@ public class RegisterActivity extends BaseActivity {
                             if (resultModel.getData()!=null&&resultModel.getData().size()>0){
                                 List<UserModel> userModels = resultModel.getData();
                                 UserModel userModel = userModels.get(0);
-                                Toast.makeText(RegisterActivity.this, "注册成功，已默认登录", Toast.LENGTH_SHORT).show();
-                                AccountTool.saveUser(RegisterActivity.this,userModel);
-                                finish();
+                                checkUserType(userModel);
                             }
                         }else{
                             Toast.makeText(RegisterActivity.this, "已存在账号", Toast.LENGTH_SHORT).show();
@@ -115,5 +126,30 @@ public class RegisterActivity extends BaseActivity {
 
             }
         });
+    }
+
+    void checkUserType(UserModel userModel){
+        if (StringUtil.isNotEmpty(userModel.getType())){
+            switch (userModel.getType()){
+                case "student":
+                    Toast.makeText(this, "注册成功，已默认登录", Toast.LENGTH_SHORT).show();
+                    AccountTool.saveUser(this,userModel);
+                    startActivity(new Intent(this, StudentMainActivity.class));
+                    finish();
+                    break;
+                case "teacher":
+                    Toast.makeText(this, "注册成功，已默认登录", Toast.LENGTH_SHORT).show();
+                    AccountTool.saveUser(this,userModel);
+                    startActivity(new Intent(this, TeacherMainActivity.class));
+                    finish();
+                    break;
+                default:
+                    Toast.makeText(this, "未知类型，登录失败", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+
+        }else{
+            Toast.makeText(this, "数据错误", Toast.LENGTH_SHORT).show();
+        }
     }
 }

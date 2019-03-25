@@ -1,11 +1,13 @@
 package com.jenking.graduatesinternship.activitys.common;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jenking.graduatesinternship.R;
+import com.jenking.graduatesinternship.dialog.CommonTipsDialog;
 import com.jenking.graduatesinternship.utils.AccountTool;
 
 import butterknife.BindView;
@@ -22,9 +24,20 @@ public class SettingActivity extends BaseActivity{
 
     @OnClick(R.id.logout)
     void logout(){
-        AccountTool.logout(this);
-        Toast.makeText(this, "退出登录成功",Toast.LENGTH_SHORT).show();
-        finish();
+        CommonTipsDialog.create(this,"温馨提示","确定要退出登录吗",false)
+                .setOnClickListener(new CommonTipsDialog.OnClickListener() {
+                    @Override
+                    public void cancel() {
+
+                    }
+
+                    @Override
+                    public void confirm() {
+                        AccountTool.logout(SettingActivity.this);
+                        Toast.makeText(SettingActivity.this, "退出登录成功",Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                }).show();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

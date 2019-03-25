@@ -18,7 +18,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * presenter模板
  */
-public class RecruitDeliveryPresenter {
+public class ResumeEnclosurePresenter {
 
     private Context context;
 
@@ -26,7 +26,7 @@ public class RecruitDeliveryPresenter {
 
     private OnCallBack onCallBack;
 
-    public RecruitDeliveryPresenter(Context context){
+    public ResumeEnclosurePresenter(Context context){
         this.context = context;
         this.view = view;
     }
@@ -35,13 +35,13 @@ public class RecruitDeliveryPresenter {
         this.onCallBack = onCallBack;
     }
 
-    public void getMineRecruitmentDeliveryMobile(Map<String,String> params){
+    public void getMineResumeEnclosureMobile(Map<String,String> params){
         if (params==null)return;
         Log.e("开始请求","p-->"+params.toString());
         new ApiUtil(context)
                 .getServer(ApiService.class)
                 //记得更改请求接口数据
-                .getMineRecruitmentDeliveryMobile(params)
+                .getMineResumeEnclosureMobile(params)
                 .subscribeOn(Schedulers.io())//后台处理线程
                 .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
                 .subscribe(new Observer<ResultModel>() {
@@ -54,7 +54,7 @@ public class RecruitDeliveryPresenter {
                     public void onNext(ResultModel resultModel) {
                         //更新视图
                         if (onCallBack!=null){
-                            onCallBack.getMineRecruitmentDeliveryMobile(true,resultModel);
+                            onCallBack.getMineResumeEnclosureMobile(true,resultModel);
                         }
                     }
                     @Override
@@ -62,7 +62,7 @@ public class RecruitDeliveryPresenter {
                         System.out.print("----error");
                         e.printStackTrace();
                         if (onCallBack!=null){
-                            onCallBack.getMineRecruitmentDeliveryMobile(false,e);
+                            onCallBack.getMineResumeEnclosureMobile(false,e);
                         }
                         //view.failed(e);
                     }
@@ -72,13 +72,13 @@ public class RecruitDeliveryPresenter {
                 });
     }
 
-    public void addRecruitmentDeliveryMobile(Map<String,String> params){
+    public void addResumeEnclosureMobile(Map<String,String> params){
         if (params==null)return;
         Log.e("开始请求","p-->"+params.toString());
         new ApiUtil(context)
                 .getServer(ApiService.class)
                 //记得更改请求接口数据
-                .addRecruitmentDeliveryMobile(params)
+                .addResumeEnclosureMobile(params)
                 .subscribeOn(Schedulers.io())//后台处理线程
                 .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
                 .subscribe(new Observer<ResultModel>() {
@@ -91,7 +91,7 @@ public class RecruitDeliveryPresenter {
                     public void onNext(ResultModel resultModel) {
                         //更新视图
                         if (onCallBack!=null){
-                            onCallBack.addRecruitmentDeliveryMobile(true,resultModel);
+                            onCallBack.addResumeEnclosureMobile(true,resultModel);
                         }
                     }
                     @Override
@@ -99,7 +99,7 @@ public class RecruitDeliveryPresenter {
                         System.out.print("----error");
                         e.printStackTrace();
                         if (onCallBack!=null){
-                            onCallBack.addRecruitmentDeliveryMobile(false,e);
+                            onCallBack.addResumeEnclosureMobile(false,e);
                         }
                         //view.failed(e);
                     }
@@ -109,13 +109,13 @@ public class RecruitDeliveryPresenter {
                 });
     }
 
-    public void modifyRecruitmentDeliveryMobile(Map<String,String> params){
+    public void modifyResumeEnclosureMobile(Map<String,String> params){
         if (params==null)return;
         Log.e("开始请求","p-->"+params.toString());
         new ApiUtil(context)
                 .getServer(ApiService.class)
                 //记得更改请求接口数据
-                .modifyRecruitmentDeliveryMobile(params)
+                .modifyResumeEnclosureMobile(params)
                 .subscribeOn(Schedulers.io())//后台处理线程
                 .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
                 .subscribe(new Observer<ResultModel>() {
@@ -128,7 +128,7 @@ public class RecruitDeliveryPresenter {
                     public void onNext(ResultModel resultModel) {
                         //更新视图
                         if (onCallBack!=null){
-                            onCallBack.modifyRecruitmentDeliveryMobile(true,resultModel);
+                            onCallBack.modifyResumeEnclosureMobile(true,resultModel);
                         }
                     }
                     @Override
@@ -136,7 +136,7 @@ public class RecruitDeliveryPresenter {
                         System.out.print("----error");
                         e.printStackTrace();
                         if (onCallBack!=null){
-                            onCallBack.modifyRecruitmentDeliveryMobile(false,e);
+                            onCallBack.modifyResumeEnclosureMobile(false,e);
                         }
                         //view.failed(e);
                     }
@@ -146,13 +146,13 @@ public class RecruitDeliveryPresenter {
                 });
     }
 
-    public void deleteRecruitmentDeliveryMobile(Map<String,String> params){
+    public void deleteResumeEnclosureMobile(Map<String,String> params){
         if (params==null)return;
         Log.e("开始请求","p-->"+params.toString());
         new ApiUtil(context)
                 .getServer(ApiService.class)
                 //记得更改请求接口数据
-                .deleteRecruitmentDeliveryMobile(params)
+                .deleteResumeEnclosureMobile(params)
                 .subscribeOn(Schedulers.io())//后台处理线程
                 .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
                 .subscribe(new Observer<ResultModel>() {
@@ -165,7 +165,7 @@ public class RecruitDeliveryPresenter {
                     public void onNext(ResultModel resultModel) {
                         //更新视图
                         if (onCallBack!=null){
-                            onCallBack.deleteRecruitmentDeliveryMobile(true,resultModel);
+                            onCallBack.deleteResumeEnclosureMobile(true,resultModel);
                         }
                     }
                     @Override
@@ -173,44 +173,7 @@ public class RecruitDeliveryPresenter {
                         System.out.print("----error");
                         e.printStackTrace();
                         if (onCallBack!=null){
-                            onCallBack.deleteRecruitmentDeliveryMobile(false,e);
-                        }
-                        //view.failed(e);
-                    }
-                    @Override
-                    public void onComplete() {
-                    }
-                });
-    }
-
-    public void checkIsDelivery(Map<String,String> params){
-        if (params==null)return;
-        Log.e("开始请求","p-->"+params.toString());
-        new ApiUtil(context)
-                .getServer(ApiService.class)
-                //记得更改请求接口数据
-                .checkIsDelivery(params)
-                .subscribeOn(Schedulers.io())//后台处理线程
-                .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
-                .subscribe(new Observer<ResultModel>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        System.out.print(d);
-                    }
-
-                    @Override
-                    public void onNext(ResultModel resultModel) {
-                        //更新视图
-                        if (onCallBack!=null){
-                            onCallBack.checkIsDelivery(true,resultModel);
-                        }
-                    }
-                    @Override
-                    public void onError(Throwable e) {
-                        System.out.print("----error");
-                        e.printStackTrace();
-                        if (onCallBack!=null){
-                            onCallBack.checkIsDelivery(false,e);
+                            onCallBack.deleteResumeEnclosureMobile(false,e);
                         }
                         //view.failed(e);
                     }
@@ -221,11 +184,10 @@ public class RecruitDeliveryPresenter {
     }
 
     public interface OnCallBack{
-        void getMineRecruitmentDeliveryMobile(boolean isSuccess, Object object);
-        void addRecruitmentDeliveryMobile(boolean isSuccess, Object object);
-        void modifyRecruitmentDeliveryMobile(boolean isSuccess, Object object);
-        void deleteRecruitmentDeliveryMobile(boolean isSuccess, Object object);
-        void checkIsDelivery(boolean isSuccess, Object object);
+        void getMineResumeEnclosureMobile(boolean isSuccess, Object object);
+        void addResumeEnclosureMobile(boolean isSuccess, Object object);
+        void modifyResumeEnclosureMobile(boolean isSuccess, Object object);
+        void deleteResumeEnclosureMobile(boolean isSuccess, Object object);
     }
 
 }

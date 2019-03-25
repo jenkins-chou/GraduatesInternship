@@ -3,6 +3,7 @@ package com.jenking.graduatesinternship.activitys.common;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,8 @@ public class RecruitDetailActivity extends BaseActivity {
     TextView working_region;
     @BindView(R.id.depertment)
     TextView department;
+    @BindView(R.id.ecterprise_name)
+    TextView ecterprise_name;
     @BindView(R.id.working_day)
     TextView working_day;
     @BindView(R.id.working_time)
@@ -58,6 +61,8 @@ public class RecruitDetailActivity extends BaseActivity {
     TextView skill_requirement;
     @BindView(R.id.team_detail)
     TextView team_detail;
+    @BindView(R.id.collect)
+    TextView collect;//收藏按钮
 
     @BindView(R.id.submit)
     TextView submit;
@@ -94,22 +99,30 @@ public class RecruitDetailActivity extends BaseActivity {
 
     @OnClick(R.id.submit)
     void submit(){
-        if (recruitModel!=null){
-            CommonTipsDialog.create(this,"温馨提示","确定要申请该招聘吗？",false)
-                    .setOnClickListener(new CommonTipsDialog.OnClickListener() {
-                        @Override
-                        public void cancel() {
+        if (checkLogin()) {
+            if (recruitModel!=null){
+                CommonTipsDialog.create(this,"温馨提示","确定要申请该招聘吗？",false)
+                        .setOnClickListener(new CommonTipsDialog.OnClickListener() {
+                            @Override
+                            public void cancel() {
 
-                        }
+                            }
 
-                        @Override
-                        public void confirm() {
-                            selectResume();
-                        }
-                    }).show();
+                            @Override
+                            public void confirm() {
+                                selectResume();
+                            }
+                        }).show();
+            }
         }
     }
 
+    @OnClick(R.id.ecterprise_bar)
+    void ecterprise_bar(){
+
+    }
+
+    //选择简历
     void selectResume(){
         Intent intent = new Intent(this,StudentResumeSelectActivity.class);
         startActivityForResult(intent,StudentResumeSelectActivity.selectResumeCode);
@@ -134,6 +147,21 @@ public class RecruitDetailActivity extends BaseActivity {
 
         initRecruitCollection();
         initRecruitDelivery();
+
+        getData();
+    }
+
+    /**
+     * 获取是否已经投递、收藏过得数据
+     */
+    void getData(){
+        if (AccountTool.isLogin(this)&&recruitModel!=null){
+            Map<String,String> params = RS.getBaseParams(this);
+            params.put("user_id",AccountTool.getLoginUser(this).getId());
+            params.put("recruit_id",recruitModel.getId());
+            recruitDeliveryPresenter.checkIsDelivery(params);
+            recruitCollectionPresenter.checkIsCollect(params);
+        }
     }
 
     private void refreshView(){
@@ -141,6 +169,7 @@ public class RecruitDetailActivity extends BaseActivity {
         salary.setText(recruitModel.getSalary());
         working_region.setText(recruitModel.getWorking_region());
         department.setText(recruitModel.getDepertment());
+        ecterprise_name.setText(recruitModel.getEnterprise_name());
         working_day.setText(recruitModel.getWorking_day());
         working_time.setText(recruitModel.getWorking_start_time()+"-"+recruitModel.getWorking_end_time());
         job_content.setText(recruitModel.getJob_content());
@@ -176,6 +205,9 @@ public class RecruitDetailActivity extends BaseActivity {
                     ResultModel resultModel = (ResultModel) object;
                     if (resultModel!=null&&StringUtil.isEquals(resultModel.getCode(),"200")){
                         Toast.makeText(RecruitDetailActivity.this, "收藏成功，请前往我的岗位收藏查看", Toast.LENGTH_SHORT).show();
+                        collect.setText("已收藏");
+                        collect.setEnabled(false);
+                        collect.setTextColor(getResources().getColor(R.color.base_font_color2));
                     }else{
                         CommonTipsDialog.showTip(RecruitDetailActivity.this,"温馨提示",resultModel.getMessage()+"",false);
                     }
@@ -192,6 +224,23 @@ public class RecruitDetailActivity extends BaseActivity {
             @Override
             public void deleteRecruitmentCollectionMobile(boolean isSuccess, Object object) {
 
+            }
+
+            @Override
+            public void checkIsCollect(boolean isSuccess, Object object) {
+                if (isSuccess){
+                    ResultModel resultModel = (ResultModel) object;
+                    if (resultModel!=null){
+                        if (StringUtil.isEquals(resultModel.getCode(),"200")){//未收藏
+
+                        }else if (StringUtil.isEquals(resultModel.getCode(),"201")){//已经收藏过了
+                            collect.setText("已收藏");
+                            collect.setEnabled(false);
+                            collect.setTextColor(getResources().getColor(R.color.base_font_color2));
+                        }else{
+                        }
+                    }
+                }
             }
         });
     }
@@ -210,7 +259,8 @@ public class RecruitDetailActivity extends BaseActivity {
                     ResultModel resultModel = (ResultModel) object;
                     if (resultModel!=null&&StringUtil.isEquals(resultModel.getCode(),"200")){
                         Toast.makeText(RecruitDetailActivity.this, "投递成功，请前往我的申请查看", Toast.LENGTH_SHORT).show();
-                        finish();
+                        submit.setEnabled(false);
+                        submit.setText("已经投递过该职位");
                     }else{
                         CommonTipsDialog.showTip(RecruitDetailActivity.this,"温馨提示",resultModel.getMessage()+"",false);
                     }
@@ -228,6 +278,22 @@ public class RecruitDetailActivity extends BaseActivity {
             public void deleteRecruitmentDeliveryMobile(boolean isSuccess, Object object) {
 
             }
+
+            @Override
+            public void checkIsDelivery(boolean isSuccess, Object object) {
+                if (isSuccess){
+                    ResultModel resultModel = (ResultModel) object;
+                    if (resultModel!=null){
+                        if (StringUtil.isEquals(resultModel.getCode(),"200")){//未投递
+
+                        }else if (StringUtil.isEquals(resultModel.getCode(),"201")){//已经投递过了
+                            submit.setEnabled(false);
+                            submit.setText("已经投递过该职位");
+                        }else{
+                        }
+                    }
+                }
+            }
         });
     }
 
@@ -241,7 +307,7 @@ public class RecruitDetailActivity extends BaseActivity {
                 Map<String,String> params = RS.getBaseParams(RecruitDetailActivity.this);
                 params.put("user_id",AccountTool.getLoginUser(RecruitDetailActivity.this).getId());
                 params.put("recruit_id",recruitModel.getId());
-                params.put("resume_id",recruitModel.getId());
+                params.put("resume_id",data.getStringExtra("resume_id"));
                 params.put("status", RecruitDeliveryModel.DELIVERY_STATUS_INIT);
                 recruitDeliveryPresenter.addRecruitmentDeliveryMobile(params);
                 break;
