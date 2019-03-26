@@ -7,10 +7,12 @@ import com.jfinal.core.Controller;
  */
 public class IndexController extends Controller {
 	public void index() {
-		render("index.jsp");
+		setAttr("status","");
+		render("manager/login.html");
 	}
 	
 	public void manager() {
+		setAttr("status","");
 		render("manager/index.html");
 	}
 }

@@ -16,13 +16,6 @@
 </head>
 <body class="childrenBody">
 	<form class="layui-form" lay-filter="formtable">
-		<div class="layui-form-item">
-			<label class="layui-form-label">归属企业id</label>
-			<div class="layui-input-block">
-				<input type="text" name="enterprise_id" class="layui-input"
-					lay-verify="required" placeholder="请输入">
-			</div>
-		</div>
 		
 		<div class="layui-form-item">
 			<label class="layui-form-label">归属企业名称</label>
@@ -176,6 +169,7 @@
 					placeholder="请输入">
 			</div>
 		</div>
+		<input type="hidden" name="enterprise_id" value="${enterprise_id}"> 
 		<input type="hidden" name="del" value="normal"> 
 		
 		<div class="layui-form-item">

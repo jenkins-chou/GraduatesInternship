@@ -49,25 +49,45 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 							{
 								type : 'checkbox',
 								fixed : 'left'
-							}, {
-								field : 'id',
-								title : 'ID',
-								sort : true,
-								fixed : 'left'
-							}, {
-								field : 'user_id',
-								title : '用户id'
+							}, 
+//							{
+//								field : 'id',
+//								title : 'ID',
+//								sort : true,
+//								fixed : 'left'
+//							}, 
+							{
+								field : 'realname',
+								title : '收藏用户'
 							},{
-								field : 'recruit_id',
-								title : '招聘id'
+								field : 'job_name',
+								title : '招聘职位'
 							}
-							, {
+							,{
+								field : 'depertment',
+								title : '部门'
+							}
+							,{
+								field : 'enterprise_name',
+								title : '公司名称/子公司'
+							}
+							,{
+								field : 'create_time',
+								title : '收藏时间'
+							}
+							,{
+								field : 'remark',
+								title : '备注'
+							}
+							/**, {
 								fixed : 'right',
 								title : '操作',
 								width : 160,
 								templet : '#listtable-opt',
 								align : 'center'
-							} ] ],
+							}**/
+							
+							 ] ],
 							page : true,
 							limits : [ 40, 60, 80, 100, 120, 140 ],
 							height : 'full-80'

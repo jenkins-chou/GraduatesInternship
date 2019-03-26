@@ -40,10 +40,11 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 						}
 						var upload = layui.upload;
 						var ctxPath = getUParam("ctx", "listjs");
+						var enterprise_id = getUParam("enterprise_id", "listjs");
 						// 第一个实例
 						table.render({
 							elem : '#list',
-							url : ctxPath + '/recruit/getAllRecruit' // 数据接口
+							url : ctxPath + '/recruit/getAllRecruit?enterprise_id='+enterprise_id // 数据接口
 							,
 							cols : [ [ // 表头
 							{
@@ -153,7 +154,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 									move : true,
 									content : [
 											ctxPath + '/recruit/showHtmlModify?id='
-													+ data.id, 'yes' ],
+													+ data.id+"&&enterprise_id="+enterprise_id, 'yes' ],
 									end : function() {
 									}
 								});
@@ -186,7 +187,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 									title : "添加",
 									type : 2,
 									area : [ '100%', '100%' ],
-									content : ctxPath + "/recruit/showHtmlAdd"
+									content : ctxPath + "/recruit/showHtmlAdd?enterprise_id="+enterprise_id
 								});
 							},
 							reload : function() {

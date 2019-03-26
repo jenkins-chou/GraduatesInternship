@@ -16,29 +16,23 @@
 </head>
 <body class="childrenBody">
 	<form class="layui-form" lay-filter="formtable">
+		
+		<!-- 投递状态（0：待审核，1：待面试，2：不通过，3：通过，4：实习中，5：实习结束，6：因其他原因注销） -->
 		<div class="layui-form-item">
-			<label class="layui-form-label">用户id</label>
+			<label class="layui-form-label">投递状态</label>
 			<div class="layui-input-block">
-				<input type="text" name="user_id" class="layui-input"
-					lay-verify="required" placeholder="请输入用户名（必填，用作登录使用）">
+				<select name="status" lay-verify="required">
+					<option value="0">待审核</option>
+					<option value="1">待面试</option>
+					<option value="2">不通过</option>
+					<option value="3">通过</option>
+					<option value="4">实习中</option>
+					<option value="5">实习结束</option>
+					<option value="6">因其他原因注销</option>
+				</select>
 			</div>
 		</div>
 		
-		<div class="layui-form-item">
-			<label class="layui-form-label">简历id</label>
-			<div class="layui-input-block">
-				<input type="text" name="resume_id" class="layui-input"
-					lay-verify="required" placeholder="必填">
-			</div>
-		</div>
-		
-		<div class="layui-form-item">
-			<label class="layui-form-label">招聘id</label>
-			<div class="layui-input-block">
-				<input type="text" name="recruit_id" class="layui-input"
-					lay-verify="required" placeholder="必填">
-			</div>
-		</div>
 		
 		<div class="layui-form-item">
 			<label class="layui-form-label">备注</label>

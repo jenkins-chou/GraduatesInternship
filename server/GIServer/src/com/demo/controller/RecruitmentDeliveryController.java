@@ -31,7 +31,6 @@ public class RecruitmentDeliveryController extends Controller {
 	
 	public void addRecruitmentDeliveryMobile(){
 		try {
-			
 			String user_id = getPara("user_id");
 			String recruit_id = getPara("recruit_id");
 			String sql = "select * from recruitment_delivery where user_id = '"+user_id+"' and recruit_id = '"+recruit_id+"' and del != 'delete'";
@@ -128,12 +127,48 @@ public class RecruitmentDeliveryController extends Controller {
 	}
 	
 	public void getAllRecruitmentDelivery() {
+		System.out.println(getPara("enterprise_id"));
 		ParamUtil param = new ParamUtil(getRequest());
 		Page<RecruitmentDeliveryModel> page = RecruitmentDeliveryModel.dao.paginate(param.getPageNumber(),
-				param.getPageSize(), "select * ", "from recruitment_delivery where del != 'delete'");
-		
+				param.getPageSize(), "select DISTINCT b.realname,b.id as user_id,c.job_name,c.enterprise_name,c.depertment,a.id,a.status", "from recruitment_delivery a,user_base b,recruit c "
+						+ "where a.user_id = b.id and a.recruit_id = c.id and c.enterprise_id = 1 and a.del != 'delete' and b.del !='delete'");
+		if(page.getList()!=null){
+			for(RecruitmentDeliveryModel model:page.getList()){
+				model.set("status", (String)exchangeStatus(model.get("status").toString()));
+			}
+		}
 		System.out.println(page.getList().toString());
 		renderJson(JsonKit.toJson(new PageJson<RecruitmentDeliveryModel>("0", "", page)));
+	}
+	
+	public String exchangeStatus(String key){
+		String result = "未知状态";
+		if(key!=null){
+			switch(key){
+			case "0":
+				result = "待审核";
+				break;
+			case "1":
+				result = "待面试";
+				break;
+			case "2":
+				result = "不通过";
+				break;
+			case "3":
+				result = "通过";
+				break;
+			case "4":
+				result = "实习中";
+				break;
+			case "5":
+				result = "实习结束";
+				break;
+			case "6":
+				result = "因其他原因注销";
+				break;
+			}
+		}
+		return result;
 	}
 	
 	public void addRecruitmentDelivery(){

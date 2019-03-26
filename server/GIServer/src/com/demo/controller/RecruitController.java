@@ -21,13 +21,17 @@ public class RecruitController extends Controller {
 	}
 	
 	public void getAllRecruit() {
-		System.out.println(getPara("id"));
+		System.out.println(getPara("enterprise_id"));
 		ParamUtil param = new ParamUtil(getRequest());
 		Page<RecruitModel> page = RecruitModel.dao.paginate(param.getPageNumber(),
-				param.getPageSize(), "select * ", "from Recruit where del != 'delete'");
+				param.getPageSize(), "select * ", "from recruit where enterprise_id = "+getPara("enterprise_id")+" and del != 'delete'");
+		System.out.println(page.getList().toString());
 		renderJson(JsonKit.toJson(new PageJson<RecruitModel>("0", "", page)));
 	}
 	
+	/**
+	 * -------------------------------------移动端接口
+	 */
 	/**
 	 * 分页获取全部招聘信息
 	 **/
@@ -97,10 +101,14 @@ public class RecruitController extends Controller {
 		renderJson(JsonKit.toJson(js));
 	}
 	
+	/**
+	 * -------------------------------------移动端接口
+	 */
+	
 	public void addRecruit(){
 		try {
 			RecruitModel model = getModel(RecruitModel.class, "", true);
-			
+			model.set("enterprise_id", getPara("enterprise_id"));
 			model.set("create_time", System.currentTimeMillis()/1000+"");
 			System.out.println("model:"+model);
 			model.save();
@@ -169,17 +177,22 @@ public class RecruitController extends Controller {
 	
 	//显示列表
 	public void showHtmlList() {
+		System.out.println(getPara("enterprise_id"));
+		setAttr("enterprise_id", getPara("enterprise_id"));
 		render("list_recruit.html");
 	}
 	
 	//显示添加页
 	public void showHtmlAdd() {
+		System.out.println(getPara("enterprise_id"));
+		setAttr("enterprise_id", getPara("enterprise_id"));
 		render("add_recruit.html");
 	}
 	
 	//显示修改页
 	public void showHtmlModify() {
 		setAttr("id", getPara("id"));
+		setAttr("enterprise_id", getPara("enterprise_id"));
 		render("add_recruit.html");
 	}
 }

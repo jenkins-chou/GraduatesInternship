@@ -129,10 +129,14 @@ public class RecruitmentCollectionController extends Controller {
 		renderJson(JsonKit.toJson(new RecordJson("200", "suc", model)));
 	}
 	
+	
+	//根据企业id获取岗位收藏
 	public void getAllRecruitmentCollection() {
+		System.out.println(getPara("enterprise_id"));
 		ParamUtil param = new ParamUtil(getRequest());
 		Page<RecruitmentCollectionModel> page = RecruitmentCollectionModel.dao.paginate(param.getPageNumber(),
-				param.getPageSize(), "select * ", "from recruitment_collection where del != 'delete'");
+				param.getPageSize(), "select DISTINCT b.realname,b.id as user_id,c.*", "from recruitment_collection a,user_base b,recruit c "
+						+ "where a.user_id = b.id and a.recruit_id = c.id and c.enterprise_id = 1 and a.del != 'delete' and b.del !='delete' ORDER BY c.id DESC");
 		
 		System.out.println(page.getList().toString());
 		renderJson(JsonKit.toJson(new PageJson<RecruitmentCollectionModel>("0", "", page)));

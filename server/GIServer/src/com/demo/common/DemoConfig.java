@@ -13,6 +13,7 @@ import com.demo.controller.CollegeController;
 import com.demo.controller.EducationExperienceController;
 import com.demo.controller.EnterpriseController;
 import com.demo.controller.InternshipExperienceController;
+import com.demo.controller.ManagerController;
 import com.demo.controller.MessageController;
 import com.demo.controller.PersonalCertController;
 import com.demo.controller.PersonalSkillController;
@@ -79,6 +80,7 @@ public class DemoConfig extends JFinalConfig {
 	public void configRoute(Routes me) {
 //		me.add("/", IndexController.class,"/index");	//外加路由路径
 		me.add("/", IndexController.class);	
+		me.add("/manager", ManagerController.class);	
 		me.add("/class", ClassController.class);
 		me.add("/college", CollegeController.class);
 		me.add("/education_experience", EducationExperienceController.class);

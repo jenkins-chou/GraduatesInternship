@@ -49,26 +49,34 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 							{
 								type : 'checkbox',
 								fixed : 'left'
-							}, {
-								field : 'id',
-								title : 'ID',
-								sort : true,
-								fixed : 'left'
-							}, {
-								field : 'user_id',
-								title : '用户id'
 							},{
-								field : 'resume_id',
-								title : '简历id'
+								field : 'realname',
+								title : '投递用户'
 							}
 							,{
-								field : 'recruit_id',
-								title : '招聘ID'
+								field : 'user_id',
+								title : '投递用户id'
+							}
+							,{
+								field : 'job_name',
+								title : '投递岗位名称'
+							}
+							,{
+								field : 'enterprise_name',
+								title : '公司名称'
+							}
+							,{
+								field : 'depertment',
+								title : '部门'
+							}
+							,{
+								field : 'status',
+								title : '状态'
 							}
 							, {
 								fixed : 'right',
 								title : '操作',
-								width : 160,
+								width : 270,
 								templet : '#listtable-opt',
 								align : 'center'
 							} ] ],
@@ -82,6 +90,8 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 							var that = this;
 							var data = obj.data;
 							var idDatas="id="+data.id;
+							var user_id = "user_id="+data.user_id;
+							console.log(user_id);
 							if (obj.event === 'del') {
 								layer.confirm('你确认删除这条数据吗?', function(index) {
 									$.getJSON(ctxPath + "/recruitment_delivery/deleteRecruitmentDelivery",
@@ -101,7 +111,10 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 												}
 											});
 								});
-							} else if (obj.event === 'edit') {
+							}else if(obj.event === 'show_resume'){
+								
+							} 
+							else if (obj.event === 'edit') {
 								if ($(that).attr("disabled") == "disabled")
 									return;
 								//iframe窗
