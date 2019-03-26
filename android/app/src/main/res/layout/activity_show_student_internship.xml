@@ -39,60 +39,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="我的导师"
+            android:text="学生实习经历"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
-        <TextView
-            android:id="@+id/delete"
-            android:layout_marginRight="15dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="删除"
-            android:textColor="@color/white"
-            android:textSize="@dimen/header_title_textsize" />
+
         <View
             android:layout_alignParentBottom="true"
             android:background="@color/base_line_color"
             android:layout_width="match_parent"
             android:layout_height="1px"/>
     </RelativeLayout>
-    <LinearLayout
-        android:orientation="vertical"
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="10dp"
+        android:id="@+id/recyclerView"
         android:layout_below="@+id/header"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/empty_show"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/tutor_name"
-            android:layout_margin="15dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:hint="导师姓名"
-            android:padding="10dp"
-            android:background="@drawable/activity_student_internship_edittext"
-            android:layout_width="match_parent"
+        <ImageView
+            android:alpha="0.7"
+            android:src="@mipmap/icon_data_empty"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+        <TextView
+            android:text="数据空空如也"
+            android:textSize="12sp"
+            android:textColor="@color/base_font_color"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <EditText
-            android:id="@+id/tutor_useridentify"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:hint="导师编号"
-            android:padding="10dp"
-            android:background="@drawable/activity_student_internship_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/submit"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="15dp"
-            android:background="@drawable/activity_login_signin_button"
-            android:text="确定"
-            android:textColor="@color/white" />
     </LinearLayout>
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.jenking.graduatesinternship.activitys.student;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ import butterknife.OnClick;
 
 public class StudentInternShipDetailActivity extends BaseActivity {
 
+    private String showType;
     private InternshipExperiencePresenter presenter;
     private InternshipExperienceModel model;
     @BindView(R.id.internship_job)
@@ -38,6 +40,11 @@ public class StudentInternShipDetailActivity extends BaseActivity {
     TextView internship_result;
     @BindView(R.id.internship_harvest)
     TextView internship_harvest;
+
+    @BindView(R.id.modify)
+    TextView modify;
+    @BindView(R.id.delete)
+    TextView delete;
     
     @OnClick(R.id.back)
     void back(){
@@ -131,6 +138,19 @@ public class StudentInternShipDetailActivity extends BaseActivity {
 
             }
         });
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setShowType();
+    }
+
+    void setShowType(){
+        showType = getIntent().getStringExtra("showType");
+        if (StringUtil.isEquals(showType,"third")){
+            delete.setVisibility(View.GONE);
+            modify.setVisibility(View.GONE);
+        }
     }
 }

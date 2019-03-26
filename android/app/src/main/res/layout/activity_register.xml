@@ -87,11 +87,46 @@
                     android:layout_height="wrap_content" />
 
                 <EditText
-                    android:id="@+id/username"
+                    android:id="@+id/useridentity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/common_noline_edittext"
-                    android:hint="请输入账号"
+                    android:hint="请输入学号 / 教师编号"
+                    android:padding="5dp"
+                    android:textColorHint="#cccccc"
+                    android:textSize="15sp" />
+            </LinearLayout>
+            <View
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="姓名" />
+
+                <EditText
+                    android:id="@+id/realname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/common_noline_edittext"
+                    android:hint="请输入真实姓名"
                     android:padding="5dp"
                     android:textColorHint="#cccccc"
                     android:textSize="15sp" />

@@ -4,6 +4,7 @@ import com.jenking.graduatesinternship.models.base.ResultModel;
 import com.jenking.graduatesinternship.models.impl.EducationExpModel;
 import com.jenking.graduatesinternship.models.impl.EnterpriseModel;
 import com.jenking.graduatesinternship.models.impl.InternshipExperienceModel;
+import com.jenking.graduatesinternship.models.impl.MessageModel;
 import com.jenking.graduatesinternship.models.impl.PersonalCertModel;
 import com.jenking.graduatesinternship.models.impl.PersonalSkillModel;
 import com.jenking.graduatesinternship.models.impl.RecruitCollectionModel;
@@ -232,5 +233,22 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("student_tutor/getTeachersStudents")
     Observable<ResultModel<UserModel>> getTeachersStudents(@FieldMap Map<String, String> body);
+
+    //岗位收藏
+    @FormUrlEncoded
+    @POST("message/getMineMessageMobile")
+    Observable<ResultModel<MessageModel>> getMineMessageMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("message/addMessageMobile")
+    Observable<ResultModel<MessageModel>> addMessageMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("message/modifyMessageMobile")
+    Observable<ResultModel<MessageModel>> modifyMessageMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("message/deleteMessageMobile")
+    Observable<ResultModel<MessageModel>> deleteMessageMobile(@FieldMap Map<String, String> body);
 
 }

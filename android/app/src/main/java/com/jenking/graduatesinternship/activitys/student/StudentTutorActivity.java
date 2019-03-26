@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.jenking.graduatesinternship.R;
 import com.jenking.graduatesinternship.activitys.common.BaseActivity;
 import com.jenking.graduatesinternship.api.RS;
+import com.jenking.graduatesinternship.dialog.CommonTipsDialog;
 import com.jenking.graduatesinternship.models.base.ResultModel;
 import com.jenking.graduatesinternship.models.impl.PersonalSkillModel;
 import com.jenking.graduatesinternship.models.impl.StudentTutorModel;
@@ -52,12 +53,33 @@ public class StudentTutorActivity extends BaseActivity {
                 presenter.addStudentTutor(params);
             }else{
                 params.put("id",model.getId());
-                presenter.addStudentTutor(params);
+                presenter.updateStudentTutor(params);
             }
 
 
         }else{
             Toast.makeText(this, "请输入完整信息", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @OnClick(R.id.delete)
+    void delete(){
+        if (AccountTool.isLogin(this)&&presenter!=null){
+            CommonTipsDialog.create(this,"温馨提示","确定要删除吗",false)
+                    .setOnClickListener(new CommonTipsDialog.OnClickListener() {
+                        @Override
+                        public void cancel() {
+
+                        }
+
+                        @Override
+                        public void confirm() {
+                            Map<String,String> params = RS.getBaseParams(StudentTutorActivity.this);
+                            params.put("student_id",AccountTool.getLoginUser(StudentTutorActivity.this).getId());
+                            presenter.deleteStudentTutor(params);
+                        }
+                    }).show();
+
         }
     }
 
@@ -97,6 +119,8 @@ public class StudentTutorActivity extends BaseActivity {
                     if (resultModel!=null&&StringUtil.isEquals(resultModel.getCode(),"200")){
                         Toast.makeText(StudentTutorActivity.this, "操作成功", Toast.LENGTH_SHORT).show();
                         finish();
+                    }else{
+                        Toast.makeText(StudentTutorActivity.this, resultModel.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }else{
                     Toast.makeText(StudentTutorActivity.this, "系统繁忙，请重试", Toast.LENGTH_SHORT).show();
@@ -105,12 +129,32 @@ public class StudentTutorActivity extends BaseActivity {
 
             @Override
             public void deleteStudentTutor(boolean isSuccess, Object object) {
-
+                if (isSuccess){
+                    ResultModel resultModel = (ResultModel) object;
+                    if (resultModel!=null&&StringUtil.isEquals(resultModel.getCode(),"200")){
+                        Toast.makeText(StudentTutorActivity.this, "操作成功", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }else{
+                        Toast.makeText(StudentTutorActivity.this, resultModel.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(StudentTutorActivity.this, "系统繁忙，请重试", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void updateStudentTutor(boolean isSuccess, Object object) {
-
+                if (isSuccess){
+                    ResultModel resultModel = (ResultModel) object;
+                    if (resultModel!=null&&StringUtil.isEquals(resultModel.getCode(),"200")){
+                        Toast.makeText(StudentTutorActivity.this, "操作成功", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }else{
+                        Toast.makeText(StudentTutorActivity.this, resultModel.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(StudentTutorActivity.this, "系统繁忙，请重试", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

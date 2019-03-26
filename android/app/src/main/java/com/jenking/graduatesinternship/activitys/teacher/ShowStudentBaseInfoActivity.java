@@ -1,13 +1,13 @@
-package com.jenking.graduatesinternship.activitys.common;
+package com.jenking.graduatesinternship.activitys.teacher;
 
-import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.jenking.graduatesinternship.R;
+import com.jenking.graduatesinternship.activitys.common.BaseActivity;
 import com.jenking.graduatesinternship.models.impl.UserModel;
 import com.jenking.graduatesinternship.utils.AccountTool;
 import com.jenking.graduatesinternship.utils.StringUtil;
@@ -15,7 +15,12 @@ import com.jenking.graduatesinternship.utils.StringUtil;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class UserInfoActivity extends BaseActivity {
+public class ShowStudentBaseInfoActivity extends BaseActivity {
+
+    @OnClick(R.id.back)
+    void back(){
+        finish();
+    }
 
     @BindView(R.id.name)
     TextView name;
@@ -52,37 +57,18 @@ public class UserInfoActivity extends BaseActivity {
     @BindView(R.id.class_bar)
     LinearLayout class_bar;
 
-    @OnClick(R.id.back)
-    void back(){
-        finish();
-    }
-
-    @OnClick(R.id.modify)
-    void modify(){
-        if (AccountTool.isLogin(this)&&AccountTool.getLoginUser(this)!=null){
-            UserModel userModel = AccountTool.getLoginUser(this);
-            Intent intent = new Intent(this, UserInfoModifyActivity.class);
-            intent.putExtra("model",new Gson().toJson(userModel));
-            startActivity(intent);
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_info);
-    }
-
-    @Override
-    public void initData() {
-        super.initData();
+        setContentView(R.layout.activity_show_student_base_info);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (AccountTool.isLogin(this)){
-            UserModel userModel = AccountTool.getLoginUser(this);
+        String modelJson = getIntent().getStringExtra("model");
+        if (StringUtil.isNotEmpty(modelJson)){
+            UserModel userModel = new Gson().fromJson(modelJson,UserModel.class);
             if (userModel!=null){
                 name.setText(userModel.getName());
                 pass.setText(userModel.getPass());
@@ -99,19 +85,7 @@ public class UserInfoActivity extends BaseActivity {
                 address.setText(userModel.getAddress());
                 health.setText(userModel.getHealth());
                 entrance_time.setText(userModel.getEntrance_time());
-                college_name.setText(userModel.getSchool_name()+"-"+userModel.getCollege_name());
-
                 college_name.setText(userModel.getSchool_name()+"--"+userModel.getCollege_name()+"--"+userModel.getClass_name());
-            }
-        }
-    }
-
-    @Override
-    public void initView() {
-        super.initView();
-        if (AccountTool.isLogin(this)){
-            if (!StringUtil.isEquals(AccountTool.getUserType(this),AccountTool.usertype_student)){
-                class_bar.setVisibility(View.GONE);
             }
         }
     }

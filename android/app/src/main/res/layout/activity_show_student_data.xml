@@ -36,23 +36,26 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="我的导师"
+            android:text="基本资料"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
+
         <TextView
-            android:id="@+id/delete"
+            android:id="@+id/send_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="发邮件"
             android:layout_marginRight="15dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="删除"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
+
         <View
             android:layout_alignParentBottom="true"
             android:background="@color/base_line_color"
@@ -64,35 +67,60 @@
         android:layout_below="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/tutor_name"
-            android:layout_margin="15dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:hint="导师姓名"
-            android:padding="10dp"
-            android:background="@drawable/activity_student_internship_edittext"
+
+        <LinearLayout
+            android:id="@+id/base_info"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:id="@+id/tutor_useridentify"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:hint="导师编号"
-            android:padding="10dp"
-            android:background="@drawable/activity_student_internship_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_marginTop="15dp"
+            android:background="@drawable/activity_student_data_item_bg"
+            android:gravity="center_vertical">
 
-        <Button
-            android:id="@+id/submit"
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="15dp"
+                android:src="@mipmap/icon_student" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="基本信息"
+                android:textColor="@color/base_font_color"
+                android:textSize="@dimen/header_title_textsize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/student_internship"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="15dp"
-            android:background="@drawable/activity_login_signin_button"
-            android:text="确定"
-            android:textColor="@color/white" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/activity_student_data_item_bg"
+            android:gravity="center_vertical">
+
+            <ImageView
+
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="15dp"
+                android:src="@mipmap/icon_personal_skill" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="实习经历"
+                android:textColor="@color/base_font_color"
+                android:textSize="@dimen/header_title_textsize" />
+        </LinearLayout>
+
+
     </LinearLayout>
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.jenking.graduatesinternship.activitys.student;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.jenking.graduatesinternship.R;
 import com.jenking.graduatesinternship.activitys.common.BaseActivity;
+import com.jenking.graduatesinternship.activitys.common.MessageSendActivity;
 import com.jenking.graduatesinternship.api.RS;
 import com.jenking.graduatesinternship.models.base.ResultModel;
 import com.jenking.graduatesinternship.models.impl.EducationExpModel;
@@ -42,6 +44,7 @@ public class StudentEducationExpOperateActivity extends BaseActivity {
     void back(){
         finish();
     }
+
     @OnClick(R.id.submit)
     void submit() {
         if (!AccountTool.isLogin(this)) {

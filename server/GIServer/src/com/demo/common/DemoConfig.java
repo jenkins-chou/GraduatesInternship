@@ -70,8 +70,6 @@ public class DemoConfig extends JFinalConfig {
 		GroupTemplate gt = rf.groupTemplate;
 		Map<String, Object> shard = new HashMap<String, Object>();// 共享变量
 		shard.put("ctx", JFinal.me().getContextPath());// 添加共享变量上下文路�?
-		
-		System.out.println("----->"+JFinal.me().getContextPath());
 		gt.setSharedVars(shard);// 设置共享变量
 		me.setMaxPostSize(1200000000);
 		

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50723
 File Encoding         : 65001
 
-Date: 2019-03-25 16:00:51
+Date: 2019-03-26 12:06:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -154,7 +154,7 @@ INSERT INTO `internship_experience` VALUES ('4', '2', '测试', '测试', '漏�
 INSERT INTO `internship_experience` VALUES ('5', '2', '。', '，', '？', '。', '测试修改溜了溜了', '。？', '。？', '！！？', '1553328018', null, 'delete');
 INSERT INTO `internship_experience` VALUES ('6', '2', '2019年1月', '至今', '广州虎牙信息有限公司', '技术部', '安卓开发实习生', '安卓开发', '正常实习', '无', '1553330425', null, 'normal');
 INSERT INTO `internship_experience` VALUES ('7', '2', '2019年7月', '至今', '中软公司', '技术部', '数据分析师', '我没看见', '正常实习', '总结', '1553330490', null, 'normal');
-INSERT INTO `internship_experience` VALUES ('8', '5', '开始', '结束', '单位', '部门', '测试', '内容', '结果', '总结', '1553335399', null, 'normal');
+INSERT INTO `internship_experience` VALUES ('8', '5', '开始', '结束', '单位', '部门', '测试岗位', '内容', '结果', '总结', '1553335399', null, 'normal');
 
 -- ----------------------------
 -- Table structure for message
@@ -173,12 +173,13 @@ CREATE TABLE `message` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of message
 -- ----------------------------
-INSERT INTO `message` VALUES ('1', '1', '企业', '2', '123456789', '2', '毕业生', '恭喜您，你的面试通过啦', null, '无', 'delete');
+INSERT INTO `message` VALUES ('3', '8', 'teacher', '何生', '13413608888', '5', 'student', '请完善你的班级信息', '1553568918', null, 'normal');
+INSERT INTO `message` VALUES ('4', '5', 'student', '周宁', '123456', '8', 'teacher', '好的老师', '1553570950', null, 'delete');
 
 -- ----------------------------
 -- Table structure for personal_cert
@@ -215,7 +216,7 @@ CREATE TABLE `personal_skill` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of personal_skill
@@ -226,6 +227,8 @@ INSERT INTO `personal_skill` VALUES ('3', '2', '技能一', '1553343100', null, 
 INSERT INTO `personal_skill` VALUES ('4', '2', '技能三', '1553343259', null, 'delete');
 INSERT INTO `personal_skill` VALUES ('5', '2', '四六级', '1553343617', null, 'normal');
 INSERT INTO `personal_skill` VALUES ('6', '5', 'java', '1553477384', null, 'normal');
+INSERT INTO `personal_skill` VALUES ('7', '5', '安卓开发', '1553562360', null, 'normal');
+INSERT INTO `personal_skill` VALUES ('8', '5', '数据结构', '1553562371', null, 'normal');
 
 -- ----------------------------
 -- Table structure for prize_experience
@@ -299,7 +302,7 @@ CREATE TABLE `recruitment_collection` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recruitment_collection
@@ -315,7 +318,8 @@ INSERT INTO `recruitment_collection` VALUES ('10', '2', '2', null, '1553419343',
 INSERT INTO `recruitment_collection` VALUES ('11', '5', '2', null, '1553478024', null, 'normal');
 INSERT INTO `recruitment_collection` VALUES ('12', '5', '1', null, '1553494822', null, 'delete');
 INSERT INTO `recruitment_collection` VALUES ('13', '5', '3', null, '1553494899', null, 'normal');
-INSERT INTO `recruitment_collection` VALUES ('14', '5', '1', null, '1553494949', null, 'normal');
+INSERT INTO `recruitment_collection` VALUES ('14', '5', '1', null, '1553494949', null, 'delete');
+INSERT INTO `recruitment_collection` VALUES ('15', '5', '1', null, '1553562454', null, 'normal');
 
 -- ----------------------------
 -- Table structure for recruitment_delivery
@@ -331,7 +335,7 @@ CREATE TABLE `recruitment_delivery` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recruitment_delivery
@@ -348,6 +352,7 @@ INSERT INTO `recruitment_delivery` VALUES ('10', '5', '1', '1', '0', '1553493701
 INSERT INTO `recruitment_delivery` VALUES ('11', '5', '4', '3', '0', '1553494490', null, 'delete');
 INSERT INTO `recruitment_delivery` VALUES ('12', '5', '4', '3', '0', '1553494917', null, 'normal');
 INSERT INTO `recruitment_delivery` VALUES ('13', '5', '4', '2', '0', '1553495044', null, 'normal');
+INSERT INTO `recruitment_delivery` VALUES ('14', '5', '4', '1', '0', '1553573123', null, 'normal');
 
 -- ----------------------------
 -- Table structure for resume
@@ -396,7 +401,7 @@ CREATE TABLE `resume_enclosure` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of resume_enclosure
@@ -407,7 +412,8 @@ INSERT INTO `resume_enclosure` VALUES ('3', '5', 'upload/吴强-学生报告1.do
 INSERT INTO `resume_enclosure` VALUES ('4', '5', 'upload/周宇-学生报告1.doc', 'Previous', '1553487393', null, 'normal');
 INSERT INTO `resume_enclosure` VALUES ('5', '5', 'upload/Screenshot_20190325-002531__01.jpg', 'Previous', '1553487632', null, 'normal');
 INSERT INTO `resume_enclosure` VALUES ('6', '5', 'upload/周宇-学生报告2.doc', 'Previous', '1553492716', null, 'normal');
-INSERT INTO `resume_enclosure` VALUES ('7', '5', 'upload/张晓欣-学生报告1.doc', 'current', '1553496333', null, 'normal');
+INSERT INTO `resume_enclosure` VALUES ('7', '5', 'upload/张晓欣-学生报告1.doc', 'Previous', '1553496333', null, 'normal');
+INSERT INTO `resume_enclosure` VALUES ('8', '5', 'upload/学生报告.doc', 'current', '1553562407', null, 'normal');
 
 -- ----------------------------
 -- Table structure for school
@@ -440,17 +446,21 @@ DROP TABLE IF EXISTS `student_tutor`;
 CREATE TABLE `student_tutor` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `student_id` varchar(255) DEFAULT NULL,
-  `teacher_id` varchar(255) DEFAULT NULL,
+  `teacher_useridentify` varchar(255) DEFAULT NULL,
+  `teacher_name` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `create_time` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of student_tutor
 -- ----------------------------
+INSERT INTO `student_tutor` VALUES ('2', '5', '1234', '何生', 'normal', null, null, 'delete');
+INSERT INTO `student_tutor` VALUES ('3', '5', '1234', '何生', 'normal', null, null, 'delete');
+INSERT INTO `student_tutor` VALUES ('4', '5', '1234', '何生', 'normal', null, null, 'normal');
 
 -- ----------------------------
 -- Table structure for user_base
@@ -484,13 +494,11 @@ CREATE TABLE `user_base` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   `del` varchar(255) DEFAULT NULL COMMENT '删除标志位',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_base
 -- ----------------------------
 INSERT INTO `user_base` VALUES ('2', '123', '123456', '周宁', 'upload/1553408286963.jpg', '不个性何来个性签名', '女', '13', '123', '汉', '广东', '13413607283@163.com', '123456', '12345678910', '常住地址', '1996', 'student', null, null, null, null, null, null, null, '无', 'normal');
 INSERT INTO `user_base` VALUES ('5', '6558455', '123', '周宁', 'upload/1553335338579.jpg', null, null, null, null, null, null, null, '123', null, null, null, 'student', 'null', 'null', 'null', 'null', 'null', 'null', '1553332979', null, 'normal');
-INSERT INTO `user_base` VALUES ('6', null, '456', null, 'upload/1553497584136.jpg', null, null, null, null, null, null, null, '456', null, null, null, 'teacher', null, null, null, null, null, null, '1553496703', null, 'normal');
-INSERT INTO `user_base` VALUES ('7', null, '789', null, null, null, null, null, null, null, null, null, '789', null, null, null, 'student', null, null, null, null, null, null, '1553497677', null, 'normal');
-INSERT INTO `user_base` VALUES ('8', null, '1234', null, 'upload/1553497730493.jpg', null, null, null, null, null, null, null, '1234', null, null, null, 'teacher', null, null, null, null, null, null, '1553497718', null, 'normal');
+INSERT INTO `user_base` VALUES ('8', null, '1234', '何生', 'upload/1553563210115.jpg', null, null, null, null, null, null, null, '1234', null, null, null, 'teacher', null, null, null, null, null, null, '1553497718', null, 'normal');

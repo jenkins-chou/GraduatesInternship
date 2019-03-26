@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.jenking.graduatesinternship.R;
 import com.jenking.graduatesinternship.activitys.common.LoginActivity;
+import com.jenking.graduatesinternship.activitys.common.MessageActivity;
 import com.jenking.graduatesinternship.activitys.common.SettingActivity;
 import com.jenking.graduatesinternship.activitys.common.UserInfoActivity;
 import com.jenking.graduatesinternship.activitys.common.UserInfoAvatarActivity;
@@ -39,6 +40,14 @@ public class TeacherMainFragment2 extends Fragment{
     ImageView avatar;
     @BindView(R.id.username)
     TextView username;
+
+    @OnClick(R.id.message)
+    void showMessage(){
+        if (checkLogin()) {
+            Intent intent = new Intent(getContext(), MessageActivity.class);
+            startActivity(intent);
+        }
+    }
 
     @OnClick(R.id.avatar)
     void modifyAvatar(){

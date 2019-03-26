@@ -33,9 +33,10 @@ public class RegisterActivity extends BaseActivity {
     RadioButton type_student;
     @BindView(R.id.type_teacher)
     RadioButton type_teacher;
-
-    @BindView(R.id.username)
-    TextView username;
+    @BindView(R.id.useridentity)
+    TextView useridentity;
+    @BindView(R.id.realname)
+    TextView realname;
     @BindView(R.id.pass)
     TextView password;
     @BindView(R.id.confirm_pass)
@@ -46,17 +47,24 @@ public class RegisterActivity extends BaseActivity {
 
     @OnClick(R.id.goto_register)
     void goto_register(){
-        String username_str = username.getText().toString();
+        String useridentity_str = useridentity.getText().toString();
+        String realname_str = realname.getText().toString();
         String password_str = password.getText().toString();
         String confirm_pass_str = confirm_pass.getText().toString();
-        if (!StringUtil.isNotEmpty(username_str)
+        if (!StringUtil.isNotEmpty(useridentity_str)
+                ||!StringUtil.isNotEmpty(realname_str)
                 ||!StringUtil.isNotEmpty(password_str)
                 ||!StringUtil.isNotEmpty(confirm_pass_str)){
             CommonTipsDialog.showTip(this,"温馨提示","请完善信息",false);
             return;
         }else{
+            if (!StringUtil.isEquals(password_str,confirm_pass_str)){
+                Toast.makeText(this, "前后密码不一致", Toast.LENGTH_SHORT).show();
+                return;
+            }
             Map<String,String> params = RS.getBaseParams(this);
-            params.put("useridentify",username_str);
+            params.put("useridentify",useridentity_str);
+            params.put("realname",realname_str);
             params.put("pass",password_str);
             if (type_student.isChecked()){
                 params.put("type","student");
