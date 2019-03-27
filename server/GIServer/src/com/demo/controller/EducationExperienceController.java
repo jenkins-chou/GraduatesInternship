@@ -94,6 +94,15 @@ public class EducationExperienceController extends Controller {
 		renderJson(JsonKit.toJson(new PageJson<EducationExperienceModel>("0", "", page)));
 	}
 	
+	public void getAllEducationExperienceByUserId() {
+		ParamUtil param = new ParamUtil(getRequest());
+		Page<EducationExperienceModel> page = EducationExperienceModel.dao.paginate(param.getPageNumber(),
+				param.getPageSize(), "select * ", "from education_experience where user_id = "+getPara("user_id")+" and del != 'delete'");
+		
+		System.out.println(page.getList().toString());
+		renderJson(JsonKit.toJson(new PageJson<EducationExperienceModel>("0", "", page)));
+	}
+	
 	public void addEducationExperience(){
 		try {
 			EducationExperienceModel model = getModel(EducationExperienceModel.class, "", true);

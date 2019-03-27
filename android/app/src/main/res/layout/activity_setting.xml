@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activity.student.MineActivityActivity">
+    android:orientation="vertical">
     <RelativeLayout
+        android:id="@+id/header"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:background="@mipmap/fragment_main_part1_header_bg"
@@ -49,6 +49,35 @@
             android:layout_width="match_parent"
             android:layout_height="1px"/>
     </RelativeLayout>
+    <LinearLayout
+        android:layout_below="@+id/header"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="服务器地址"
+            android:textColor="@color/base_font_color"
+            android:layout_marginBottom="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/base_url"
+            android:padding="10dp"
+            android:hint="服务器地址"
+            android:background="@drawable/activity_student_internship_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/confirm_modify"
+            android:text="确定修改"
+            android:textColor="@color/white"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/activity_login_signin_button"
+            android:layout_width="match_parent"
+            android:layout_height="42dp" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_alignParentBottom="true"

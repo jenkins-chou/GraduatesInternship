@@ -93,6 +93,15 @@ public class PersonalSkillController extends Controller {
 		renderJson(JsonKit.toJson(new PageJson<PersonalSkillModel>("0", "", page)));
 	}
 	
+	public void getAllPersonalSkillByUserId() {
+		ParamUtil param = new ParamUtil(getRequest());
+		Page<PersonalSkillModel> page = PersonalSkillModel.dao.paginate(param.getPageNumber(),
+				param.getPageSize(), "select * ", "from personal_skill where user_id = "+getPara("user_id")+" and del != 'delete'");
+		
+		System.out.println(page.getList().toString());
+		renderJson(JsonKit.toJson(new PageJson<PersonalSkillModel>("0", "", page)));
+	}
+	
 	public void addPersonalSkill(){
 		try {
 			PersonalSkillModel model = getModel(PersonalSkillModel.class, "", true);

@@ -38,10 +38,22 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="登录"
+            android:textColor="@color/white"
+            android:textSize="@dimen/header_title_textsize" />
+
+        <TextView
+            android:id="@+id/setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            android:text="设置"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
 

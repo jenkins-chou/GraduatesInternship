@@ -28,7 +28,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void setStatusBarColor() {
-//        StatusBarUtil.setColor(this,getResources().getColor(R.color.baseColor),0);
+        //StatusBarUtil.setColor(this,getResources().getColor(R.color.baseColor),0);
     }
 
     private void setBinder() {

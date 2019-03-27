@@ -1,6 +1,8 @@
 package com.jenking.graduatesinternship.activitys.student;
 
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +10,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.library.BaseRecyclerAdapter;
@@ -53,7 +56,7 @@ public class StudentRecruitDeliveryActivity extends BaseActivity {
 
     @OnClick(R.id.operate_tips)
     void operate_tips(){
-        CommonTipsDialog.showTip(this,"温馨提示","长按后删除",false);
+        CommonTipsDialog.showTip(this,"温馨提示","长按后撤销申请",false);
     }
     
     @Override
@@ -70,6 +73,8 @@ public class StudentRecruitDeliveryActivity extends BaseActivity {
         datas = new ArrayList<>();
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1,1));
         adapter = new BaseRecyclerAdapter<RecruitDeliveryModel>(StudentRecruitDeliveryActivity.this,datas,R.layout.activity_student_recruit_delivery_item) {
+
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             protected void convert(BaseViewHolder helper, RecruitDeliveryModel item) {
                 helper.setText(R.id.job_name,item.getJob_name());
@@ -80,30 +85,39 @@ public class StudentRecruitDeliveryActivity extends BaseActivity {
                 helper.setText(R.id.working_time,item.getWorking_start_time()+"-"+item.getWorking_end_time());
                 helper.setText(R.id.publisher,item.getPublisher());
 
+                TextView status = helper.getView(R.id.status);
                 switch (item.getStatus()){
                     case RecruitDeliveryModel.DELIVERY_STATUS_INIT:
-                        helper.setText(R.id.status,"待审核");
+                        status.setText("待审核");
+                        status.setBackground(getResources().getDrawable(R.drawable.common_tag_blue));
                         break;
                     case RecruitDeliveryModel.DELIVERY_STATUS_INTERVIEW:
-                        helper.setText(R.id.status,"待面试");
+                        status.setText("待面试");
+                        status.setBackground(getResources().getDrawable(R.drawable.common_tag_orange));
                         break;
                     case RecruitDeliveryModel.DELIVERY_STATUS_UNPASS:
-                        helper.setText(R.id.status,"不通过");
+                        status.setText("不通过");
+                        status.setBackground(getResources().getDrawable(R.drawable.common_tag_red));
                         break;
                     case RecruitDeliveryModel.DELIVERY_STATUS_PASS:
-                        helper.setText(R.id.status,"已通过");
+                        status.setText("已通过");
+                        status.setBackground(getResources().getDrawable(R.drawable.common_tag_green));
                         break;
                     case RecruitDeliveryModel.DELIVERY_STATUS_INTERNSHIP:
-                        helper.setText(R.id.status,"实习中");
+                        status.setText("实习中");
+                        status.setBackground(getResources().getDrawable(R.drawable.common_tag_gray));
                         break;
                     case RecruitDeliveryModel.DELIVERY_STATUS_END:
-                        helper.setText(R.id.status,"实习结束");
+                        status.setText("实习结束");
+                        status.setBackground(getResources().getDrawable(R.drawable.common_tag_blue));
                         break;
                     case RecruitDeliveryModel.DELIVERY_STATUS_CANCEL:
-                        helper.setText(R.id.status,"因其他原因注销");
+                        status.setText("因其他原因注销");
+                        status.setBackground(getResources().getDrawable(R.drawable.common_tag_red));
                         break;
                         default:
                             helper.setText(R.id.status,"未知状态");
+                            status.setBackground(getResources().getDrawable(R.drawable.common_tag_red));
                             break;
                 }
             }
@@ -126,23 +140,27 @@ public class StudentRecruitDeliveryActivity extends BaseActivity {
             @Override
             public boolean onItemLongClick(View view, final int position) {
                 if (datas.get(position)!=null){
-                    CommonTipsDialog.create(StudentRecruitDeliveryActivity.this,"温馨提示","确定要删除吗?",false)
-                            .setOnClickListener(new CommonTipsDialog.OnClickListener() {
-                                @Override
-                                public void cancel() {
+                    if (StringUtil.isEquals(datas.get(position).getStatus(),"0")) {
+                        CommonTipsDialog.create(StudentRecruitDeliveryActivity.this, "温馨提示", "确定要撤销申请吗?", false)
+                                .setOnClickListener(new CommonTipsDialog.OnClickListener() {
+                                    @Override
+                                    public void cancel() {
 
-                                }
+                                    }
 
-                                @Override
-                                public void confirm() {
-                                    Map<String,String> params = RS.getBaseParams(StudentRecruitDeliveryActivity.this);
-                                    params.put("user_id",AccountTool.getLoginUser(StudentRecruitDeliveryActivity.this).getId());
-                                    params.put("recruit_id",datas.get(position).getRecruit_id());
-                                    presenter.deleteRecruitmentDeliveryMobile(params);
-                                }
-                            }).show();
+                                    @Override
+                                    public void confirm() {
+                                        Map<String, String> params = RS.getBaseParams(StudentRecruitDeliveryActivity.this);
+                                        params.put("user_id", AccountTool.getLoginUser(StudentRecruitDeliveryActivity.this).getId());
+                                        params.put("recruit_id", datas.get(position).getRecruit_id());
+                                        presenter.deleteRecruitmentDeliveryMobile(params);
+                                    }
+                                }).show();
+                    }else{
+                        Toast.makeText(StudentRecruitDeliveryActivity.this, "当前状态已进入企业受理阶段，不可撤销", Toast.LENGTH_SHORT).show();
+                    }
                 }
-                return false;
+                return true;
             }
         });
         adapter.openLoadAnimation(false);

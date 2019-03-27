@@ -112,7 +112,34 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 											});
 								});
 							}else if(obj.event === 'show_resume'){
+								console.log("show_resume");
+								layer.open({
+									title : [ '简历信息' ],
+									type : 2,
+									area : [ '800px', '800px' ],
+									shade : [ 0.7, '#d0d7f6' ],
+									scrollbar : true,
+									maxmin : true,
+									fixed : true,
+									move : true,
+									content : [
+											ctxPath + '/recruitment_delivery/showResume?id='
+													+ data.id, 'yes' ],
+									end : function() {
+									}
+								});
 								
+							}else if(obj.event === 'down_resume'){
+								console.log("show_resume");
+								$.getJSON(ctxPath + "/recruitment_delivery/downloadResume",
+										user_id, function(jsondata) {
+											if(jsondata.code=='200'){
+												//console.log(ctxPath+jsondata);
+												window.location.href = ctxPath+"/"+jsondata.data;
+											}else{
+												alert(jsondata.message);
+											}
+										});
 							} 
 							else if (obj.event === 'edit') {
 								if ($(that).attr("disabled") == "disabled")

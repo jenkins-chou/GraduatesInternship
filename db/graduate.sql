@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50723
 File Encoding         : 65001
 
-Date: 2019-03-26 17:21:42
+Date: 2019-03-27 17:04:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -80,7 +80,7 @@ CREATE TABLE `education_experience` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of education_experience
@@ -88,6 +88,7 @@ CREATE TABLE `education_experience` (
 INSERT INTO `education_experience` VALUES ('1', '1', '华南理工大学', '在校经历', '专业', '开始时间', '结束时间', '总结', null, '总结', 'delete');
 INSERT INTO `education_experience` VALUES ('2', '2', '学校可口可乐了', '经历', '专业蚊鸡', '开始', '结束', '总结', '1553357835', null, 'delete');
 INSERT INTO `education_experience` VALUES ('3', '2', '学校', '经历', '专业', '开始', '结束', '总结', '1553407334', null, 'normal');
+INSERT INTO `education_experience` VALUES ('4', '5', '学校', '经历', '专业', '2018', '2019', '总结', '1553667143', null, 'normal');
 
 -- ----------------------------
 -- Table structure for enterprise
@@ -121,7 +122,7 @@ CREATE TABLE `enterprise` (
 -- ----------------------------
 -- Records of enterprise
 -- ----------------------------
-INSERT INTO `enterprise` VALUES ('1', '企业名称', '123@163.com', '企业联系电话', '123', '2018', '企业简介', '详细介绍', '民营', '业务类型', '企业法人', '企业所在地址', '企业员工数', '企业现状', '企业宣传海报', '企业官网', '统一信用代码', '工作时间', null, '备注', 'normal');
+INSERT INTO `enterprise` VALUES ('1', '中铁', '123@163.com', '企业联系电话', '123', '2018', '企业简介', '详细介绍', '民营', '业务类型', '企业法人', '企业所在地址', '企业员工数', '企业现状', '企业宣传海报', '企业官网', '统一信用代码', '工作时间', null, '备注', 'normal');
 
 -- ----------------------------
 -- Table structure for internship_experience
@@ -142,7 +143,7 @@ CREATE TABLE `internship_experience` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of internship_experience
@@ -155,6 +156,7 @@ INSERT INTO `internship_experience` VALUES ('5', '2', '。', '，', '？', '。'
 INSERT INTO `internship_experience` VALUES ('6', '2', '2019年1月', '至今', '广州虎牙信息有限公司', '技术部', '安卓开发实习生', '安卓开发', '正常实习', '无', '1553330425', null, 'normal');
 INSERT INTO `internship_experience` VALUES ('7', '2', '2019年7月', '至今', '中软公司', '技术部', '数据分析师', '我没看见', '正常实习', '总结', '1553330490', null, 'normal');
 INSERT INTO `internship_experience` VALUES ('8', '5', '开始', '结束', '单位', '部门', '测试岗位', '内容', '结果', '总结', '1553335399', null, 'normal');
+INSERT INTO `internship_experience` VALUES ('9', '5', '12.12', '12.31', '学校', '办公室', '学生助理', '帮助老师', '优秀', '收获很大', '1553671817', null, 'normal');
 
 -- ----------------------------
 -- Table structure for message
@@ -194,7 +196,7 @@ CREATE TABLE `personal_cert` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of personal_cert
@@ -203,6 +205,7 @@ INSERT INTO `personal_cert` VALUES ('1', '122', '名称', '2018年', null, '备�
 INSERT INTO `personal_cert` VALUES ('2', '2', '证书', '活的时间', '1553355009', null, 'delete');
 INSERT INTO `personal_cert` VALUES ('3', '2', '雅思证书', '2019年', '1553355040', null, 'normal');
 INSERT INTO `personal_cert` VALUES ('4', '2', '证书', '来来来', '1553355100', null, 'delete');
+INSERT INTO `personal_cert` VALUES ('5', '5', '英语四级证书', '2016.9', '1553672093', null, 'normal');
 
 -- ----------------------------
 -- Table structure for personal_skill
@@ -288,7 +291,7 @@ CREATE TABLE `recruit` (
 INSERT INTO `recruit` VALUES ('1', '1', '聚缘计算机系统', '技术部', 'Android开发工程师', '工作内容', '3-4天/周', '8:00', '16:00', '广州', '广州天河区', '岗位简介负责Android系统平台上的客户端软件的产品开发与维护；', '根据产品需求完成框架和模块设计、编码、测试工作；', '五险一金', '要求工作认真负责', 'Android技术熟练；基础扎实', '团队详情', '周先生', '2000-4000元/月', '1550200465', '备注', 'normal');
 INSERT INTO `recruit` VALUES ('2', '1', '聚缘计算机系统', '技术部', 'IOS开发工程师', '工作内容', '3-4天/周', '8:00', '16:00', '广州', '广州天河区', '岗位简介负责Android系统平台上的客户端软件的产品开发与维护；', '根据产品需求完成框架和模块设计、编码、测试工作；', '五险一金', '要求工作认真负责', 'Android技术熟练；基础扎实', '团队详情', '周先生', '2000-4000元/月', '1550200465', '备注', 'normal');
 INSERT INTO `recruit` VALUES ('3', '1', '聚缘计算机系统', '技术部', '后端主程开发工程师', '工作内容', '3-4天/周', '8:00', '16:00', '广州', '广州天河区', '岗位简介负责Android系统平台上的客户端软件的产品开发与维护；', '根据产品需求完成框架和模块设计、编码、测试工作；', '五险一金', '要求工作认真负责', 'Android技术熟练；基础扎实', '团队详情', '周先生', '2000-4000元/月', '1550200465', '备注', 'normal');
-INSERT INTO `recruit` VALUES ('4', '1', '企业名称测试', '技术部', 'Android开发工程师', '工作内容', '1-2天/周', '8:00', '16:00', '广州', '广州', '岗位简介', '根据产品需求完成框架和模块设计、编码、测试工作；', 'fuli', null, null, null, '周先生', '0-2000元/月', '1553585576', null, 'normal');
+INSERT INTO `recruit` VALUES ('4', '1', '企业名称测试', '技术部', 'Android开发工程师', '工作内容', '1-2天/周', '8:00', '16:00', '广州', '广州', '岗位简介', '根据产品需求完成框架和模块设计、编码、测试工作；', '福利说明', null, null, null, '周先生', '0-2000元/月', '1553585576', null, 'normal');
 INSERT INTO `recruit` VALUES ('5', '1', '中铁dsadsadsadsa', '技术部', 'Android开发工程师', '工作内容', '1-2天/周', '8:00', '16:00', '广州', '广州', '岗位简介', '根据产品需求完成框架和模块设计、编码、测试工作；', '福利说明', '工作要求', '能力要求', '团队详情', '周先生', '0-2000元/月', '1553586208', '备注', 'normal');
 
 -- ----------------------------
@@ -304,16 +307,18 @@ CREATE TABLE `recruitment_collection` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recruitment_collection
 -- ----------------------------
 INSERT INTO `recruitment_collection` VALUES ('10', '2', '2', null, '1553419343', null, 'normal');
-INSERT INTO `recruitment_collection` VALUES ('11', '5', '2', null, '1553478024', null, 'normal');
+INSERT INTO `recruitment_collection` VALUES ('11', '5', '2', null, '1553478024', null, 'delete');
 INSERT INTO `recruitment_collection` VALUES ('13', '5', '3', null, '1553494899', null, 'normal');
-INSERT INTO `recruitment_collection` VALUES ('15', '5', '1', null, '1553562454', null, 'normal');
+INSERT INTO `recruitment_collection` VALUES ('15', '5', '1', null, '1553562454', null, 'delete');
 INSERT INTO `recruitment_collection` VALUES ('16', '5', '5', null, '1553589704', null, 'delete');
+INSERT INTO `recruitment_collection` VALUES ('17', '5', '5', null, '1553654223', null, 'normal');
+INSERT INTO `recruitment_collection` VALUES ('18', '5', '4', null, '1553670157', null, 'normal');
 
 -- ----------------------------
 -- Table structure for recruitment_delivery
@@ -330,7 +335,7 @@ CREATE TABLE `recruitment_delivery` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recruitment_delivery
@@ -345,9 +350,11 @@ INSERT INTO `recruitment_delivery` VALUES ('8', '2', '2', '2', '5', null, '15534
 INSERT INTO `recruitment_delivery` VALUES ('9', '5', '2', '2', '0', null, '1553493303', null, 'delete');
 INSERT INTO `recruitment_delivery` VALUES ('10', '5', '1', '1', '0', null, '1553493701', null, 'delete');
 INSERT INTO `recruitment_delivery` VALUES ('11', '5', '4', '3', '0', null, '1553494490', null, 'delete');
-INSERT INTO `recruitment_delivery` VALUES ('12', '5', '4', '3', '4', null, '1553494917', null, 'normal');
+INSERT INTO `recruitment_delivery` VALUES ('12', '5', '4', '3', '2', null, '1553494917', null, 'normal');
 INSERT INTO `recruitment_delivery` VALUES ('13', '5', '4', '2', '1', null, '1553495044', null, 'normal');
-INSERT INTO `recruitment_delivery` VALUES ('14', '5', '4', '1', '6', null, '1553573123', '该同学成绩不及格', 'normal');
+INSERT INTO `recruitment_delivery` VALUES ('14', '5', '4', '1', '5', null, '1553573123', '该同学成绩不及格', 'normal');
+INSERT INTO `recruitment_delivery` VALUES ('15', '5', '4', '5', '0', null, '1553658501', null, 'delete');
+INSERT INTO `recruitment_delivery` VALUES ('16', '5', '4', '5', '0', null, '1553671902', null, 'normal');
 
 -- ----------------------------
 -- Table structure for resume
@@ -448,7 +455,7 @@ CREATE TABLE `student_tutor` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of student_tutor
@@ -495,6 +502,6 @@ CREATE TABLE `user_base` (
 -- Records of user_base
 -- ----------------------------
 INSERT INTO `user_base` VALUES ('2', '123', '123456', '何其成', 'upload/1553408286963.jpg', '不个性何来个性签名', '女', '13', '123', '汉', '广东', '13413607283@163.com', '123456', '12345678910', '常住地址', '1996', 'student', null, null, null, null, null, null, null, '无', 'normal');
-INSERT INTO `user_base` VALUES ('5', '6558455', '123', '周宁', 'upload/1553335338579.jpg', null, null, null, null, null, null, null, '123', null, null, null, 'student', 'null', 'null', 'null', 'null', 'null', 'null', '1553332979', null, 'normal');
+INSERT INTO `user_base` VALUES ('5', 'ZhouNing', '123', '周宁', 'upload/1553335338579.jpg', '学生，应届毕业生', null, null, null, null, null, null, '123', null, null, null, 'student', 'null', 'null', 'null', 'null', 'null', 'null', '1553332979', null, 'normal');
 INSERT INTO `user_base` VALUES ('8', null, '1234', '何生', 'upload/1553563210115.jpg', null, null, null, null, null, null, null, '1234', null, null, null, 'teacher', null, null, null, null, null, null, '1553497718', null, 'normal');
-INSERT INTO `user_base` VALUES ('10', '系统管理员', 'admin', '系统管理员', null, null, null, null, null, null, null, null, 'admin', null, null, null, null, null, null, null, null, null, null, null, null, 'normal');
+INSERT INTO `user_base` VALUES ('10', '系统管理员', 'admin', '系统管理员', null, null, null, null, null, null, null, null, 'admin', null, null, null, 'system', null, null, null, null, null, null, null, null, 'normal');

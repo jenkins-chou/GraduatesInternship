@@ -49,6 +49,12 @@ public class LoginActivity extends BaseActivity {
         finish();
     }
 
+    @OnClick(R.id.setting)
+    void setting(){
+        Intent intent = new Intent(this,SettingActivity.class);
+        startActivity(intent);
+    }
+
     @OnClick(R.id.goto_login)
     void goto_login(){
         String name_str = name.getText().toString();

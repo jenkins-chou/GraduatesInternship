@@ -1,10 +1,13 @@
 package com.demo.controller;
 
+import java.io.File;
 import java.util.List;
 
 import com.alibaba.fastjson.JSONObject;
+import com.demo.models.PersonalSkillModel;
 import com.demo.models.RecruitModel;
 import com.demo.models.RecruitmentDeliveryModel;
+import com.demo.models.ResumeModel;
 import com.demo.models.RecruitmentDeliveryModel;
 import com.demo.utils.PageJson;
 import com.demo.utils.ParamUtil;
@@ -12,7 +15,12 @@ import com.demo.utils.RecordJson;
 import com.demo.utils.StatusJson;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.JsonKit;
+import com.jfinal.kit.PathKit;
 import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.upload.UploadFile;
+
+import cn.hutool.poi.excel.ExcelReader;
+import cn.hutool.poi.excel.ExcelUtil;
 
 public class RecruitmentDeliveryController extends Controller {
 	
@@ -120,6 +128,72 @@ public class RecruitmentDeliveryController extends Controller {
 	/**
 	 * -------------------------移动端接口
 	 */
+	
+	
+	
+	
+	public void showResume(){
+		
+		String id = getPara("id");
+		System.out.println(id);
+		if(id!=null){
+			RecruitmentDeliveryModel rdModel = RecruitmentDeliveryModel.dao.findById(id);
+			if(rdModel!=null){
+				System.out.println(rdModel.toString());
+				String user_id = rdModel.getStr("user_id");
+				String resume_id = rdModel.getStr("resume_id");
+				
+				setAttr("user_id",user_id);
+				
+				ResumeModel resumeModel = ResumeModel.dao.findById(resume_id);
+				if(resumeModel!=null){
+					System.out.println(resumeModel.toString());
+					setAttr("resumeModel",resumeModel);
+				}		
+				
+			}else{
+				
+			}
+			 render("../resume_detail/index.html");
+		}else{
+			render("../resume_detail/index.html");
+		}
+	}
+	
+	public void downloadResume(){
+		String user_id = getPara("user_id");
+		System.out.println(user_id);
+		if(user_id!=null&&!user_id.equals("")){
+			String sql = "select * from resume_enclosure where user_id = '"+user_id+"' and status = 'current' and del != 'delete'";
+			RecruitModel model = RecruitModel.dao.findFirst(sql);
+			if(model!=null){
+				
+				String path = PathKit.getWebRootPath()+"/"+model.get("file_url");
+				System.out.println(path);
+				if(new File(PathKit.getWebRootPath()+"/"+model.get("file_url")).exists()){
+					JSONObject js = new JSONObject();
+					js.put("code", "200");
+					js.put("data",model.get("file_url"));
+					renderJson(js);
+				}else{
+					JSONObject js = new JSONObject();
+					js.put("code", "201");
+					js.put("message","简历附件丢失");
+					renderJson(js);
+				}
+			}else{
+				JSONObject js = new JSONObject();
+				js.put("code", "202");
+				js.put("message","该用户暂无上传简历附件");
+				renderJson(js);
+			}
+		}else{
+			JSONObject js = new JSONObject();
+			js.put("code", "201");
+			js.put("message","数据错误");
+			renderJson(js);
+		}
+	}
 	
 	public void getRecruitmentDeliveryById(){
 		RecruitmentDeliveryModel model = RecruitmentDeliveryModel.dao.findById(getPara("id"));
