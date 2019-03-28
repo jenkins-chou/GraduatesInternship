@@ -7,6 +7,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.demo.models.PersonalSkillModel;
 import com.demo.models.RecruitModel;
 import com.demo.models.RecruitmentDeliveryModel;
+import com.demo.models.ResumeEnclosureModel;
 import com.demo.models.ResumeModel;
 import com.demo.models.RecruitmentDeliveryModel;
 import com.demo.utils.PageJson;
@@ -51,14 +52,27 @@ public class RecruitmentDeliveryController extends Controller {
 				js.put("message", "已投递过了");
 				renderJson(js.toJSONString());
 			}else{
-				RecruitmentDeliveryModel model = getModel(RecruitmentDeliveryModel.class, "", true);
-				model.set("create_time", System.currentTimeMillis()/1000+"");
-				model.set("del","normal");
-				System.out.println("model:"+model);
-				model.save();
+				
+				RecruitmentDeliveryModel recruitDeliveryModel = getModel(RecruitmentDeliveryModel.class, "", true);
+				String enclosure = getPara("enclosure");
+				if(enclosure!=null&&!enclosure.equals("")){
+					
+				}else{
+					String enclosureSql = "select * from resume_enclosure where user_id = '"+user_id+"' and status = 'current' and del != 'delete'";
+					ResumeEnclosureModel enclosuremodel = ResumeEnclosureModel.dao.findFirst(enclosureSql);
+					if(enclosuremodel!=null){
+						recruitDeliveryModel.set("enclosure", enclosuremodel.get("file_url"));
+					}
+				}
+				
+				recruitDeliveryModel.set("create_time", System.currentTimeMillis()/1000+"");
+				recruitDeliveryModel.set("del","normal");
+				System.out.println("model:"+recruitDeliveryModel);
+				recruitDeliveryModel.save();
 				JSONObject js = new JSONObject();
 				js.put("code", "200");
 				renderJson(js.toJSONString());
+				
 			}
 			
 		} catch (Exception e) {
@@ -161,19 +175,19 @@ public class RecruitmentDeliveryController extends Controller {
 	}
 	
 	public void downloadResume(){
-		String user_id = getPara("user_id");
-		System.out.println(user_id);
-		if(user_id!=null&&!user_id.equals("")){
-			String sql = "select * from resume_enclosure where user_id = '"+user_id+"' and status = 'current' and del != 'delete'";
-			RecruitModel model = RecruitModel.dao.findFirst(sql);
+		String id = getPara("id");
+		System.out.println(id);
+		if(id!=null&&!id.equals("")){
+			String sql = "select * from recruitment_delivery where id = "+id+" and del != 'delete'";
+			RecruitmentDeliveryModel model = RecruitmentDeliveryModel.dao.findFirst(sql);
 			if(model!=null){
 				
-				String path = PathKit.getWebRootPath()+"/"+model.get("file_url");
+				String path = PathKit.getWebRootPath()+"/"+model.get("enclosure");
 				System.out.println(path);
-				if(new File(PathKit.getWebRootPath()+"/"+model.get("file_url")).exists()){
+				if(new File(path).exists()){
 					JSONObject js = new JSONObject();
 					js.put("code", "200");
-					js.put("data",model.get("file_url"));
+					js.put("data",model.get("enclosure"));
 					renderJson(js);
 				}else{
 					JSONObject js = new JSONObject();

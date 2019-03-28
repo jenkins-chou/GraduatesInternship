@@ -132,7 +132,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 							}else if(obj.event === 'down_resume'){
 								console.log("show_resume");
 								$.getJSON(ctxPath + "/recruitment_delivery/downloadResume",
-										user_id, function(jsondata) {
+										idDatas, function(jsondata) {
 											if(jsondata.code=='200'){
 												//console.log(ctxPath+jsondata);
 												window.location.href = ctxPath+"/"+jsondata.data;

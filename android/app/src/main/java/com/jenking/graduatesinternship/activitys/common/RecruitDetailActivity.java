@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.jenking.graduatesinternship.R;
+import com.jenking.graduatesinternship.activitys.student.StudentRecruitDeliveryOperateActivity;
 import com.jenking.graduatesinternship.activitys.student.StudentResumeSelectActivity;
 import com.jenking.graduatesinternship.api.RS;
 import com.jenking.graduatesinternship.dialog.CommonTipsDialog;
@@ -28,8 +29,9 @@ import butterknife.OnClick;
 public class RecruitDetailActivity extends BaseActivity {
 
     private RecruitDeliveryPresenter recruitDeliveryPresenter;//岗位投递presenter
-    private RecruitCollectionPresenter recruitCollectionPresenter;//岗位收藏presenter
     private RecruitModel recruitModel;
+    private RecruitCollectionPresenter recruitCollectionPresenter;//岗位收藏presenter
+
 
     @BindView(R.id.job_name)
     TextView job_name;
@@ -101,18 +103,9 @@ public class RecruitDetailActivity extends BaseActivity {
     void submit(){
         if (checkLogin()) {
             if (recruitModel!=null){
-                CommonTipsDialog.create(this,"温馨提示","确定要申请该招聘吗？",false)
-                        .setOnClickListener(new CommonTipsDialog.OnClickListener() {
-                            @Override
-                            public void cancel() {
-
-                            }
-
-                            @Override
-                            public void confirm() {
-                                selectResume();
-                            }
-                        }).show();
+                Intent intent  = new Intent(this,StudentRecruitDeliveryOperateActivity.class);
+                intent.putExtra("model",new Gson().toJson(recruitModel));
+                startActivity(intent);
             }
         }
     }
@@ -122,11 +115,7 @@ public class RecruitDetailActivity extends BaseActivity {
 
     }
 
-    //选择简历
-    void selectResume(){
-        Intent intent = new Intent(this,StudentResumeSelectActivity.class);
-        startActivityForResult(intent,StudentResumeSelectActivity.selectResumeCode);
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,7 +136,11 @@ public class RecruitDetailActivity extends BaseActivity {
 
         initRecruitCollection();
         initRecruitDelivery();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         getData();
     }
 

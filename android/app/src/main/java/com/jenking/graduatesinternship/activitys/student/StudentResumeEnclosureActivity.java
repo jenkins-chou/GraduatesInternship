@@ -82,6 +82,7 @@ public class StudentResumeEnclosureActivity extends BaseActivity {
 
     private ResumeEnclosurePresenter presenter;
     private static final int PERMISSION_STORAGE_CODE = 10001;
+
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE};
