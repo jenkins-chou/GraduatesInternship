@@ -136,7 +136,7 @@ public class DemoConfig extends JFinalConfig {
 	
 	public static void main(String[] args) {
 		
-		PathKit.setWebRootPath("/WebRoot");
+		//PathKit.setWebRootPath("/WebRoot");
 		JFinal.start("WebRoot", 8007, "/", 5);
 	}
 
