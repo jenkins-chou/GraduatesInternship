@@ -7,9 +7,9 @@
     <color name="red">#c00000</color>
     <color name="green">#339966</color>
 
-    <color name="main_color">#3C7AE7</color>
-    <color name="main_color_light"> #8db2f1</color>
-    <color name="main_color_light2">#e9f0fc</color>
+    <color name="main_color">#52c9c3</color>
+    <color name="main_color_light"> #9ee1dd</color>
+    <color name="main_color_light2">#d8f3f1</color>
     <color name="white">#ffffff</color>
     <color name="transparent">#00000000</color>
     <color name="black">#000000</color>

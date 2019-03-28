@@ -492,13 +492,13 @@
                     android:text="学校学院"
                     android:textColor="@color/base_font_color" />
 
-                <TextView
-                    android:id="@+id/college_name"
+                <EditText
+                    android:id="@+id/class_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/common_noline_edittext"
-                    android:hint="请选择所属学校和学院"
+                    android:hint="请依次输入学校学院班级"
                     android:text=""
                     android:textColor="@color/base_font_color2" />
 

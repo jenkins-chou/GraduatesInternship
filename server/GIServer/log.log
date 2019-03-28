@@ -11081,3 +11081,6 @@ java.lang.IllegalStateException: port: 8007 already in use!
 	at com.jfinal.server.JettyServer.start(JettyServer.java:70)
 	at com.jfinal.core.JFinal.start(JFinal.java:162)
 	at com.demo.common.DemoConfig.main(DemoConfig.java:137)
+
+2019-03-28 12:36:05
+[WARN]-[Thread: qtp1338823963-17 Selector0]-[org.eclipse.jetty.io.nio.SelectorManager$SelectSet.doSelect()]: Selector org.eclipse.jetty.io.nio.SelectorManager$SelectSet@38af804 keys=0 selected=0 is too busy, pausing!

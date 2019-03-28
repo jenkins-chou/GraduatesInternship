@@ -68,8 +68,8 @@ public class UserInfoModifyActivity extends BaseActivity {
     EditText health;
     @BindView(R.id.entrance_time)
     EditText entrance_time;
-    @BindView(R.id.college_name)
-    TextView college_name;
+    @BindView(R.id.class_name)
+    EditText class_name;
 
     @BindView(R.id.class_bar)
     LinearLayout class_bar;
@@ -77,12 +77,6 @@ public class UserInfoModifyActivity extends BaseActivity {
     @OnClick(R.id.back)
     void back(){
         finish();
-    }
-
-    @OnClick(R.id.college_name)
-    void college_name(){
-//        Intent intent = new Intent(this,ClassListActivity.class);
-//        startActivityForResult(intent,ClassListActivity.SelectClassCode);
     }
 
     @OnClick(R.id.submit)
@@ -110,12 +104,7 @@ public class UserInfoModifyActivity extends BaseActivity {
             params.put("address",address.getText().toString());
             params.put("health",health.getText().toString());
             params.put("entrance_time",entrance_time.getText().toString());
-            params.put("class_id",select_class_id+"");
-            params.put("college_id",select_college_id+"");
-            params.put("school_id",select_school_id+"");
-            params.put("class_name",select_class_name+"");
-            params.put("college_name",select_college_name+"");
-            params.put("school_name",select_school_name+"");
+            params.put("class_name",class_name.getText().toString()+"");
             if (userModel!=null){
                 params.put("id",userModel.getId());
                 userPresenter.updateUser(params);
@@ -180,7 +169,7 @@ public class UserInfoModifyActivity extends BaseActivity {
                 address.setText(userModel.getAddress());
                 health.setText(userModel.getHealth());
                 entrance_time.setText(userModel.getEntrance_time());
-                college_name.setText(select_school_name +"--"+ select_college_name+"--"+select_class_name);
+                class_name.setText(userModel.getClass_name());
             }
         }
 
@@ -236,7 +225,7 @@ public class UserInfoModifyActivity extends BaseActivity {
             userModel.setClass_id(select_class_id+"");
             userModel.setSchool_id(select_school_id+"");
             userModel.setCollege_id(select_college_id+"");
-            userModel.setClass_name(select_class_name+"");
+            userModel.setClass_name(class_name.getText().toString()+"");
             userModel.setCollege_name(select_college_name+"");
             userModel.setSchool_name(select_school_name+"");
 

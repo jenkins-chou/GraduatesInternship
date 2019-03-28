@@ -99,9 +99,7 @@ public class UserInfoActivity extends BaseActivity {
                 address.setText(userModel.getAddress());
                 health.setText(userModel.getHealth());
                 entrance_time.setText(userModel.getEntrance_time());
-                college_name.setText(userModel.getSchool_name()+"-"+userModel.getCollege_name());
-
-                college_name.setText(userModel.getSchool_name()+"--"+userModel.getCollege_name()+"--"+userModel.getClass_name());
+                college_name.setText(userModel.getClass_name());
             }
         }
     }
