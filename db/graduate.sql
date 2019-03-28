@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50723
 File Encoding         : 65001
 
-Date: 2019-03-27 17:04:22
+Date: 2019-03-28 17:17:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -330,12 +330,12 @@ CREATE TABLE `recruitment_delivery` (
   `resume_id` varchar(255) DEFAULT NULL,
   `recruit_id` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL COMMENT '投递状态（0：待审核，1：待面试，2：不通过，3：通过，4：实习中，5：实习结束，6：因其他原因注销）',
-  `enclose` varchar(255) DEFAULT NULL,
+  `enclosure` varchar(255) DEFAULT NULL,
   `create_time` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of recruitment_delivery
@@ -354,7 +354,15 @@ INSERT INTO `recruitment_delivery` VALUES ('12', '5', '4', '3', '2', null, '1553
 INSERT INTO `recruitment_delivery` VALUES ('13', '5', '4', '2', '1', null, '1553495044', null, 'normal');
 INSERT INTO `recruitment_delivery` VALUES ('14', '5', '4', '1', '5', null, '1553573123', '该同学成绩不及格', 'normal');
 INSERT INTO `recruitment_delivery` VALUES ('15', '5', '4', '5', '0', null, '1553658501', null, 'delete');
-INSERT INTO `recruitment_delivery` VALUES ('16', '5', '4', '5', '0', null, '1553671902', null, 'normal');
+INSERT INTO `recruitment_delivery` VALUES ('16', '5', '4', '5', '0', null, '1553671902', null, 'delete');
+INSERT INTO `recruitment_delivery` VALUES ('17', '5', '4', '5', '0', null, '1553736745', null, 'delete');
+INSERT INTO `recruitment_delivery` VALUES ('18', '5', '4', '5', '0', 'upload/周宇-学生报告1.doc', '1553736833', null, 'delete');
+INSERT INTO `recruitment_delivery` VALUES ('19', '5', '4', '5', '0', 'upload/张晓欣-学生报告.doc', '1553736970', null, 'delete');
+INSERT INTO `recruitment_delivery` VALUES ('20', '5', '4', '5', '0', null, '1553737636', null, 'delete');
+INSERT INTO `recruitment_delivery` VALUES ('21', '5', '4', '5', '0', 'upload/张晓欣-学生报告1.doc', '1553737684', null, 'delete');
+INSERT INTO `recruitment_delivery` VALUES ('22', '5', '4', '5', '0', 'upload/学生报告.doc', '1553738773', null, 'delete');
+INSERT INTO `recruitment_delivery` VALUES ('23', '5', '4', '5', '0', 'upload/周宇-学生报告2.doc', '1553738874', null, 'delete');
+INSERT INTO `recruitment_delivery` VALUES ('24', '5', '4', '5', '0', 'upload/错错错-学生报告.doc', '1553739002', null, 'delete');
 
 -- ----------------------------
 -- Table structure for resume
@@ -388,7 +396,7 @@ CREATE TABLE `resume` (
 INSERT INTO `resume` VALUES ('1', '112', '简历1', '8000', '1', '本科', null, null, null, null, null, null, null, null, null, null, null, 'delete');
 INSERT INTO `resume` VALUES ('2', '2', '简历名称', '20k', '三个月', '本科', null, null, null, null, null, null, null, '岗位', 'normal', '1553410576', null, 'delete');
 INSERT INTO `resume` VALUES ('3', '2', '安卓开发', '20000', '一年', '本科', null, null, null, '123466', null, null, null, '安卓开发工程师', 'normal', '1553411322', null, 'normal');
-INSERT INTO `resume` VALUES ('4', '5', '简历', '3000', '3个月', '本科', null, null, null, null, null, null, null, 'ios', 'normal', '1553493301', null, 'normal');
+INSERT INTO `resume` VALUES ('4', '5', 'ios应聘', '3000', '3个月', '本科', null, null, null, null, null, null, null, 'ios', 'normal', '1553493301', null, 'normal');
 
 -- ----------------------------
 -- Table structure for resume_enclosure
@@ -403,7 +411,7 @@ CREATE TABLE `resume_enclosure` (
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of resume_enclosure
@@ -415,7 +423,8 @@ INSERT INTO `resume_enclosure` VALUES ('4', '5', 'upload/周宇-学生报告1.do
 INSERT INTO `resume_enclosure` VALUES ('5', '5', 'upload/Screenshot_20190325-002531__01.jpg', 'Previous', '1553487632', null, 'normal');
 INSERT INTO `resume_enclosure` VALUES ('6', '5', 'upload/周宇-学生报告2.doc', 'Previous', '1553492716', null, 'normal');
 INSERT INTO `resume_enclosure` VALUES ('7', '5', 'upload/张晓欣-学生报告1.doc', 'Previous', '1553496333', null, 'normal');
-INSERT INTO `resume_enclosure` VALUES ('8', '5', 'upload/学生报告.doc', 'current', '1553562407', null, 'normal');
+INSERT INTO `resume_enclosure` VALUES ('8', '5', 'upload/学生报告.doc', 'Previous', '1553562407', null, 'normal');
+INSERT INTO `resume_enclosure` VALUES ('9', '5', 'upload/周宇-学生报告2.doc', 'current', '1553738862', null, 'normal');
 
 -- ----------------------------
 -- Table structure for school
@@ -502,6 +511,6 @@ CREATE TABLE `user_base` (
 -- Records of user_base
 -- ----------------------------
 INSERT INTO `user_base` VALUES ('2', '123', '123456', '何其成', 'upload/1553408286963.jpg', '不个性何来个性签名', '女', '13', '123', '汉', '广东', '13413607283@163.com', '123456', '12345678910', '常住地址', '1996', 'student', null, null, null, null, null, null, null, '无', 'normal');
-INSERT INTO `user_base` VALUES ('5', 'ZhouNing', '123', '周宁', 'upload/1553335338579.jpg', '学生，应届毕业生', null, null, null, null, null, null, '123', null, null, null, 'student', 'null', 'null', 'null', 'null', 'null', 'null', '1553332979', null, 'normal');
+INSERT INTO `user_base` VALUES ('5', 'ZhouNing', '123', '周宁', 'upload/1553739951751.jpg', '学生，应届毕业生', null, null, null, null, null, null, '123', null, null, null, 'student', 'null', 'null', 'null', '中大计算机学院计科1143班', 'null', 'null', '1553332979', null, 'normal');
 INSERT INTO `user_base` VALUES ('8', null, '1234', '何生', 'upload/1553563210115.jpg', null, null, null, null, null, null, null, '1234', null, null, null, 'teacher', null, null, null, null, null, null, '1553497718', null, 'normal');
 INSERT INTO `user_base` VALUES ('10', '系统管理员', 'admin', '系统管理员', null, null, null, null, null, null, null, null, 'admin', null, null, null, 'system', null, null, null, null, null, null, null, null, 'normal');
