@@ -85,7 +85,7 @@ public class TeacherMainFragment2 extends Fragment{
         if (AccountTool.isLogin(getContext())){
             userModel = AccountTool.getLoginUser(getContext());
             if (userModel!=null){
-                username.setText(userModel.getUseridentify());
+                username.setText("教师编号:"+userModel.getUseridentify());
                 RequestOptions requestOptions = new RequestOptions();
                 requestOptions.circleCrop();
                 requestOptions.error(R.mipmap.avatar_default);
